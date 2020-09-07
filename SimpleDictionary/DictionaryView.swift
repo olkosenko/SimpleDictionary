@@ -8,9 +8,34 @@
 import SwiftUI
 
 struct DictionaryView: View {
+    
+    @StateObject var viewModel = DictionaryViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Spacer()
+                CustomeTextField(word: $viewModel.searchText)
+                    .frame(maxHeight: 40)
+                Spacer()
+            }
+            Spacer()
+        }
     }
+}
+
+struct CustomeTextField: View {
+    @Binding var word: String
+    
+    var body: some View {
+        ZStack {
+            TextField("Enter your word", text: $word)
+                .multilineTextAlignment(.center)
+                .aspectRatio(contentMode: .fit)
+            Capsule().stroke()
+        }
+    }
+    
 }
 
 struct DictionaryView_Previews: PreviewProvider {

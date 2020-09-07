@@ -11,6 +11,8 @@ import Combine
 /// Oxford: https://developer.oxforddictionaries.com/documentation#
 
 class API {
+    static public let shared = API()
+    
     static private let URL_PREFIX = "https://"
     static private let HOST = "od-api.oxforddictionaries.com"
     static private let basePath = "api/v2"
@@ -37,7 +39,7 @@ class API {
     }
     
     static private func makeURL() -> URL {
-        return URL(string: "\(API.URL_PREFIX)\(API.HOST)\(API.basePath)/entries/\(language)/")!
+        return URL(string: "\(API.URL_PREFIX)\(API.HOST)/\(API.basePath)/entries/\(language)/")!
     }
     
     public func request<T: Decodable>(word: String) -> AnyPublisher<T, Error> {
