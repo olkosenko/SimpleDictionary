@@ -25,6 +25,8 @@
 		1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273D2506AF1800217C63 /* DictionaryViewModel.swift */; };
 		109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727442506E01800217C63 /* DictionaryEntryView.swift */; };
 		109727492506E6F700217C63 /* DictionaryEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */; };
+		1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274B2507CFDA00217C63 /* Dropdown.swift */; };
+		1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274D2507D3CB00217C63 /* DropdownItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		1097273D2506AF1800217C63 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
 		109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryViewModel.swift; sourceTree = "<group>"; };
+		1097274B2507CFDA00217C63 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
+		1097274D2507D3CB00217C63 /* DropdownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		109727102506790100217C63 /* SimpleDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				1097274A2507CFC100217C63 /* Reusable Components */,
 				109727462506E0BE00217C63 /* App Lifecycle */,
 				1097273F2506DF7500217C63 /* Screens & Views */,
 				1097272425067D6F00217C63 /* Backend */,
@@ -207,6 +212,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		1097274A2507CFC100217C63 /* Reusable Components */ = {
+			isa = PBXGroup;
+			children = (
+				1097274B2507CFDA00217C63 /* Dropdown.swift */,
+				1097274D2507D3CB00217C63 /* DropdownItem.swift */,
+			);
+			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1097272F2506A2CE00217C63 /* Entry.swift in Sources */,
+				1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */,
 				109727282506880B00217C63 /* APIKeys.swift in Sources */,
 				1097272625067DAC00217C63 /* API.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
@@ -289,6 +304,7 @@
 				109727372506A7E800217C63 /* HeadwordEntry.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* LexicalEntry.swift in Sources */,
+				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
 				109727492506E6F700217C63 /* DictionaryEntryViewModel.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
 				109727332506A62A00217C63 /* ExamplesList.swift in Sources */,

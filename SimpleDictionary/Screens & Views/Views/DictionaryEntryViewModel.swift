@@ -16,8 +16,8 @@ class DictionaryEntryViewModel: ObservableObject {
         lexicalEntry.entries!.first!.senses!.first!.definitions!.first!
     }
     
-    var examples: [ExamplesList] {
-        lexicalEntry.entries!.first!.senses!.first!.examples!
+    var examples: [String] {
+        lexicalEntry.entries!.first!.senses!.first!.examples!.map { $0.text }
     }
     
     init(lexicalEntry: LexicalEntry) {

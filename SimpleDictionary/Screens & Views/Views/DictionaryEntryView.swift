@@ -17,9 +17,7 @@ struct DictionaryEntryView: View {
     
     var body: some View {
         VStack {
-            Text(viewModel.text)
-                .font(.subheadline)
-                .bold()
+            Dropdown(dropdownHeadlineText: viewModel.text, dropdownItems: Set(viewModel.examples))
         }
             
     }
