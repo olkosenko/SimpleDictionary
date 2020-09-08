@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-/// Oxford: https://developer.oxforddictionaries.com/documentation#
+/// Oxford`s dictionary: https://developer.oxforddictionaries.com/documentation#
 
 class API {
     static public let shared = API()

@@ -14,3 +14,5 @@ struct Entry: Decodable {
     /// Complete list of senses.
     let senses: [Sense]?
 }
+
+let staticEntry = Entry(etymologies: nil, senses: [staticSense])

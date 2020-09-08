@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct ExamplesList: Decodable {
+struct ExamplesList: Decodable, Identifiable {
     
+    let id = UUID()
     let text: String
 }
+
+

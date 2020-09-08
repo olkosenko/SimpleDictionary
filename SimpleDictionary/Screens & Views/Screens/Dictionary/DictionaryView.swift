@@ -12,14 +12,23 @@ struct DictionaryView: View {
     @StateObject var viewModel = DictionaryViewModel()
     
     var body: some View {
-        VStack {
-            HStack {
+        NavigationView {
+            VStack {
+                HStack {
+                    CustomeTextField(word: $viewModel.searchText)
+                        .frame(maxHeight: 40)
+                }
+                .padding(.init(top: 8, leading: 8, bottom: 0, trailing: 8))
+            
                 Spacer()
-                CustomeTextField(word: $viewModel.searchText)
-                    .frame(maxHeight: 40)
-                Spacer()
+                
+                List(viewModel.lexicalEntries ?? []) { lexicalEntry in
+                    DictionaryEntryView(lexicalEntry: lexicalEntry)
+                }
+                .listStyle(InsetGroupedListStyle())
             }
-            Spacer()
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: Button("Hello") { })
         }
     }
 }

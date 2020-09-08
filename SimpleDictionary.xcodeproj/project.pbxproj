@@ -23,6 +23,8 @@
 		109727392506A86000217C63 /* LexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* LexicalEntry.swift */; };
 		1097273B2506AAF700217C63 /* RetrieveEntry+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273A2506AAF700217C63 /* RetrieveEntry+Networking.swift */; };
 		1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273D2506AF1800217C63 /* DictionaryViewModel.swift */; };
+		109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727442506E01800217C63 /* DictionaryEntryView.swift */; };
+		109727492506E6F700217C63 /* DictionaryEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		109727382506A86000217C63 /* LexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalEntry.swift; sourceTree = "<group>"; };
 		1097273A2506AAF700217C63 /* RetrieveEntry+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RetrieveEntry+Networking.swift"; sourceTree = "<group>"; };
 		1097273D2506AF1800217C63 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
+		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
+		109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,15 +80,12 @@
 		109727102506790100217C63 /* SimpleDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				109727462506E0BE00217C63 /* App Lifecycle */,
+				1097273F2506DF7500217C63 /* Screens & Views */,
 				1097272425067D6F00217C63 /* Backend */,
-				109727112506790100217C63 /* SimpleDictionaryApp.swift */,
-				109727132506790100217C63 /* ContentView.swift */,
 				109727152506790400217C63 /* Assets.xcassets */,
 				1097271A2506790400217C63 /* Info.plist */,
 				109727172506790400217C63 /* Preview Content */,
-				10972720250679CD00217C63 /* DictionaryView.swift */,
-				1097272225067A9C00217C63 /* HistoryView.swift */,
-				1097273D2506AF1800217C63 /* DictionaryViewModel.swift */,
 			);
 			path = SimpleDictionary;
 			sourceTree = "<group>";
@@ -110,7 +111,7 @@
 		1097272A2506A10E00217C63 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1097272D2506A14F00217C63 /* Models */,
+				1097272D2506A14F00217C63 /* Models Extensions */,
 				1097272525067DAC00217C63 /* API.swift */,
 				109727272506880B00217C63 /* APIKeys.swift */,
 			);
@@ -137,12 +138,73 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		1097272D2506A14F00217C63 /* Models */ = {
+		1097272D2506A14F00217C63 /* Models Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				1097273A2506AAF700217C63 /* RetrieveEntry+Networking.swift */,
 			);
-			path = Models;
+			path = "Models Extensions";
+			sourceTree = "<group>";
+		};
+		1097273F2506DF7500217C63 /* Screens & Views */ = {
+			isa = PBXGroup;
+			children = (
+				109727472506E0E200217C63 /* Main */,
+				109727432506DFDA00217C63 /* Views */,
+				109727412506DFC300217C63 /* Screens */,
+			);
+			path = "Screens & Views";
+			sourceTree = "<group>";
+		};
+		109727402506DF9E00217C63 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				1097273D2506AF1800217C63 /* DictionaryViewModel.swift */,
+				10972720250679CD00217C63 /* DictionaryView.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		109727412506DFC300217C63 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				109727422506DFCE00217C63 /* History */,
+				109727402506DF9E00217C63 /* Dictionary */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		109727422506DFCE00217C63 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				1097272225067A9C00217C63 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		109727432506DFDA00217C63 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				109727442506E01800217C63 /* DictionaryEntryView.swift */,
+				109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		109727462506E0BE00217C63 /* App Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				109727112506790100217C63 /* SimpleDictionaryApp.swift */,
+			);
+			path = "App Lifecycle";
+			sourceTree = "<group>";
+		};
+		109727472506E0E200217C63 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				109727132506790100217C63 /* ContentView.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +280,7 @@
 				109727282506880B00217C63 /* APIKeys.swift in Sources */,
 				1097272625067DAC00217C63 /* API.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
+				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
 				1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */,
 				109727312506A51B00217C63 /* Sense.swift in Sources */,
 				1097273B2506AAF700217C63 /* RetrieveEntry+Networking.swift in Sources */,
@@ -226,6 +289,7 @@
 				109727372506A7E800217C63 /* HeadwordEntry.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* LexicalEntry.swift in Sources */,
+				109727492506E6F700217C63 /* DictionaryEntryViewModel.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
 				109727332506A62A00217C63 /* ExamplesList.swift in Sources */,
 			);

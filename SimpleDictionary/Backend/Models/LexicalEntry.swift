@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct LexicalEntry: Decodable {
+struct LexicalEntry: Decodable, Identifiable {
     
+    let id = UUID()
     let entries: [Entry]?
 }
+
+let staticLexicalEntry = LexicalEntry(entries: [staticEntry])

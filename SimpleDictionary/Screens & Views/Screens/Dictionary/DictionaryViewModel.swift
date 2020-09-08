@@ -15,6 +15,11 @@ class DictionaryViewModel: ObservableObject {
     
     private var cancellableStore = Set<AnyCancellable>()
     
+    var lexicalEntries: [LexicalEntry]? {
+        entry?.results?.first?.lexicalEntries
+    }
+    
+    
     init() {
         $searchText
             .subscribe(on: DispatchQueue.global())
