@@ -7,12 +7,10 @@
 
 import Foundation
 
-struct Entry: Decodable {
+struct OXFEntry: Decodable {
     /// The origin of the word and the way in which its meaning has changed throughout history.
     let etymologies: [String]?
     
     /// Complete list of senses.
-    let senses: [Sense]?
+    let senses: [OXFSense]?
 }
-
-let staticEntry = Entry(etymologies: nil, senses: [staticSense])

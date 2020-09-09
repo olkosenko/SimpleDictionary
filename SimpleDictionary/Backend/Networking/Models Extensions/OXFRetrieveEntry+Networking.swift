@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-extension RetrieveEntry {
-    static public func fetch(word: String) -> AnyPublisher<RetrieveEntry, Never> {
+extension OXFRetrieveEntry {
+    static public func fetch(word: String) -> AnyPublisher<OXFRetrieveEntry, Never> {
         return API.shared.request(word: word)
             .subscribe(on: DispatchQueue.global())
-            .replaceError(with: RetrieveEntry(results: nil))
+            .replaceError(with: OXFRetrieveEntry(results: nil))
             .eraseToAnyPublisher()
     }
 }

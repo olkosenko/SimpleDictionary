@@ -11,17 +11,20 @@ import Combine
 class DictionaryViewModel: ObservableObject {
     
     @Published var searchText = ""
-    @Published var entry: RetrieveEntry?
+    @Published var entries: [Entry]
     
     private var cancellableStore = Set<AnyCancellable>()
     
-    var lexicalEntries: [LexicalEntry]? {
-        entry?.results?.first?.lexicalEntries
-    }
-    
-    
     init() {
+        #if DEBUG
+        searchText = "Hello"
+        entries = staticEntries
+        #else
+        entries = []
+        #endif
+        
         $searchText
+            .dropFirst()
             .subscribe(on: DispatchQueue.global())
             .debounce(for: 1, scheduler: DispatchQueue.global())
             .removeDuplicates()
@@ -35,11 +38,12 @@ class DictionaryViewModel: ObservableObject {
     }
     
     private func search(with text: String) {
-        RetrieveEntry.fetch(word: text)
+        OXFRetrieveEntry.fetch(word: text)
             .receive(on: DispatchQueue.main)
+            .map { $0.convert() }
             .sink { [weak self] results in
                 print(results)
-                self?.entry = results
+                self?.entries = results
             }
             .store(in: &cancellableStore)
     }

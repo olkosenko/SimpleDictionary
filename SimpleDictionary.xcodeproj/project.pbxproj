@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB325088C5C00E5F9D8 /* CardView.swift */; };
+		104D5CB62508938C00E5F9D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB52508938C00E5F9D8 /* Color.swift */; };
 		109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727112506790100217C63 /* SimpleDictionaryApp.swift */; };
 		109727142506790100217C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727132506790100217C63 /* ContentView.swift */; };
 		109727162506790400217C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109727152506790400217C63 /* Assets.xcassets */; };
@@ -15,21 +17,24 @@
 		1097272325067A9C00217C63 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272225067A9C00217C63 /* HistoryView.swift */; };
 		1097272625067DAC00217C63 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272525067DAC00217C63 /* API.swift */; };
 		109727282506880B00217C63 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727272506880B00217C63 /* APIKeys.swift */; };
-		1097272F2506A2CE00217C63 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272E2506A2CE00217C63 /* Entry.swift */; };
-		109727312506A51B00217C63 /* Sense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727302506A51B00217C63 /* Sense.swift */; };
-		109727332506A62A00217C63 /* ExamplesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727322506A62A00217C63 /* ExamplesList.swift */; };
-		109727352506A7B000217C63 /* RetrieveEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727342506A7B000217C63 /* RetrieveEntry.swift */; };
-		109727372506A7E800217C63 /* HeadwordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727362506A7E800217C63 /* HeadwordEntry.swift */; };
-		109727392506A86000217C63 /* LexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* LexicalEntry.swift */; };
-		1097273B2506AAF700217C63 /* RetrieveEntry+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273A2506AAF700217C63 /* RetrieveEntry+Networking.swift */; };
+		1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272E2506A2CE00217C63 /* OXFEntry.swift */; };
+		109727312506A51B00217C63 /* OXFSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727302506A51B00217C63 /* OXFSense.swift */; };
+		109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727322506A62A00217C63 /* OXFExamplesList.swift */; };
+		109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727342506A7B000217C63 /* OXFRetrieveEntry.swift */; };
+		109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727362506A7E800217C63 /* OXFHeadwordEntry.swift */; };
+		109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* OXFLexicalEntry.swift */; };
+		1097273B2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273A2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift */; };
 		1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273D2506AF1800217C63 /* DictionaryViewModel.swift */; };
 		109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727442506E01800217C63 /* DictionaryEntryView.swift */; };
-		109727492506E6F700217C63 /* DictionaryEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */; };
 		1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274B2507CFDA00217C63 /* Dropdown.swift */; };
 		1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274D2507D3CB00217C63 /* DropdownItem.swift */; };
+		10E19DB9250816C80061CF6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* String.swift */; };
+		10E19DC125081DD80061CF6B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DC025081DD80061CF6B /* Entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		104D5CB325088C5C00E5F9D8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		104D5CB52508938C00E5F9D8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1097270E2506790100217C63 /* SimpleDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109727112506790100217C63 /* SimpleDictionaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryApp.swift; sourceTree = "<group>"; };
 		109727132506790100217C63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,18 +45,19 @@
 		1097272225067A9C00217C63 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		1097272525067DAC00217C63 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		109727272506880B00217C63 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
-		1097272E2506A2CE00217C63 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
-		109727302506A51B00217C63 /* Sense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sense.swift; sourceTree = "<group>"; };
-		109727322506A62A00217C63 /* ExamplesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesList.swift; sourceTree = "<group>"; };
-		109727342506A7B000217C63 /* RetrieveEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveEntry.swift; sourceTree = "<group>"; };
-		109727362506A7E800217C63 /* HeadwordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadwordEntry.swift; sourceTree = "<group>"; };
-		109727382506A86000217C63 /* LexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LexicalEntry.swift; sourceTree = "<group>"; };
-		1097273A2506AAF700217C63 /* RetrieveEntry+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RetrieveEntry+Networking.swift"; sourceTree = "<group>"; };
+		1097272E2506A2CE00217C63 /* OXFEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFEntry.swift; sourceTree = "<group>"; };
+		109727302506A51B00217C63 /* OXFSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFSense.swift; sourceTree = "<group>"; };
+		109727322506A62A00217C63 /* OXFExamplesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFExamplesList.swift; sourceTree = "<group>"; };
+		109727342506A7B000217C63 /* OXFRetrieveEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFRetrieveEntry.swift; sourceTree = "<group>"; };
+		109727362506A7E800217C63 /* OXFHeadwordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFHeadwordEntry.swift; sourceTree = "<group>"; };
+		109727382506A86000217C63 /* OXFLexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFLexicalEntry.swift; sourceTree = "<group>"; };
+		1097273A2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OXFRetrieveEntry+Networking.swift"; sourceTree = "<group>"; };
 		1097273D2506AF1800217C63 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
-		109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryViewModel.swift; sourceTree = "<group>"; };
 		1097274B2507CFDA00217C63 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		1097274D2507D3CB00217C63 /* DropdownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
+		10E19DB8250816C80061CF6B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		10E19DC025081DD80061CF6B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		104D5CB225088B8600E5F9D8 /* DropdownView */ = {
+			isa = PBXGroup;
+			children = (
+				1097274B2507CFDA00217C63 /* Dropdown.swift */,
+				1097274D2507D3CB00217C63 /* DropdownItem.swift */,
+			);
+			path = DropdownView;
+			sourceTree = "<group>";
+		};
 		109727052506790100217C63 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +99,7 @@
 		109727102506790100217C63 /* SimpleDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				10E19DB7250816AE0061CF6B /* Extensions */,
 				1097274A2507CFC100217C63 /* Reusable Components */,
 				109727462506E0BE00217C63 /* App Lifecycle */,
 				1097273F2506DF7500217C63 /* Screens & Views */,
@@ -106,7 +122,6 @@
 		1097272425067D6F00217C63 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				1097272C2506A13F00217C63 /* Extensions */,
 				1097272B2506A12100217C63 /* Models */,
 				1097272A2506A10E00217C63 /* Networking */,
 			);
@@ -126,27 +141,16 @@
 		1097272B2506A12100217C63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				109727342506A7B000217C63 /* RetrieveEntry.swift */,
-				109727362506A7E800217C63 /* HeadwordEntry.swift */,
-				109727382506A86000217C63 /* LexicalEntry.swift */,
-				1097272E2506A2CE00217C63 /* Entry.swift */,
-				109727302506A51B00217C63 /* Sense.swift */,
-				109727322506A62A00217C63 /* ExamplesList.swift */,
+				10E19DBF25081D160061CF6B /* Normalized */,
+				10E19DBE25081CE90061CF6B /* Oxford API */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		1097272C2506A13F00217C63 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1097272D2506A14F00217C63 /* Models Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1097273A2506AAF700217C63 /* RetrieveEntry+Networking.swift */,
+				1097273A2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift */,
 			);
 			path = "Models Extensions";
 			sourceTree = "<group>";
@@ -191,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				109727442506E01800217C63 /* DictionaryEntryView.swift */,
-				109727482506E6F700217C63 /* DictionaryEntryViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,10 +218,40 @@
 		1097274A2507CFC100217C63 /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
-				1097274B2507CFDA00217C63 /* Dropdown.swift */,
-				1097274D2507D3CB00217C63 /* DropdownItem.swift */,
+				104D5CB225088B8600E5F9D8 /* DropdownView */,
+				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
 			);
 			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		10E19DB7250816AE0061CF6B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				10E19DB8250816C80061CF6B /* String.swift */,
+				104D5CB52508938C00E5F9D8 /* Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		10E19DBE25081CE90061CF6B /* Oxford API */ = {
+			isa = PBXGroup;
+			children = (
+				109727342506A7B000217C63 /* OXFRetrieveEntry.swift */,
+				109727362506A7E800217C63 /* OXFHeadwordEntry.swift */,
+				109727382506A86000217C63 /* OXFLexicalEntry.swift */,
+				1097272E2506A2CE00217C63 /* OXFEntry.swift */,
+				109727302506A51B00217C63 /* OXFSense.swift */,
+				109727322506A62A00217C63 /* OXFExamplesList.swift */,
+			);
+			path = "Oxford API";
+			sourceTree = "<group>";
+		};
+		10E19DBF25081D160061CF6B /* Normalized */ = {
+			isa = PBXGroup;
+			children = (
+				10E19DC025081DD80061CF6B /* Entry.swift */,
+			);
+			path = Normalized;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,24 +323,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1097272F2506A2CE00217C63 /* Entry.swift in Sources */,
+				10E19DC125081DD80061CF6B /* Entry.swift in Sources */,
+				10E19DB9250816C80061CF6B /* String.swift in Sources */,
+				104D5CB62508938C00E5F9D8 /* Color.swift in Sources */,
+				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */,
 				109727282506880B00217C63 /* APIKeys.swift in Sources */,
 				1097272625067DAC00217C63 /* API.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
 				1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */,
-				109727312506A51B00217C63 /* Sense.swift in Sources */,
-				1097273B2506AAF700217C63 /* RetrieveEntry+Networking.swift in Sources */,
-				109727352506A7B000217C63 /* RetrieveEntry.swift in Sources */,
+				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
+				1097273B2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift in Sources */,
+				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
-				109727372506A7E800217C63 /* HeadwordEntry.swift in Sources */,
+				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
+				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
-				109727392506A86000217C63 /* LexicalEntry.swift in Sources */,
+				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
 				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
-				109727492506E6F700217C63 /* DictionaryEntryViewModel.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
-				109727332506A62A00217C63 /* ExamplesList.swift in Sources */,
+				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,22 +9,18 @@ import SwiftUI
 
 struct DictionaryEntryView: View {
     
-    @StateObject private var viewModel: DictionaryEntryViewModel
-    
-    init(lexicalEntry: LexicalEntry) {
-        _viewModel = StateObject(wrappedValue: DictionaryEntryViewModel(lexicalEntry: lexicalEntry))
-    }
+    var entry: Entry
     
     var body: some View {
         VStack {
-            Dropdown(dropdownHeadlineText: viewModel.text, dropdownItems: Set(viewModel.examples))
+            Dropdown(dropdownHeadlineText: entry.definitions[0],
+                     dropdownItems: entry.examples)
         }
-            
     }
 }
 
 struct DictionaryEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        DictionaryEntryView(lexicalEntry: staticLexicalEntry)
+        DictionaryEntryView(entry: staticEntries[0])
     }
 }

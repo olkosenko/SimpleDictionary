@@ -18,18 +18,24 @@ struct Dropdown: View {
     @State var expanded = false
     
     let dropdownHeadlineText: String
-    let dropdownItems: Set<String>
+    let dropdownItems: Array<String>
     
     var body: some View {
         VStack(spacing: 8) {
             HStack {
+                Spacer()
                 Text(dropdownHeadlineText)
-                Image(systemName: expanded ? "chevron.up" : "chevron.down")
-                    .foregroundColor(.purple)
+                Spacer()
+                if(!dropdownItems.isEmpty) {
+                    Image(systemName: "chevron.down.circle")
+                        .rotationEffect(.degrees(expanded ? 180 : 0))
+                        .foregroundColor(.purple)
+                }
+                Spacer()
             }
             .onTapGesture(perform: expandDropdown)
             if expanded {
-                ForEach(Array(dropdownItems), id: \.self) { item in
+                ForEach(dropdownItems, id: \.self) { item in
                     DropdownItem(text: item)
                 }
             }
@@ -61,8 +67,7 @@ struct Dropdown_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             Dropdown(dropdownHeadlineText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                     dropdownItems: Set(array))
-                .preferredColorScheme(.dark)
+                     dropdownItems: array)
                 .padding()
                 .previewLayout(.fixed(width: 400, height: 400))
         }
