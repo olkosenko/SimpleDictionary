@@ -10,36 +10,37 @@ import SwiftUI
 struct DictionaryView: View {
     
     @StateObject var viewModel = DictionaryViewModel()
-    @State var isFocused = false
+    @State private var isFocused = false
     
     var body: some View {
         NavigationView {
             VStack {
                 HStack {
                     CustomTextField(word: $viewModel.searchText, isFocused: $isFocused)
-                        .frame(maxHeight: 40)
+                        .frame(maxHeight: 50)
                 }
                 .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 20))
                 
                 if isFocused {
-                    RecentView()
-                } else {
-                    ScrollView(.horizontal) {
-                        HStack(spacing: 5) {
-                            ForEach(0..<4) { _ in
-                                CardView()
-                            }
-                            .frame(width: 300)
-                            .padding(.init(top: 4, leading: 20, bottom: 4, trailing: 0))
-                        }
+                    if viewModel.searchText.isEmpty {
+                            RecentView()
+                                .animation(.easeIn)
+                                .transition(.opacity)
                     }
+                } else {
+                    CardView(backgroundColor: Color.blue)
+                        .padding(.init(top: 8, leading: 20, bottom: 0, trailing: 20))
+                    CardView(backgroundColor: Color.red)
+                        .padding(.init(top: 0, leading: 20, bottom: 8, trailing: 20))
                 }
                 
                 Spacer()
             }
-            .navigationTitle("Dictionary")
-            // .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("Dictionary")
+            .navigationBarHidden(isFocused)
+            .animation(.easeIn)
         }
+        .statusBar(hidden: isFocused)
     }
 }
 
@@ -79,6 +80,7 @@ struct CustomTextField: View {
                     isFocused = editing
                 }
             }
+            .frame(width: 300)
             .multilineTextAlignment(.center)
             .aspectRatio(contentMode: .fit)
         }

@@ -10,7 +10,7 @@ import SwiftUI
 
 extension Color {
     
-    var darkBlue: Color {
+    static var darkBlue: Color {
         Color(.systemBlue)
     }
 }

@@ -17,7 +17,6 @@ class DictionaryViewModel: ObservableObject {
     
     init() {
         #if DEBUG
-        searchText = "Hello"
         entries = staticEntries
         #else
         entries = []
