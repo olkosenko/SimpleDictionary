@@ -7,12 +7,17 @@
 
 import Foundation
 
+protocol EntryConvertable {
+    func convert() -> [Entry]
+}
+
 struct Entry: Identifiable {
     let id = UUID()
     let definitions: [String]
     let examples: [String]
 }
 
+#if DEBUG
 let staticEntries = [
     Entry(definitions: ["Used when meeting or greeting someone."], examples: staticExamples)
 ]
@@ -22,4 +27,5 @@ private let staticExamples = [
     "I know her vaguely - we've exchanged hellos a few times.",
     "I just thought I'd call by and say hello.",
     "And a big hello (= welcome) to all the parents who've come to see the show."
-    ]
+]
+#endif

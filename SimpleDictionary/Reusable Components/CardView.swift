@@ -74,6 +74,7 @@ struct CardView: View {
             // .gesture(tap)
             .frame(maxHeight: 200)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 

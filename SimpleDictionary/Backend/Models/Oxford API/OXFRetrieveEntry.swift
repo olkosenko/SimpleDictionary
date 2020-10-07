@@ -8,12 +8,11 @@
 import Foundation
 
 struct OXFRetrieveEntry: Decodable {
-    
     /// A list of entries and all the data related to them.
     let results: [OXFHeadwordEntry]?
 }
 
-extension OXFRetrieveEntry {
+extension OXFRetrieveEntry: EntryConvertable {
     func convert() -> [Entry] {
         guard let result = self.results else { return [] }
         let mapped = result

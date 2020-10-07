@@ -8,7 +8,6 @@
 import Foundation
 
 struct OXFHeadwordEntry: Decodable {
-    
     /// A grouping of various senses in a specific language, and a lexical category that relates to a word.
     let lexicalEntries: [OXFLexicalEntry]?
 }

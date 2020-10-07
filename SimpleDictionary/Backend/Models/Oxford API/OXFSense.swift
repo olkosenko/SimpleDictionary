@@ -8,7 +8,6 @@
 import Foundation
 
 struct OXFSense: Decodable {
-    
     /// A list of statements of the exact meaning of a word.
     let definitions: [String]?
     

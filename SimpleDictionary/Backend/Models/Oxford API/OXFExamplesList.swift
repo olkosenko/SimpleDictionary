@@ -7,9 +7,8 @@
 
 import Foundation
 
-struct OXFExamplesList: Decodable, Identifiable {
+struct OXFExamplesList: Decodable {
     
-    let id = UUID()
     let text: String
 }
 
