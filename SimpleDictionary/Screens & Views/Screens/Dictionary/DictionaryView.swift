@@ -10,82 +10,97 @@ import SwiftUI
 struct DictionaryView: View {
     
     @StateObject var viewModel = DictionaryViewModel()
-    @State private var isFocused = false
-    
+    @State var isEditing = false
+ 
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    CustomTextField(word: $viewModel.searchText, isFocused: $isFocused)
-                        .frame(maxHeight: 50)
-                }
-                .padding(.init(top: 8, leading: 20, bottom: 8, trailing: 20))
-                
-                if isFocused {
-                    if viewModel.searchText.isEmpty {
-                            RecentView()
-                                .animation(.easeIn)
-                                .transition(.opacity)
+            ScrollView(isEditing ? .init() : .vertical) {
+                VStack(spacing: 0) {
+                    
+                    SearchField(searchText: $viewModel.searchText,
+                                isEditing: $isEditing,
+                                placeholder: "Enter your word")
+                        .padding([.leading, .trailing])
+                    
+                    if !isEditing {
+                        card
+                    } else {
+                        if viewModel.searchText.isEmpty {
+                            recentList
+                                .padding(.top)
+                            
+                        } else {
+                            list
+                                .padding(.top)
+                        }
                     }
-                } else {
-                    CardView(backgroundColor: Color.blue)
-                        .padding(.init(top: 8, leading: 20, bottom: 0, trailing: 20))
-                    CardView(backgroundColor: Color.red)
-                        .padding(.init(top: 0, leading: 20, bottom: 8, trailing: 20))
+                    
+                    Spacer()
                 }
-                
-                Spacer()
+                .offset(x: 0, y: isEditing ? 0 : 100)
+                .navigationBarHidden(true)
+                .animation(.easeIn(duration: 0.3))
             }
-            .navigationBarTitle("Dictionary")
-            .navigationBarHidden(isFocused)
-            .animation(.easeIn)
         }
-        .statusBar(hidden: isFocused)
     }
-}
-
-struct RecentView: View {
     
-    var body: some View {
-        HStack {
-            Text("Recent")
-                .font(.title)
-                .bold()
-                .padding(.init(top: 0, leading: 20, bottom: 8, trailing: 0))
-            Spacer()
+    var card: some View {
+        NavigationLink(destination: SearchResultsView()) {
+            if viewModel.wod != nil {
+                CardView(wod: viewModel.wod!)
+                    .padding()
+            }
         }
-        ForEach(0..<5) { el in
+        .buttonStyle(PlainButtonStyle())
+        .frame(height: 250)
+    }
+    
+    var list: some View {
+        VStack(spacing: 0) {
             HStack {
-                Text("Hello")
+                Text("Search")
                     .font(.title3)
-                    .padding(.leading, 20)
+                    .bold()
+                    .padding(.leading)
                 Spacer()
             }
-        }
-        .padding(.bottom, 5)
-    }
-}
-
-struct CustomTextField: View {
-    @Binding var word: String
-    @Binding var isFocused: Bool
-    
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .stroke(lineWidth: 0)
-                .background(Color.gray.opacity(0.1))
-            TextField("Enter your word", text: $word) { editing in
-                withAnimation {
-                    isFocused = editing
+            List {
+                ForEach(viewModel.wordSearch, id: \.self) { element in
+                    HStack {
+                        Text(element)
+                        Spacer()
+                        Image(systemName: "chevron.forward")
+                            
+                            .foregroundColor(.gray)
+                    }
                 }
             }
-            .frame(width: 300)
-            .multilineTextAlignment(.center)
-            .aspectRatio(contentMode: .fit)
+            .listStyle(PlainListStyle())
         }
     }
     
+    var recentList: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Recent")
+                    .font(.title3)
+                    .bold()
+                    .padding(.leading)
+                Spacer()
+            }
+            List {
+                ForEach(viewModel.recentSearches, id: \.self) { element in
+                    HStack {
+                        Text(element)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            .listStyle(PlainListStyle())
+        }
+    }
 }
 
 struct DictionaryView_Previews: PreviewProvider {

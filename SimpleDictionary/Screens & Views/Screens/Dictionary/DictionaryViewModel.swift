@@ -6,45 +6,56 @@
 //
 
 import Foundation
+import UIKit
 import Combine
 
 class DictionaryViewModel: ObservableObject {
     
     @Published var searchText = ""
-    @Published var entries: [Entry]
+    @Published var entries: [Entry] = []
+    @Published var wod: WordnikWOD?
+    @Published var wordSearch = [String]()
+    let recentSearches = ["Hello", "Telephone", "Confrontation", "Risky"]
+    
+    private let textChecker = UITextChecker()
     
     private var cancellableStore = Set<AnyCancellable>()
     
     init() {
-        #if DEBUG
-        entries = staticEntries
-        #else
-        entries = []
-        #endif
-        
         $searchText
             .dropFirst()
             .subscribe(on: DispatchQueue.global())
-            .debounce(for: 1, scheduler: DispatchQueue.global())
+            .debounce(for: 0.1, scheduler: DispatchQueue.global())
             .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] text in
                 if !text.isEmpty {
                     self?.search(with: text)
+                } else {
+                    self?.wordSearch.removeAll()
                 }
+            }
+            .store(in: &cancellableStore)
+        
+        WordnikWOD.fetch(for: Date())
+            .receive(on: DispatchQueue.main)
+            .sink { fetchedWOD in
+                self.wod = fetchedWOD
+                print(fetchedWOD)
             }
             .store(in: &cancellableStore)
     }
     
     private func search(with text: String) {
-        OXFRetrieveEntry.fetch(word: text)
-            .receive(on: DispatchQueue.main)
-            .map { $0.convert() }
-            .sink { [weak self] results in
-                print(results)
-                self?.entries = results
-            }
-            .store(in: &cancellableStore)
+        let targetText = String(text.split(separator: " ").last!)
+        let range = NSRange(targetText.startIndex..<targetText.endIndex, in: targetText)
+        let completions = textChecker.completions(forPartialWordRange: range, in: targetText, language: "en")
+        var result = completions ?? []
+        if result.isEmpty {
+            let guesses = textChecker.guesses(forWordRange: range, in: targetText, language: "en")
+            result.append(contentsOf: guesses ?? [])
+        }
+        wordSearch = result
     }
     
 }

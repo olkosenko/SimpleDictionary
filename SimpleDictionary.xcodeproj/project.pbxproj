@@ -7,9 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10241417254F935200D8D2A8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10241416254F935200D8D2A8 /* Endpoint.swift */; };
+		1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024141D255063E500D8D2A8 /* UrbanEntry.swift */; };
+		1024296F25461968005EA1C3 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024296E25461968005EA1C3 /* SearchField.swift */; };
 		103398A42522942500A71355 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103398A32522942500A71355 /* Collection.swift */; };
 		104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB325088C5C00E5F9D8 /* CardView.swift */; };
 		104D5CB62508938C00E5F9D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB52508938C00E5F9D8 /* Color.swift */; };
+		104E386425506A1D00ECCBD5 /* SimpleDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E386325506A1D00ECCBD5 /* SimpleDictionaryTests.swift */; };
+		104E386E25506A4800ECCBD5 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E386D25506A4800ECCBD5 /* APIServiceTests.swift */; };
+		104E387125508E2500ECCBD5 /* UrbanEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024141D255063E500D8D2A8 /* UrbanEntry.swift */; };
+		104E387425508F1F00ECCBD5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272525067DAC00217C63 /* APIService.swift */; };
+		104E387725508F3400ECCBD5 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727272506880B00217C63 /* APIProvider.swift */; };
+		104E387A25508F4400ECCBD5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10241416254F935200D8D2A8 /* Endpoint.swift */; };
+		104E387E2550AC9700ECCBD5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E387D2550AC9700ECCBD5 /* Date.swift */; };
+		104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38812550FC2700ECCBD5 /* WordnikWOD.swift */; };
+		104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38852551CE1B00ECCBD5 /* ProgressView.swift */; };
+		1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */; };
 		109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727112506790100217C63 /* SimpleDictionaryApp.swift */; };
 		109727142506790100217C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727132506790100217C63 /* ContentView.swift */; };
 		109727162506790400217C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109727152506790400217C63 /* Assets.xcassets */; };
@@ -17,7 +30,7 @@
 		10972721250679CD00217C63 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10972720250679CD00217C63 /* DictionaryView.swift */; };
 		1097272325067A9C00217C63 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272225067A9C00217C63 /* HistoryView.swift */; };
 		1097272625067DAC00217C63 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272525067DAC00217C63 /* APIService.swift */; };
-		109727282506880B00217C63 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727272506880B00217C63 /* APIKeys.swift */; };
+		109727282506880B00217C63 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727272506880B00217C63 /* APIProvider.swift */; };
 		1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272E2506A2CE00217C63 /* OXFEntry.swift */; };
 		109727312506A51B00217C63 /* OXFSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727302506A51B00217C63 /* OXFSense.swift */; };
 		109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727322506A62A00217C63 /* OXFExamplesList.swift */; };
@@ -30,15 +43,37 @@
 		1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274B2507CFDA00217C63 /* Dropdown.swift */; };
 		1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274D2507D3CB00217C63 /* DropdownItem.swift */; };
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
+		10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B87B35254E47AB009143EE /* SearchResultsView.swift */; };
 		10E19DB9250816C80061CF6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* String.swift */; };
 		10E19DC125081DD80061CF6B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DC025081DD80061CF6B /* Entry.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		104E386625506A1D00ECCBD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 109727062506790100217C63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1097270D2506790100217C63;
+			remoteInfo = SimpleDictionary;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		100BBE7A2513C225005D5B48 /* SimpleDictionary.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleDictionary.entitlements; sourceTree = "<group>"; };
+		10241416254F935200D8D2A8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1024141D255063E500D8D2A8 /* UrbanEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanEntry.swift; sourceTree = "<group>"; };
+		1024296E25461968005EA1C3 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		103398A32522942500A71355 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		104D5CB325088C5C00E5F9D8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		104D5CB52508938C00E5F9D8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		104E386125506A1D00ECCBD5 /* SimpleDictionaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDictionaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		104E386325506A1D00ECCBD5 /* SimpleDictionaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryTests.swift; sourceTree = "<group>"; };
+		104E386525506A1D00ECCBD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		104E386D25506A4800ECCBD5 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
+		104E387D2550AC9700ECCBD5 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		104E38812550FC2700ECCBD5 /* WordnikWOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikWOD.swift; sourceTree = "<group>"; };
+		104E38852551CE1B00ECCBD5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultEntryView.swift; sourceTree = "<group>"; };
 		1097270E2506790100217C63 /* SimpleDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109727112506790100217C63 /* SimpleDictionaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryApp.swift; sourceTree = "<group>"; };
 		109727132506790100217C63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,7 +83,7 @@
 		10972720250679CD00217C63 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		1097272225067A9C00217C63 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		1097272525067DAC00217C63 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		109727272506880B00217C63 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		109727272506880B00217C63 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		1097272E2506A2CE00217C63 /* OXFEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFEntry.swift; sourceTree = "<group>"; };
 		109727302506A51B00217C63 /* OXFSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFSense.swift; sourceTree = "<group>"; };
 		109727322506A62A00217C63 /* OXFExamplesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFExamplesList.swift; sourceTree = "<group>"; };
@@ -60,11 +95,19 @@
 		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
 		1097274B2507CFDA00217C63 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		1097274D2507D3CB00217C63 /* DropdownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
+		10B87B35254E47AB009143EE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		10E19DB8250816C80061CF6B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		10E19DC025081DD80061CF6B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		104E385E25506A1D00ECCBD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1097270B2506790100217C63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -76,6 +119,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1024141A2550631200D8D2A8 /* MerriamWebster API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "MerriamWebster API";
+			sourceTree = "<group>";
+		};
+		1024141B2550631E00D8D2A8 /* Wordnik API */ = {
+			isa = PBXGroup;
+			children = (
+				104E38812550FC2700ECCBD5 /* WordnikWOD.swift */,
+			);
+			path = "Wordnik API";
+			sourceTree = "<group>";
+		};
+		1024141C2550632C00D8D2A8 /* Urban API */ = {
+			isa = PBXGroup;
+			children = (
+				1024141D255063E500D8D2A8 /* UrbanEntry.swift */,
+			);
+			path = "Urban API";
+			sourceTree = "<group>";
+		};
 		104D5CB225088B8600E5F9D8 /* DropdownView */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,10 +151,21 @@
 			path = DropdownView;
 			sourceTree = "<group>";
 		};
+		104E386225506A1D00ECCBD5 /* SimpleDictionaryTests */ = {
+			isa = PBXGroup;
+			children = (
+				104E386325506A1D00ECCBD5 /* SimpleDictionaryTests.swift */,
+				104E386525506A1D00ECCBD5 /* Info.plist */,
+				104E386D25506A4800ECCBD5 /* APIServiceTests.swift */,
+			);
+			path = SimpleDictionaryTests;
+			sourceTree = "<group>";
+		};
 		109727052506790100217C63 = {
 			isa = PBXGroup;
 			children = (
 				109727102506790100217C63 /* SimpleDictionary */,
+				104E386225506A1D00ECCBD5 /* SimpleDictionaryTests */,
 				1097270F2506790100217C63 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				1097270E2506790100217C63 /* SimpleDictionary.app */,
+				104E386125506A1D00ECCBD5 /* SimpleDictionaryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,7 +217,8 @@
 			children = (
 				1097272D2506A14F00217C63 /* Models Extensions */,
 				1097272525067DAC00217C63 /* APIService.swift */,
-				109727272506880B00217C63 /* APIKeys.swift */,
+				109727272506880B00217C63 /* APIProvider.swift */,
+				10241416254F935200D8D2A8 /* Endpoint.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -147,8 +226,11 @@
 		1097272B2506A12100217C63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				10E19DBF25081D160061CF6B /* Normalized */,
 				10E19DBE25081CE90061CF6B /* Oxford API */,
+				1024141A2550631200D8D2A8 /* MerriamWebster API */,
+				1024141C2550632C00D8D2A8 /* Urban API */,
+				1024141B2550631E00D8D2A8 /* Wordnik API */,
+				10E19DBF25081D160061CF6B /* Normalized */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,6 +265,7 @@
 		109727412506DFC300217C63 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				10B87B34254E478F009143EE /* Search Results */,
 				109727422506DFCE00217C63 /* History */,
 				109727402506DF9E00217C63 /* Dictionary */,
 			);
@@ -201,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				109727442506E01800217C63 /* DictionaryEntryView.swift */,
+				104E38852551CE1B00ECCBD5 /* ProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,8 +310,18 @@
 			children = (
 				104D5CB225088B8600E5F9D8 /* DropdownView */,
 				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
+				1024296E25461968005EA1C3 /* SearchField.swift */,
 			);
 			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		10B87B34254E478F009143EE /* Search Results */ = {
+			isa = PBXGroup;
+			children = (
+				10B87B35254E47AB009143EE /* SearchResultsView.swift */,
+				1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */,
+			);
+			path = "Search Results";
 			sourceTree = "<group>";
 		};
 		10E19DB7250816AE0061CF6B /* Extensions */ = {
@@ -236,6 +330,7 @@
 				10E19DB8250816C80061CF6B /* String.swift */,
 				104D5CB52508938C00E5F9D8 /* Color.swift */,
 				103398A32522942500A71355 /* Collection.swift */,
+				104E387D2550AC9700ECCBD5 /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +359,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		104E386025506A1D00ECCBD5 /* SimpleDictionaryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 104E386A25506A1D00ECCBD5 /* Build configuration list for PBXNativeTarget "SimpleDictionaryTests" */;
+			buildPhases = (
+				104E385D25506A1D00ECCBD5 /* Sources */,
+				104E385E25506A1D00ECCBD5 /* Frameworks */,
+				104E385F25506A1D00ECCBD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				104E386725506A1D00ECCBD5 /* PBXTargetDependency */,
+			);
+			name = SimpleDictionaryTests;
+			productName = SimpleDictionaryTests;
+			productReference = 104E386125506A1D00ECCBD5 /* SimpleDictionaryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1097270D2506790100217C63 /* SimpleDictionary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1097271D2506790400217C63 /* Build configuration list for PBXNativeTarget "SimpleDictionary" */;
@@ -290,9 +403,13 @@
 		109727062506790100217C63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					104E386025506A1D00ECCBD5 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 1097270D2506790100217C63;
+					};
 					1097270D2506790100217C63 = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -315,11 +432,19 @@
 			projectRoot = "";
 			targets = (
 				1097270D2506790100217C63 /* SimpleDictionary */,
+				104E386025506A1D00ECCBD5 /* SimpleDictionaryTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		104E385F25506A1D00ECCBD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1097270C2506790100217C63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,38 +457,109 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		104E385D25506A1D00ECCBD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				104E387125508E2500ECCBD5 /* UrbanEntry.swift in Sources */,
+				104E386E25506A4800ECCBD5 /* APIServiceTests.swift in Sources */,
+				104E387725508F3400ECCBD5 /* APIProvider.swift in Sources */,
+				104E387425508F1F00ECCBD5 /* APIService.swift in Sources */,
+				104E387A25508F4400ECCBD5 /* Endpoint.swift in Sources */,
+				104E386425506A1D00ECCBD5 /* SimpleDictionaryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1097270A2506790100217C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				10E19DC125081DD80061CF6B /* Entry.swift in Sources */,
 				10E19DB9250816C80061CF6B /* String.swift in Sources */,
+				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
 				104D5CB62508938C00E5F9D8 /* Color.swift in Sources */,
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */,
-				109727282506880B00217C63 /* APIKeys.swift in Sources */,
+				109727282506880B00217C63 /* APIProvider.swift in Sources */,
 				1097272625067DAC00217C63 /* APIService.swift in Sources */,
 				103398A42522942500A71355 /* Collection.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
+				1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */,
+				1024296F25461968005EA1C3 /* SearchField.swift in Sources */,
 				1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */,
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1097273B2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
+				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
+				10241417254F935200D8D2A8 /* Endpoint.swift in Sources */,
 				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
 				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
+				104E387E2550AC9700ECCBD5 /* Date.swift in Sources */,
+				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
+				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		104E386725506A1D00ECCBD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1097270D2506790100217C63 /* SimpleDictionary */;
+			targetProxy = 104E386625506A1D00ECCBD5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		104E386825506A1D00ECCBD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q37SD6L72Z;
+				INFOPLIST_FILE = SimpleDictionaryTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = olegfire.com.SimpleDictionaryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleDictionary.app/SimpleDictionary";
+			};
+			name = Debug;
+		};
+		104E386925506A1D00ECCBD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Q37SD6L72Z;
+				INFOPLIST_FILE = SimpleDictionaryTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = olegfire.com.SimpleDictionaryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleDictionary.app/SimpleDictionary";
+			};
+			name = Release;
+		};
 		1097271B2506790400217C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -531,6 +727,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		104E386A25506A1D00ECCBD5 /* Build configuration list for PBXNativeTarget "SimpleDictionaryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				104E386825506A1D00ECCBD5 /* Debug */,
+				104E386925506A1D00ECCBD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		109727092506790100217C63 /* Build configuration list for PBXProject "SimpleDictionary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

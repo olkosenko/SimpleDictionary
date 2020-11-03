@@ -14,13 +14,19 @@ struct ContentView: View {
             DictionaryView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                    Text("Dictionary")
+                    Text("Search")
                 }
             
             HistoryView()
                 .tabItem {
                     Image(systemName: "book.fill")
-                    Text("History")
+                    Text("Dictionary")
+                }
+            
+            HistoryView()
+                .tabItem {
+                    Image(systemName: "gamecontroller.fill")
+                    Text("Learn")
                 }
         }
     }

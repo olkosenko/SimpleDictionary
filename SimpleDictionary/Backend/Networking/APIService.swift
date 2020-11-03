@@ -8,71 +8,66 @@
 import Foundation
 import Combine
 
-/// Oxford`s dictionary: https://developer.oxforddictionaries.com/documentation#
-
-class API {
-    static public let shared = API()
+class APIService {
+    static let shared = APIService()
     
-    static private let URL_PREFIX = "https://"
-    static private let HOST = "od-api.oxforddictionaries.com"
-    static private let basePath = "api/v2"
+    private lazy var oxfordProvider = APIOxfordProvider()
+    private lazy var merriamWebsterProvider = APIMerriemWebsterProvider()
+    private lazy var urbanProvider = APIUrbanProvider()
+    private lazy var wordnikProvider = APIWordnikProvider()
     
-    static private let language = "en-us"
-    
-    private var session: URLSession
-    private let decoder: JSONDecoder
-    
-    init() {
-        decoder = JSONDecoder()
-        session = URLSession(configuration: API.makeSessionConfiguration())
-    }
-    
-    static private func makeSessionConfiguration() -> URLSessionConfiguration {
-        let configuration = URLSessionConfiguration.default
-        let headers = [
-            "Accept": "application/json",
-            "app_id": APIKeys.appId,
-            "app_key": APIKeys.appKey
-        ]
-        configuration.httpAdditionalHeaders = headers
-        return configuration
-    }
-    
-    static private func makeURL() -> URL {
-        return URL(string: "\(API.URL_PREFIX)\(API.HOST)/\(API.basePath)/entries/\(language)/")!
-    }
-    
-    public func request<T: Decodable>(word: String) -> AnyPublisher<T, Error> {
+    func GET<T: Decodable>(endpoint: Endpoint) -> AnyPublisher<T, APIError> {
+        
+        var provider: APIProvider
         var request: URLRequest
         
-        var url = API.makeURL()
-        url.appendPathComponent(word)
+        switch endpoint {
+        case .oxford(let oxfordEndpoint):
+            provider = oxfordProvider
+            request = oxfordProvider.requestForGET(with: oxfordEndpoint)
+            
+        case .merriamWebster(let merriamWebsterEndpoint):
+            provider = merriamWebsterProvider
+            request = merriamWebsterProvider.requestForGET(with: merriamWebsterEndpoint)
+            
+        case .urban(let urbanEndpoint):
+            provider = urbanProvider
+            request = urbanProvider.requestForGET(with: urbanEndpoint)
+            
+        case .wordnik(let wordnikEndpoint):
+            provider = wordnikProvider
+            request = wordnikProvider.requestForGET(with: wordnikEndpoint)
+        }
         
-        request = URLRequest(url: url)
-        request.httpMethod = "GET"
+        let session = provider.session
+        let decoder = provider.decoder
         
         return session.dataTaskPublisher(for: request)
             .tryMap { data, response in
-                return try API.processResponse(data: data, response: response)
+                return try APIError.processResponse(data: data, response: response)
             }
             .decode(type: T.self, decoder: decoder)
+            .mapError { error in
+                APIError.parseError(reason: error.localizedDescription)
+            }
             .eraseToAnyPublisher()
-    }
-    
-    static private func processResponse(data: Data, response: URLResponse) throws -> Data {
-        guard let httpsResponse = response as? HTTPURLResponse else {
-            throw NetworkError.unknown
-        }
-        
-        if 200...200 ~= httpsResponse.statusCode {
-            return data
-        } else {
-            throw NetworkError.badCode
-        }
     }
 }
 
-enum NetworkError: Error {
-    case unknown
+enum APIError: Error {
+    case unknown(data: Data)
     case badCode
+    case parseError(reason: String)
+    
+    static func processResponse(data: Data, response: URLResponse) throws -> Data {
+        guard let httpsResponse = response as? HTTPURLResponse else {
+            throw APIError.unknown(data: data)
+        }
+        
+        if 200...299 ~= httpsResponse.statusCode {
+            return data
+        } else {
+            throw APIError.badCode
+        }
+    }
 }
