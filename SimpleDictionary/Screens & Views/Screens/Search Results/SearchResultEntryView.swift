@@ -15,15 +15,10 @@ struct SearchResultEntryView: View {
                 definitions
 
                 Divider()
-                
-                definitions
 
-                Divider()
-
-                HStack(spacing: 0) {
-                    synonyms
-                    Spacer()
-                    synonyms
+                HStack(spacing: 120) {
+                    synant(word: "Synonyms")
+                    synant(word: "Antonyms")
                 }
 
                 Divider()
@@ -59,10 +54,10 @@ struct SearchResultEntryView: View {
         }
     }
     
-    var synonyms: some View {
-        VStack(spacing: 8) {
+    func synant(word: String) -> some View {
+        VStack(alignment: .center, spacing: 8) {
             HStack(alignment: .center) {
-                Text("Synonyms")
+                Text(word)
                     .font(.headline)
                 Text("4")
                     .font(.subheadline)

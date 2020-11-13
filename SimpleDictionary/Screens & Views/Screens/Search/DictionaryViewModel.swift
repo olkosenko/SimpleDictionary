@@ -37,7 +37,7 @@ class DictionaryViewModel: ObservableObject {
             }
             .store(in: &cancellableStore)
         
-        WordnikWOD.fetch(for: Date())
+        WordnikWOD.fetch(for: Calendar.current.date(byAdding: .day, value: 0, to: Date())!)
             .receive(on: DispatchQueue.main)
             .sink { fetchedWOD in
                 self.wod = fetchedWOD

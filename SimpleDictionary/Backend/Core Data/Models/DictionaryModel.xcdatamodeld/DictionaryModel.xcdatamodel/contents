@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B5012d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Definition" representedClassName="Definition" syncable="YES" codeGenerationType="class">
+        <attribute name="definition" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="partOfSpeech" attributeType="String"/>
+        <relationship name="word" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Word" inverseName="definitions" inverseEntity="Word"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
+        <attribute name="dateAdded" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isWOD" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="phoneticSpelling" optional="YES" attributeType="String"/>
+        <attribute name="soundURL" optional="YES" attributeType="URI"/>
+        <attribute name="word" attributeType="String"/>
+        <relationship name="definitions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Definition" inverseName="word" inverseEntity="Definition"/>
+    </entity>
+    <elements>
+        <element name="Word" positionX="-278.3352661132812" positionY="-68.81491088867188" width="128" height="148"/>
+        <element name="Definition" positionX="-54" positionY="18" width="128" height="103"/>
+    </elements>
+</model>

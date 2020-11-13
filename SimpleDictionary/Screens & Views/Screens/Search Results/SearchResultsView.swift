@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchResultsView: View {
     @State var choice = 0
     var settings = ["Oxford", "Merriem-Webster", "Urban"]
+    var word: String
     
     var body: some View {
         ScrollView(.vertical) {
@@ -27,7 +28,7 @@ struct SearchResultsView: View {
             }
             .padding([.leading, .trailing])
         }
-        .navigationBarTitle("Telephone")
+        .navigationBarTitle(word)
         .navigationBarBackButtonHidden(false)
     }
     
@@ -44,7 +45,7 @@ struct SearchResultsView: View {
 struct SearchResults_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchResultsView()
+            SearchResultsView(word: "Telephone")
         }
     }
 }

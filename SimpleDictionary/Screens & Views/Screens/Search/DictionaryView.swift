@@ -7,14 +7,15 @@
 
 import SwiftUI
 
+
 struct DictionaryView: View {
     
     @StateObject var viewModel = DictionaryViewModel()
     @State var isEditing = false
- 
+
     var body: some View {
         NavigationView {
-            ScrollView(isEditing ? .init() : .vertical) {
+            //ScrollView(isEditing ? .init() : .vertical) {
                 VStack(spacing: 0) {
                     
                     SearchField(searchText: $viewModel.searchText,
@@ -24,6 +25,8 @@ struct DictionaryView: View {
                     
                     if !isEditing {
                         card
+                        ProgressView()
+                            .padding([.leading, .trailing])
                     } else {
                         if viewModel.searchText.isEmpty {
                             recentList
@@ -37,22 +40,22 @@ struct DictionaryView: View {
                     
                     Spacer()
                 }
-                .offset(x: 0, y: isEditing ? 0 : 100)
-                .navigationBarHidden(true)
+                // .offset(x: 0, y: isEditing ? 0 : 100)
+                .navigationBarHidden(isEditing)
                 .animation(.easeIn(duration: 0.3))
-            }
+            //}
         }
     }
     
     var card: some View {
-        NavigationLink(destination: SearchResultsView()) {
+        NavigationLink(destination: SearchResultsView(word: "Test")) {
             if viewModel.wod != nil {
                 CardView(wod: viewModel.wod!)
-                    .padding()
+                    .padding([.leading, .trailing])
             }
         }
         .buttonStyle(PlainButtonStyle())
-        .frame(height: 250)
+        .frame(height: 230)
     }
     
     var list: some View {
@@ -64,16 +67,9 @@ struct DictionaryView: View {
                     .padding(.leading)
                 Spacer()
             }
-            List {
-                ForEach(viewModel.wordSearch, id: \.self) { element in
-                    HStack {
-                        Text(element)
-                        Spacer()
-                        Image(systemName: "chevron.forward")
-                            
-                            .foregroundColor(.gray)
-                    }
-                }
+            List(viewModel.wordSearch, id: \.self) { element in
+                NavigationLink(element, destination: SearchResultsView(word: element))
+                    .buttonStyle(PlainButtonStyle())
             }
             .listStyle(PlainListStyle())
         }
@@ -88,15 +84,9 @@ struct DictionaryView: View {
                     .padding(.leading)
                 Spacer()
             }
-            List {
-                ForEach(viewModel.recentSearches, id: \.self) { element in
-                    HStack {
-                        Text(element)
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundColor(.gray)
-                    }
-                }
+            List(viewModel.recentSearches, id: \.self) { element in
+                NavigationLink(element, destination: SearchResultsView(word: element))
+                    .buttonStyle(PlainButtonStyle())
             }
             .listStyle(PlainListStyle())
         }
@@ -106,5 +96,11 @@ struct DictionaryView: View {
 struct DictionaryView_Previews: PreviewProvider {
     static var previews: some View {
         DictionaryView()
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

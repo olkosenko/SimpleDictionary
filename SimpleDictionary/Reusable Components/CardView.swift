@@ -12,7 +12,7 @@ struct CardView: View {
     let wod: WordnikWOD
     
     var body: some View {
-        NavigationLink(destination: SearchResultsView()) {
+        NavigationLink(destination: SearchResultsView(word: wod.word!.capitalizeFirst())) {
             VStack {
                 
                 Text(wod.word!.capitalizeFirst())
