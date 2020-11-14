@@ -38,15 +38,15 @@ final class CoreDataService {
         
         wrapInEffectAndContext { context in
             let newWord = Word(context: context)
-            newWord.word = title
+            newWord.title = title
             newWord.phoneticSpelling = phoneticSpelling
-            newWord.dateAdded = date
+            newWord.date = date
             newWord.isWOD = wordType == .wod ? true : false
             
             definitions.forEach { partOfSpeech, defs in
                 defs.forEach { def in
                     let newDefinition = Definition(context: context)
-                    newDefinition.definition = def
+                    newDefinition.title = def
                     newDefinition.partOfSpeech = partOfSpeech
                     
                     newWord.addToDefinitions(newDefinition)
@@ -73,7 +73,7 @@ final class CoreDataService {
                 let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) = %@",
                                             wordType == .casual ? "YES" : "NO")
                 
-                let sortDescriptors = [NSSortDescriptor(keyPath: \Word.dateAdded, ascending: true)]
+                let sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: true)]
                 let words = try self.context.fetchEntities(ofType: Word.self,
                                                            with: predicate,
                                                            sortDescriptors: sortDescriptors)

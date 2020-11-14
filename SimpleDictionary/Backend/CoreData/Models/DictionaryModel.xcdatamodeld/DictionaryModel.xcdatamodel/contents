@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B5012d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Definition" representedClassName="Definition" syncable="YES">
-        <attribute name="definition" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="partOfSpeech" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Word" inverseName="definitions" inverseEntity="Word"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES">
-        <attribute name="dateAdded" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isWOD" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="phoneticSpelling" optional="YES" attributeType="String"/>
         <attribute name="soundURL" optional="YES" attributeType="URI"/>
-        <attribute name="word" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
         <relationship name="definitions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Definition" inverseName="word" inverseEntity="Definition"/>
     </entity>
     <elements>

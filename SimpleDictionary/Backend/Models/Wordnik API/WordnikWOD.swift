@@ -17,13 +17,3 @@ struct WordnikWOD: Decodable {
         let partOfSpeech: String?
     }
 }
-
-extension WordnikWOD {
-    static func fetch(for date: Date) -> AnyPublisher<WordnikWOD, Never> {
-        APIService.shared.GET(endpoint: .wordnik(.wod(date: date)))
-            .print()
-            .subscribe(on: DispatchQueue.global())
-            .replaceError(with: WordnikWOD(word: "nil", definitions: []))
-            .eraseToAnyPublisher()
-    }
-}

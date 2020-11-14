@@ -2,7 +2,7 @@
 //  Definition+CoreDataClass.swift
 //  SimpleDictionary
 //
-//  Created by Oleg Kosenko on 2020-11-13.
+//  Created by Oleg Kosenko on 2020-11-14.
 //
 //
 
@@ -11,5 +11,8 @@ import CoreData
 
 @objc(Definition)
 public class Definition: NSManagedObject {
-
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        uuid = UUID()
+    }
 }

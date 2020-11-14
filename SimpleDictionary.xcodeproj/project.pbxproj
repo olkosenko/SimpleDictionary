@@ -23,12 +23,14 @@
 		104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38812550FC2700ECCBD5 /* WordnikWOD.swift */; };
 		104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38852551CE1B00ECCBD5 /* ProgressView.swift */; };
 		104E38902553280000ECCBD5 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E388F2553280000ECCBD5 /* CirclesView.swift */; };
-		10668B39255F11D300119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B35255F11D300119BDA /* Word+CoreDataClass.swift */; };
-		10668B3A255F11D300119BDA /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B36255F11D300119BDA /* Word+CoreDataProperties.swift */; };
-		10668B3B255F11D300119BDA /* Definition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B37255F11D300119BDA /* Definition+CoreDataClass.swift */; };
-		10668B3C255F11D300119BDA /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B38255F11D300119BDA /* Definition+CoreDataProperties.swift */; };
 		10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContext.swift */; };
 		10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B76255F7DC600119BDA /* CoreDataService.swift */; };
+		10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8225606EC200119BDA /* Word+CoreDataClass.swift */; };
+		10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8325606EC200119BDA /* Word+CoreDataProperties.swift */; };
+		10668B8825606EC200119BDA /* Definition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8425606EC200119BDA /* Definition+CoreDataClass.swift */; };
+		10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */; };
+		10668B992560711E00119BDA /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B982560711E00119BDA /* AppUserDefaults.swift */; };
+		10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */; };
 		1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FD97255E1317008211A3 /* SearchDomain.swift */; };
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
 		1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */; };
@@ -48,7 +50,6 @@
 		109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727342506A7B000217C63 /* OXFRetrieveEntry.swift */; };
 		109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727362506A7E800217C63 /* OXFHeadwordEntry.swift */; };
 		109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* OXFLexicalEntry.swift */; };
-		1097273B2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273A2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift */; };
 		1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273D2506AF1800217C63 /* DictionaryViewModel.swift */; };
 		109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727442506E01800217C63 /* DictionaryEntryView.swift */; };
 		1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274B2507CFDA00217C63 /* Dropdown.swift */; };
@@ -56,7 +57,6 @@
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
 		10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B87B35254E47AB009143EE /* SearchResultsView.swift */; };
 		10E19DB9250816C80061CF6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* String.swift */; };
-		10E19DC125081DD80061CF6B /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DC025081DD80061CF6B /* Entry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,12 +85,14 @@
 		104E38812550FC2700ECCBD5 /* WordnikWOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikWOD.swift; sourceTree = "<group>"; };
 		104E38852551CE1B00ECCBD5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		104E388F2553280000ECCBD5 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
-		10668B35255F11D300119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
-		10668B36255F11D300119BDA /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		10668B37255F11D300119BDA /* Definition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataClass.swift"; sourceTree = "<group>"; };
-		10668B38255F11D300119BDA /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10668B6E255F34F300119BDA /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		10668B76255F7DC600119BDA /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		10668B8225606EC200119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10668B8325606EC200119BDA /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10668B8425606EC200119BDA /* Definition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10668B982560711E00119BDA /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
+		10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPropertyWrapper.swift; sourceTree = "<group>"; };
 		1066FD97255E1317008211A3 /* SearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDomain.swift; sourceTree = "<group>"; };
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
 		1066FDAE255E1D0E008211A3 /* DictionaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryModel.xcdatamodel; sourceTree = "<group>"; };
@@ -112,14 +114,12 @@
 		109727342506A7B000217C63 /* OXFRetrieveEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFRetrieveEntry.swift; sourceTree = "<group>"; };
 		109727362506A7E800217C63 /* OXFHeadwordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFHeadwordEntry.swift; sourceTree = "<group>"; };
 		109727382506A86000217C63 /* OXFLexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFLexicalEntry.swift; sourceTree = "<group>"; };
-		1097273A2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OXFRetrieveEntry+Networking.swift"; sourceTree = "<group>"; };
 		1097273D2506AF1800217C63 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
 		1097274B2507CFDA00217C63 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		1097274D2507D3CB00217C63 /* DropdownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
 		10B87B35254E47AB009143EE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		10E19DB8250816C80061CF6B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		10E19DC025081DD80061CF6B /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +183,15 @@
 			path = SimpleDictionaryTests;
 			sourceTree = "<group>";
 		};
+		10668B97256070D300119BDA /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				10668B982560711E00119BDA /* AppUserDefaults.swift */,
+				10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		1066FD9C255E13B6008211A3 /* Standard APIs */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +202,7 @@
 			path = "Standard APIs";
 			sourceTree = "<group>";
 		};
-		1066FDAB255E1BC7008211A3 /* Core Data */ = {
+		1066FDAB255E1BC7008211A3 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				1066FDB2255E1D37008211A3 /* CoreDataStore.swift */,
@@ -201,16 +210,16 @@
 				10668B6E255F34F300119BDA /* ManagedObjectContext.swift */,
 				1066FDAC255E1CF2008211A3 /* Models */,
 			);
-			path = "Core Data";
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1066FDAC255E1CF2008211A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				10668B35255F11D300119BDA /* Word+CoreDataClass.swift */,
-				10668B36255F11D300119BDA /* Word+CoreDataProperties.swift */,
-				10668B37255F11D300119BDA /* Definition+CoreDataClass.swift */,
-				10668B38255F11D300119BDA /* Definition+CoreDataProperties.swift */,
+				10668B8225606EC200119BDA /* Word+CoreDataClass.swift */,
+				10668B8325606EC200119BDA /* Word+CoreDataProperties.swift */,
+				10668B8425606EC200119BDA /* Definition+CoreDataClass.swift */,
+				10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */,
 				1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */,
 			);
 			path = Models;
@@ -219,9 +228,9 @@
 		109727052506790100217C63 = {
 			isa = PBXGroup;
 			children = (
+				1097270F2506790100217C63 /* Products */,
 				109727102506790100217C63 /* SimpleDictionary */,
 				104E386225506A1D00ECCBD5 /* SimpleDictionaryTests */,
-				1097270F2506790100217C63 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,9 +270,10 @@
 		1097272425067D6F00217C63 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				1066FDAB255E1BC7008211A3 /* Core Data */,
+				1066FDAB255E1BC7008211A3 /* CoreData */,
 				1097272B2506A12100217C63 /* Models */,
 				1097272A2506A10E00217C63 /* Networking */,
+				10668B97256070D300119BDA /* UserDefaults */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -271,7 +281,6 @@
 		1097272A2506A10E00217C63 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1097272D2506A14F00217C63 /* Models Extensions */,
 				1097272525067DAC00217C63 /* APIService.swift */,
 				109727272506880B00217C63 /* APIProvider.swift */,
 				10241416254F935200D8D2A8 /* Endpoint.swift */,
@@ -285,17 +294,8 @@
 				1066FD9C255E13B6008211A3 /* Standard APIs */,
 				1024141C2550632C00D8D2A8 /* Urban API */,
 				1024141B2550631E00D8D2A8 /* Wordnik API */,
-				10E19DBF25081D160061CF6B /* Normalized */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		1097272D2506A14F00217C63 /* Models Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1097273A2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift */,
-			);
-			path = "Models Extensions";
 			sourceTree = "<group>";
 		};
 		1097273F2506DF7500217C63 /* Screens & Views */ = {
@@ -403,14 +403,6 @@
 				109727322506A62A00217C63 /* OXFExamplesList.swift */,
 			);
 			path = "Oxford API";
-			sourceTree = "<group>";
-		};
-		10E19DBF25081D160061CF6B /* Normalized */ = {
-			isa = PBXGroup;
-			children = (
-				10E19DC025081DD80061CF6B /* Entry.swift */,
-			);
-			path = Normalized;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -531,10 +523,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10E19DC125081DD80061CF6B /* Entry.swift in Sources */,
 				10E19DB9250816C80061CF6B /* String.swift in Sources */,
+				10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */,
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
-				10668B3C255F11D300119BDA /* Definition+CoreDataProperties.swift in Sources */,
 				104D5CB62508938C00E5F9D8 /* Color.swift in Sources */,
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */,
@@ -543,20 +534,22 @@
 				103398A42522942500A71355 /* Collection.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
+				10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */,
+				10668B992560711E00119BDA /* AppUserDefaults.swift in Sources */,
+				10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */,
 				1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */,
 				1024296F25461968005EA1C3 /* SearchField.swift in Sources */,
 				1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */,
+				10668B8825606EC200119BDA /* Definition+CoreDataClass.swift in Sources */,
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
-				10668B3B255F11D300119BDA /* Definition+CoreDataClass.swift in Sources */,
-				1097273B2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift in Sources */,
+				10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
 				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
 				10241417254F935200D8D2A8 /* Endpoint.swift in Sources */,
 				1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */,
 				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
-				10668B39255F11D300119BDA /* Word+CoreDataClass.swift in Sources */,
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
@@ -567,7 +560,6 @@
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
 				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
-				10668B3A255F11D300119BDA /* Word+CoreDataProperties.swift in Sources */,
 				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,
 				10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */,

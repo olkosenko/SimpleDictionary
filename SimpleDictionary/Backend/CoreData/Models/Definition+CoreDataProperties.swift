@@ -2,7 +2,7 @@
 //  Definition+CoreDataProperties.swift
 //  SimpleDictionary
 //
-//  Created by Oleg Kosenko on 2020-11-13.
+//  Created by Oleg Kosenko on 2020-11-14.
 //
 //
 
@@ -16,7 +16,7 @@ extension Definition {
         return NSFetchRequest<Definition>(entityName: "Definition")
     }
 
-    @NSManaged public var definition: String?
+    @NSManaged public var title: String?
     @NSManaged public var id: UUID?
     @NSManaged public var partOfSpeech: String?
     @NSManaged public var word: Word?

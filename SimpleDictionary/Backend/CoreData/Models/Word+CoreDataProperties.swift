@@ -2,7 +2,7 @@
 //  Word+CoreDataProperties.swift
 //  SimpleDictionary
 //
-//  Created by Oleg Kosenko on 2020-11-13.
+//  Created by Oleg Kosenko on 2020-11-14.
 //
 //
 
@@ -16,12 +16,12 @@ extension Word {
         return NSFetchRequest<Word>(entityName: "Word")
     }
 
-    @NSManaged public var dateAdded: Date?
+    @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var isWOD: NSNumber?
     @NSManaged public var phoneticSpelling: String?
     @NSManaged public var soundURL: URL?
-    @NSManaged public var word: String?
+    @NSManaged public var title: String?
     @NSManaged public var definitions: NSSet?
 
 }

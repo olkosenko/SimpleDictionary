@@ -35,12 +35,3 @@ struct UrbanEntry: Decodable {
         }
     }
 }
-
-extension UrbanEntry {
-    static func fetch(word: String) -> AnyPublisher<UrbanEntry, Never> {
-        APIService.shared.GET(endpoint: .urban(.definitions(word: word)))
-            .subscribe(on: DispatchQueue.global())
-            .replaceError(with: UrbanEntry(list: nil))
-            .eraseToAnyPublisher()
-    }
-}
