@@ -14,7 +14,7 @@ final class CoreDataStore {
         static let containerName = "dictionary"
     }
     
-    let mainContext: NSManagedContext
+    let mainContext: NSManagedObjectContext
     private let persistentContainer: NSPersistentContainer
     
     init() {
@@ -24,6 +24,7 @@ final class CoreDataStore {
                 fatalError("Unable to load persistent stores: \(error)")
             }
         }
-        mainContext
+        
+        mainContext = persistentContainer.viewContext
     }
 }

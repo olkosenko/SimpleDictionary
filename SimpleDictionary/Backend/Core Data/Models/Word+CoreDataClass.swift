@@ -12,4 +12,8 @@ import CoreData
 @objc(Word)
 public class Word: NSManagedObject {
 
+    convenience init(context: NSManagedObjectContext) {
+        self.init(context: context)
+        id = UUID()
+    }
 }

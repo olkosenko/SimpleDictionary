@@ -9,7 +9,6 @@ import Foundation
 import Combine
 
 class APIService {
-    static let shared = APIService()
     
     private lazy var oxfordProvider = APIOxfordProvider()
     private lazy var merriamWebsterProvider = APIMerriemWebsterProvider()

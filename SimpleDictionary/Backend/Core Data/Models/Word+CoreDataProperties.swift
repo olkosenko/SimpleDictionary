@@ -16,12 +16,12 @@ extension Word {
         return NSFetchRequest<Word>(entityName: "Word")
     }
 
-    @NSManaged public var id: UUID?
     @NSManaged public var dateAdded: Date?
-    @NSManaged public var word: String?
+    @NSManaged public var id: UUID?
+    @NSManaged public var isWOD: NSNumber?
     @NSManaged public var phoneticSpelling: String?
     @NSManaged public var soundURL: URL?
-    @NSManaged public var isWOD: NSNumber?
+    @NSManaged public var word: String?
     @NSManaged public var definitions: NSSet?
 
 }

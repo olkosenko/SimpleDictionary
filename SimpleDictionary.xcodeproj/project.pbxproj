@@ -10,10 +10,6 @@
 		10241417254F935200D8D2A8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10241416254F935200D8D2A8 /* Endpoint.swift */; };
 		1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024141D255063E500D8D2A8 /* UrbanEntry.swift */; };
 		1024296F25461968005EA1C3 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024296E25461968005EA1C3 /* SearchField.swift */; };
-		102AE19D255EE72F00F25DFB /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AE199255EE72F00F25DFB /* Word+CoreDataClass.swift */; };
-		102AE19F255EE72F00F25DFB /* Definition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AE19B255EE72F00F25DFB /* Definition+CoreDataClass.swift */; };
-		102AE1B9255F091700F25DFB /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AE1B7255F091700F25DFB /* Definition+CoreDataProperties.swift */; };
-		102AE1BA255F091700F25DFB /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102AE1B8255F091700F25DFB /* Word+CoreDataProperties.swift */; };
 		103398A42522942500A71355 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103398A32522942500A71355 /* Collection.swift */; };
 		104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB325088C5C00E5F9D8 /* CardView.swift */; };
 		104D5CB62508938C00E5F9D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB52508938C00E5F9D8 /* Color.swift */; };
@@ -27,6 +23,12 @@
 		104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38812550FC2700ECCBD5 /* WordnikWOD.swift */; };
 		104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38852551CE1B00ECCBD5 /* ProgressView.swift */; };
 		104E38902553280000ECCBD5 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E388F2553280000ECCBD5 /* CirclesView.swift */; };
+		10668B39255F11D300119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B35255F11D300119BDA /* Word+CoreDataClass.swift */; };
+		10668B3A255F11D300119BDA /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B36255F11D300119BDA /* Word+CoreDataProperties.swift */; };
+		10668B3B255F11D300119BDA /* Definition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B37255F11D300119BDA /* Definition+CoreDataClass.swift */; };
+		10668B3C255F11D300119BDA /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B38255F11D300119BDA /* Definition+CoreDataProperties.swift */; };
+		10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContext.swift */; };
+		10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B76255F7DC600119BDA /* CoreDataService.swift */; };
 		1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FD97255E1317008211A3 /* SearchDomain.swift */; };
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
 		1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */; };
@@ -72,10 +74,6 @@
 		10241416254F935200D8D2A8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		1024141D255063E500D8D2A8 /* UrbanEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanEntry.swift; sourceTree = "<group>"; };
 		1024296E25461968005EA1C3 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
-		102AE199255EE72F00F25DFB /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
-		102AE19B255EE72F00F25DFB /* Definition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataClass.swift"; sourceTree = "<group>"; };
-		102AE1B7255F091700F25DFB /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		102AE1B8255F091700F25DFB /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		103398A32522942500A71355 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		104D5CB325088C5C00E5F9D8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		104D5CB52508938C00E5F9D8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -87,6 +85,12 @@
 		104E38812550FC2700ECCBD5 /* WordnikWOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikWOD.swift; sourceTree = "<group>"; };
 		104E38852551CE1B00ECCBD5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		104E388F2553280000ECCBD5 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
+		10668B35255F11D300119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10668B36255F11D300119BDA /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10668B37255F11D300119BDA /* Definition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataClass.swift"; sourceTree = "<group>"; };
+		10668B38255F11D300119BDA /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		10668B6E255F34F300119BDA /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
+		10668B76255F7DC600119BDA /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		1066FD97255E1317008211A3 /* SearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDomain.swift; sourceTree = "<group>"; };
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
 		1066FDAE255E1D0E008211A3 /* DictionaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryModel.xcdatamodel; sourceTree = "<group>"; };
@@ -192,8 +196,10 @@
 		1066FDAB255E1BC7008211A3 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				1066FDAC255E1CF2008211A3 /* Models */,
 				1066FDB2255E1D37008211A3 /* CoreDataStore.swift */,
+				10668B76255F7DC600119BDA /* CoreDataService.swift */,
+				10668B6E255F34F300119BDA /* ManagedObjectContext.swift */,
+				1066FDAC255E1CF2008211A3 /* Models */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -201,10 +207,10 @@
 		1066FDAC255E1CF2008211A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				102AE1B7255F091700F25DFB /* Definition+CoreDataProperties.swift */,
-				102AE1B8255F091700F25DFB /* Word+CoreDataProperties.swift */,
-				102AE199255EE72F00F25DFB /* Word+CoreDataClass.swift */,
-				102AE19B255EE72F00F25DFB /* Definition+CoreDataClass.swift */,
+				10668B35255F11D300119BDA /* Word+CoreDataClass.swift */,
+				10668B36255F11D300119BDA /* Word+CoreDataProperties.swift */,
+				10668B37255F11D300119BDA /* Definition+CoreDataClass.swift */,
+				10668B38255F11D300119BDA /* Definition+CoreDataProperties.swift */,
 				1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */,
 			);
 			path = Models;
@@ -528,12 +534,12 @@
 				10E19DC125081DD80061CF6B /* Entry.swift in Sources */,
 				10E19DB9250816C80061CF6B /* String.swift in Sources */,
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
+				10668B3C255F11D300119BDA /* Definition+CoreDataProperties.swift in Sources */,
 				104D5CB62508938C00E5F9D8 /* Color.swift in Sources */,
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */,
 				109727282506880B00217C63 /* APIProvider.swift in Sources */,
 				1097272625067DAC00217C63 /* APIService.swift in Sources */,
-				102AE1BA255F091700F25DFB /* Word+CoreDataProperties.swift in Sources */,
 				103398A42522942500A71355 /* Collection.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
@@ -542,7 +548,7 @@
 				1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */,
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
-				102AE19F255EE72F00F25DFB /* Definition+CoreDataClass.swift in Sources */,
+				10668B3B255F11D300119BDA /* Definition+CoreDataClass.swift in Sources */,
 				1097273B2506AAF700217C63 /* OXFRetrieveEntry+Networking.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
 				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
@@ -550,19 +556,21 @@
 				10241417254F935200D8D2A8 /* Endpoint.swift in Sources */,
 				1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */,
 				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
-				102AE19D255EE72F00F25DFB /* Word+CoreDataClass.swift in Sources */,
+				10668B39255F11D300119BDA /* Word+CoreDataClass.swift in Sources */,
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
-				102AE1B9255F091700F25DFB /* Definition+CoreDataProperties.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
 				1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */,
 				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
 				104E387E2550AC9700ECCBD5 /* Date.swift in Sources */,
+				10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */,
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
 				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
+				10668B3A255F11D300119BDA /* Word+CoreDataProperties.swift in Sources */,
 				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,
+				10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */,
 				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

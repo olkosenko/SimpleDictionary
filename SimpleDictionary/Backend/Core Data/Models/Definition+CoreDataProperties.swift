@@ -16,8 +16,8 @@ extension Definition {
         return NSFetchRequest<Definition>(entityName: "Definition")
     }
 
-    @NSManaged public var id: UUID?
     @NSManaged public var definition: String?
+    @NSManaged public var id: UUID?
     @NSManaged public var partOfSpeech: String?
     @NSManaged public var word: Word?
 
