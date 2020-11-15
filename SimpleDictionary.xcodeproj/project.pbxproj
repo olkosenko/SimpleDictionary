@@ -31,6 +31,7 @@
 		10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */; };
 		10668B992560711E00119BDA /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B982560711E00119BDA /* AppUserDefaults.swift */; };
 		10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */; };
+		10668BA12560752700119BDA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668BA02560752700119BDA /* DataProvider.swift */; };
 		1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FD97255E1317008211A3 /* SearchDomain.swift */; };
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
 		1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */; };
@@ -93,6 +94,7 @@
 		10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10668B982560711E00119BDA /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPropertyWrapper.swift; sourceTree = "<group>"; };
+		10668BA02560752700119BDA /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		1066FD97255E1317008211A3 /* SearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDomain.swift; sourceTree = "<group>"; };
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
 		1066FDAE255E1D0E008211A3 /* DictionaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryModel.xcdatamodel; sourceTree = "<group>"; };
@@ -207,7 +209,6 @@
 			children = (
 				1066FDB2255E1D37008211A3 /* CoreDataStore.swift */,
 				10668B76255F7DC600119BDA /* CoreDataService.swift */,
-				10668B6E255F34F300119BDA /* ManagedObjectContext.swift */,
 				1066FDAC255E1CF2008211A3 /* Models */,
 			);
 			path = CoreData;
@@ -270,6 +271,7 @@
 		1097272425067D6F00217C63 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				10668BA02560752700119BDA /* DataProvider.swift */,
 				1066FDAB255E1BC7008211A3 /* CoreData */,
 				1097272B2506A12100217C63 /* Models */,
 				1097272A2506A10E00217C63 /* Networking */,
@@ -281,8 +283,8 @@
 		1097272A2506A10E00217C63 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1097272525067DAC00217C63 /* APIService.swift */,
 				109727272506880B00217C63 /* APIProvider.swift */,
+				1097272525067DAC00217C63 /* APIService.swift */,
 				10241416254F935200D8D2A8 /* Endpoint.swift */,
 			);
 			path = Networking;
@@ -384,10 +386,11 @@
 		10E19DB7250816AE0061CF6B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				10E19DB8250816C80061CF6B /* String.swift */,
-				104D5CB52508938C00E5F9D8 /* Color.swift */,
 				103398A32522942500A71355 /* Collection.swift */,
+				104D5CB52508938C00E5F9D8 /* Color.swift */,
 				104E387D2550AC9700ECCBD5 /* Date.swift */,
+				10668B6E255F34F300119BDA /* ManagedObjectContext.swift */,
+				10E19DB8250816C80061CF6B /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
 				104E387E2550AC9700ECCBD5 /* Date.swift in Sources */,
 				10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */,
+				10668BA12560752700119BDA /* DataProvider.swift in Sources */,
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
 				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,

@@ -16,6 +16,10 @@ extension Word {
         return NSFetchRequest<Word>(entityName: "Word")
     }
 
+    var unwrappedDate: Date {
+        date ?? Date()
+    }
+    
     @NSManaged public var date: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var isWOD: NSNumber?

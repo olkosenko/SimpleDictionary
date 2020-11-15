@@ -8,5 +8,8 @@
 import Foundation
 
 struct AppUserDefaults {
+    @UserDefault("count_WODs", defaultValue: 7)
+    static var countWODs: Int
+    
     
 }

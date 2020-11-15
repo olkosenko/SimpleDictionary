@@ -30,7 +30,7 @@ final class CoreDataService {
     func addWord(
         ofType wordType: WordType = .casual,
         title: String,
-        phoneticSpelling: String?,
+        phoneticSpelling: String? = nil,
         date: Date = Date(),
         soundURL: URL? = nil,
         definitions: [String : [String]] = [:]
@@ -57,16 +57,19 @@ final class CoreDataService {
         }
     }
     
-    func deleteWord(
-        _ word: Word
+    func deleteWords(
+        _ words: [Word]
     ) {
         context.writeAsync { context in
-            context.delete(word)
+            words.forEach { word in
+                context.delete(word)
+            }
         }
     }
     
     func fetchWords(
-        ofType wordType: WordType
+        ofType wordType: WordType,
+        limit: Int? = nil
     ) -> Effect<[Word], DictionaryServiceError> {
         wrapInEffectAndContext { context in
             do {
@@ -76,7 +79,8 @@ final class CoreDataService {
                 let sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: true)]
                 let words = try self.context.fetchEntities(ofType: Word.self,
                                                            with: predicate,
-                                                           sortDescriptors: sortDescriptors)
+                                                           sortDescriptors: sortDescriptors,
+                                                           fetchLimit: limit)
                 
                 return .success(words)
             }

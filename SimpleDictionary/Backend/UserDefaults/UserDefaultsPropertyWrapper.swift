@@ -7,8 +7,6 @@
 
 import Foundation
 
-// Source https://www.avanderlee.com/swift/property-wrappers/
-
 @propertyWrapper
 struct UserDefault<T> {
     let key: String
