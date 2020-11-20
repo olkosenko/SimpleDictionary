@@ -12,7 +12,7 @@ import Combine
 class DictionaryViewModel: ObservableObject {
     
     @Published var searchText = ""
-    @Published var entries: [Entry] = []
+    // @Published var entries: [Entry] = []
     @Published var wod: WordnikWOD?
     @Published var wordSearch = [String]()
     let recentSearches = ["Hello", "Telephone", "Confrontation", "Risky"]
@@ -37,13 +37,13 @@ class DictionaryViewModel: ObservableObject {
             }
             .store(in: &cancellableStore)
         
-        WordnikWOD.fetch(for: Calendar.current.date(byAdding: .day, value: 0, to: Date())!)
-            .receive(on: DispatchQueue.main)
-            .sink { fetchedWOD in
-                self.wod = fetchedWOD
-                print(fetchedWOD)
-            }
-            .store(in: &cancellableStore)
+//        WordnikWOD.fetch(for: Calendar.current.date(byAdding: .day, value: 0, to: Date())!)
+//            .receive(on: DispatchQueue.main)
+//            .sink { fetchedWOD in
+//                self.wod = fetchedWOD
+//                print(fetchedWOD)
+//            }
+//            .store(in: &cancellableStore)
     }
     
     private func search(with text: String) {

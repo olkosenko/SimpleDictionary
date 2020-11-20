@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 @objc(Word)
-public class Word: NSManagedObject {
-    override func awakeFromInsert() {
+class Word: NSManagedObject {
+    override public func awakeFromInsert() {
         super.awakeFromInsert()
-        uuid = UUID()
+        // uuid = UUID()
     }
 }

@@ -16,7 +16,7 @@ struct SearchState {
 
 enum SearchAction {
     case searchQueryChanged(String)
-    case 
+    //case
 }
 
 struct SearchEnvironment {

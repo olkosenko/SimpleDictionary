@@ -23,6 +23,8 @@
 		104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38812550FC2700ECCBD5 /* WordnikWOD.swift */; };
 		104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38852551CE1B00ECCBD5 /* ProgressView.swift */; };
 		104E38902553280000ECCBD5 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E388F2553280000ECCBD5 /* CirclesView.swift */; };
+		1051369425673452009B824A /* ManualWordAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051369325673452009B824A /* ManualWordAddingView.swift */; };
+		1051369E256754C9009B824A /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051369D256754C9009B824A /* SaveButton.swift */; };
 		10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContext.swift */; };
 		10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B76255F7DC600119BDA /* CoreDataService.swift */; };
 		10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8225606EC200119BDA /* Word+CoreDataClass.swift */; };
@@ -56,6 +58,8 @@
 		1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274B2507CFDA00217C63 /* Dropdown.swift */; };
 		1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274D2507D3CB00217C63 /* DropdownItem.swift */; };
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
+		10B5E1C32565F5AD00081ED8 /* PersonalDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C22565F5AD00081ED8 /* PersonalDictionary.swift */; };
+		10B5E1C925660DD300081ED8 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C825660DD300081ED8 /* AddButton.swift */; };
 		10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B87B35254E47AB009143EE /* SearchResultsView.swift */; };
 		10E19DB9250816C80061CF6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* String.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +90,8 @@
 		104E38812550FC2700ECCBD5 /* WordnikWOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikWOD.swift; sourceTree = "<group>"; };
 		104E38852551CE1B00ECCBD5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		104E388F2553280000ECCBD5 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
+		1051369325673452009B824A /* ManualWordAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWordAddingView.swift; sourceTree = "<group>"; };
+		1051369D256754C9009B824A /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		10668B6E255F34F300119BDA /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		10668B76255F7DC600119BDA /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		10668B8225606EC200119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -120,6 +126,8 @@
 		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
 		1097274B2507CFDA00217C63 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
 		1097274D2507D3CB00217C63 /* DropdownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
+		10B5E1C22565F5AD00081ED8 /* PersonalDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionary.swift; sourceTree = "<group>"; };
+		10B5E1C825660DD300081ED8 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		10B87B35254E47AB009143EE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		10E19DB8250816C80061CF6B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -323,6 +331,7 @@
 		109727412506DFC300217C63 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				10B5E1C12565F59300081ED8 /* Personal Dictionary */,
 				10B87B34254E478F009143EE /* Search Results */,
 				109727422506DFCE00217C63 /* History */,
 				109727402506DF9E00217C63 /* Search */,
@@ -370,8 +379,19 @@
 				104D5CB225088B8600E5F9D8 /* DropdownView */,
 				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
 				1024296E25461968005EA1C3 /* SearchField.swift */,
+				10B5E1C825660DD300081ED8 /* AddButton.swift */,
+				1051369D256754C9009B824A /* SaveButton.swift */,
 			);
 			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		10B5E1C12565F59300081ED8 /* Personal Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				10B5E1C22565F5AD00081ED8 /* PersonalDictionary.swift */,
+				1051369325673452009B824A /* ManualWordAddingView.swift */,
+			);
+			path = "Personal Dictionary";
 			sourceTree = "<group>";
 		};
 		10B87B34254E478F009143EE /* Search Results */ = {
@@ -547,6 +567,7 @@
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
 				10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */,
+				10B5E1C32565F5AD00081ED8 /* PersonalDictionary.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
 				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
@@ -558,12 +579,15 @@
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
 				1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */,
 				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
+				1051369425673452009B824A /* ManualWordAddingView.swift in Sources */,
+				1051369E256754C9009B824A /* SaveButton.swift in Sources */,
 				104E387E2550AC9700ECCBD5 /* Date.swift in Sources */,
 				10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */,
 				10668BA12560752700119BDA /* DataProvider.swift in Sources */,
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
 				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
+				10B5E1C925660DD300081ED8 /* AddButton.swift in Sources */,
 				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,
 				10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */,

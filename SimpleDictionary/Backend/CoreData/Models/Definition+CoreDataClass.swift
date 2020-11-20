@@ -10,9 +10,10 @@ import Foundation
 import CoreData
 
 @objc(Definition)
-public class Definition: NSManagedObject {
-    override func awakeFromInsert() {
+class Definition: NSManagedObject {
+    
+    public override func awakeFromInsert() {
         super.awakeFromInsert()
-        uuid = UUID()
+        // uuid = UUID()
     }
 }
