@@ -12,8 +12,8 @@ struct StandardDictionaryEntry {
     let phoneticSpelling: String?
     // sound
     let definitions: [String]
-    let synonyms: [String]?
-    let antonyms: [String]?
-    let examples: [String]?
-    let etymologies: [String]?
+    let synonyms: [String]
+    let antonyms: [String]
+    let examples: [String]
+    let etymologies: [String]
 }

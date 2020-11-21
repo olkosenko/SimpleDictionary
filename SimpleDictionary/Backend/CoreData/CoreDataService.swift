@@ -17,24 +17,21 @@ final class CoreDataService {
         case wod
     }
     
-    enum DictionaryServiceError: Error {
-        case failedFetch(String)
-    }
-    
     private let context: NSManagedObjectContext
     
     init(context: NSManagedObjectContext) {
         self.context = context
     }
     
+    @discardableResult
     func addWord(
         ofType wordType: WordType = .casual,
         title: String,
         phoneticSpelling: String? = nil,
         date: Date = Date(),
         soundURL: URL? = nil,
-        definitions: [String : [String]] = [:]
-    ) -> Effect<Word, DictionaryServiceError> {
+        definitions: [PartOfSpeech : [String]] = [:]
+    ) -> Effect<Word, Error> {
         
         wrapInEffectAndContext { context in
             let newWord = Word(context: context)
@@ -47,7 +44,7 @@ final class CoreDataService {
                 defs.forEach { def in
                     let newDefinition = Definition(context: context)
                     newDefinition.title = def
-                    newDefinition.partOfSpeech = partOfSpeech
+                    newDefinition.partOfSpeech = partOfSpeech.rawValue
                     
                     newWord.addToDefinitions(newDefinition)
                 }
@@ -55,6 +52,7 @@ final class CoreDataService {
 
             return .success(newWord)
         }
+        
     }
     
     func deleteWords(
@@ -70,9 +68,9 @@ final class CoreDataService {
     func fetchWords(
         ofType wordType: WordType,
         limit: Int? = nil
-    ) -> Effect<[Word], DictionaryServiceError> {
+    ) -> Effect<[Word], Error> {
         wrapInEffectAndContext { context in
-            do {
+            Result<[Word], Error> {
                 let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) = %@",
                                             wordType == .casual ? "YES" : "NO")
                 
@@ -82,17 +80,14 @@ final class CoreDataService {
                                                            sortDescriptors: sortDescriptors,
                                                            fetchLimit: limit)
                 
-                return .success(words)
-            }
-            catch {
-                return .failure(DictionaryServiceError.failedFetch(error.localizedDescription))
+                return words
             }
         }
     }
     
     private func wrapInEffectAndContext<T>(
-        task: @escaping (NSManagedObjectContext) -> Result<T, DictionaryServiceError>
-    ) -> Effect<T, DictionaryServiceError> {
+        task: @escaping (NSManagedObjectContext) -> Result<T, Error>
+    ) -> Effect<T, Error> {
         Future { [unowned self] promise in
             self.context.writeAsync { _ in
                 switch task(self.context) {

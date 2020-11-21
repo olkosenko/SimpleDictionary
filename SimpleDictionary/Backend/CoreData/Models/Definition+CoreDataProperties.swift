@@ -21,6 +21,7 @@ extension Definition {
     @NSManaged public var partOfSpeech: String?
     @NSManaged public var word: Word?
 
+    var partOfSpeechNormalized: PartOfSpeech? { partOfSpeech == nil ? nil : PartOfSpeech(rawValue: partOfSpeech!) }
 }
 
 extension Definition : Identifiable {

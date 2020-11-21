@@ -46,7 +46,3 @@ extension Word {
     @NSManaged public func removeFromDefinitions(_ values: NSSet)
 
 }
-
-extension Word : Identifiable {
-
-}

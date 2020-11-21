@@ -11,7 +11,7 @@ import CoreData
 final class CoreDataStore {
     
     private enum Const {
-        static let containerName = "dictionary"
+        static let containerName = "DictionaryModel"
     }
     
     let mainContext: NSManagedObjectContext

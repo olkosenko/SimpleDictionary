@@ -23,8 +23,14 @@
 		104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38812550FC2700ECCBD5 /* WordnikWOD.swift */; };
 		104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38852551CE1B00ECCBD5 /* ProgressView.swift */; };
 		104E38902553280000ECCBD5 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E388F2553280000ECCBD5 /* CirclesView.swift */; };
-		1051369425673452009B824A /* ManualWordAddingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051369325673452009B824A /* ManualWordAddingView.swift */; };
-		1051369E256754C9009B824A /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051369D256754C9009B824A /* SaveButton.swift */; };
+		1051369425673452009B824A /* ManualWordCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1051369325673452009B824A /* ManualWordCreationView.swift */; };
+		105136AB2567F73B009B824A /* ManualWordCreationDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136AA2567F73B009B824A /* ManualWordCreationDomain.swift */; };
+		105136B12568033B009B824A /* EditableDefinitionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136B02568033B009B824A /* EditableDefinitionCellView.swift */; };
+		105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136B4256803E4009B824A /* EditableDefinitionCellDomain.swift */; };
+		105136BD25683686009B824A /* PersonalDictionaryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136BC25683686009B824A /* PersonalDictionaryDomain.swift */; };
+		105136C525683760009B824A /* PersonalDictionaryDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */; };
+		105136CB2568466F009B824A /* PartOfSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136CA2568466F009B824A /* PartOfSpeech.swift */; };
+		105136D925688B69009B824A /* AppDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136D825688B69009B824A /* AppDomain.swift */; };
 		10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContext.swift */; };
 		10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B76255F7DC600119BDA /* CoreDataService.swift */; };
 		10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8225606EC200119BDA /* Word+CoreDataClass.swift */; };
@@ -33,7 +39,7 @@
 		10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */; };
 		10668B992560711E00119BDA /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B982560711E00119BDA /* AppUserDefaults.swift */; };
 		10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */; };
-		10668BA12560752700119BDA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668BA02560752700119BDA /* DataProvider.swift */; };
+		10668BA12560752700119BDA /* WODDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668BA02560752700119BDA /* WODDataProvider.swift */; };
 		1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FD97255E1317008211A3 /* SearchDomain.swift */; };
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
 		1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */; };
@@ -55,11 +61,9 @@
 		109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* OXFLexicalEntry.swift */; };
 		1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273D2506AF1800217C63 /* DictionaryViewModel.swift */; };
 		109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727442506E01800217C63 /* DictionaryEntryView.swift */; };
-		1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274B2507CFDA00217C63 /* Dropdown.swift */; };
-		1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097274D2507D3CB00217C63 /* DropdownItem.swift */; };
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
-		10B5E1C32565F5AD00081ED8 /* PersonalDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C22565F5AD00081ED8 /* PersonalDictionary.swift */; };
-		10B5E1C925660DD300081ED8 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C825660DD300081ED8 /* AddButton.swift */; };
+		10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */; };
+		10B5E1C925660DD300081ED8 /* DictionaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C825660DD300081ED8 /* DictionaryButton.swift */; };
 		10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B87B35254E47AB009143EE /* SearchResultsView.swift */; };
 		10E19DB9250816C80061CF6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* String.swift */; };
 /* End PBXBuildFile section */
@@ -90,8 +94,14 @@
 		104E38812550FC2700ECCBD5 /* WordnikWOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikWOD.swift; sourceTree = "<group>"; };
 		104E38852551CE1B00ECCBD5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		104E388F2553280000ECCBD5 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
-		1051369325673452009B824A /* ManualWordAddingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWordAddingView.swift; sourceTree = "<group>"; };
-		1051369D256754C9009B824A /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		1051369325673452009B824A /* ManualWordCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWordCreationView.swift; sourceTree = "<group>"; };
+		105136AA2567F73B009B824A /* ManualWordCreationDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualWordCreationDomain.swift; sourceTree = "<group>"; };
+		105136B02568033B009B824A /* EditableDefinitionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableDefinitionCellView.swift; sourceTree = "<group>"; };
+		105136B4256803E4009B824A /* EditableDefinitionCellDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableDefinitionCellDomain.swift; sourceTree = "<group>"; };
+		105136BC25683686009B824A /* PersonalDictionaryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryDomain.swift; sourceTree = "<group>"; };
+		105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryDataProvider.swift; sourceTree = "<group>"; };
+		105136CA2568466F009B824A /* PartOfSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartOfSpeech.swift; sourceTree = "<group>"; };
+		105136D825688B69009B824A /* AppDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDomain.swift; sourceTree = "<group>"; };
 		10668B6E255F34F300119BDA /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		10668B76255F7DC600119BDA /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		10668B8225606EC200119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -100,7 +110,7 @@
 		10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10668B982560711E00119BDA /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
 		10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPropertyWrapper.swift; sourceTree = "<group>"; };
-		10668BA02560752700119BDA /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		10668BA02560752700119BDA /* WODDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODDataProvider.swift; sourceTree = "<group>"; };
 		1066FD97255E1317008211A3 /* SearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDomain.swift; sourceTree = "<group>"; };
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
 		1066FDAE255E1D0E008211A3 /* DictionaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryModel.xcdatamodel; sourceTree = "<group>"; };
@@ -124,10 +134,8 @@
 		109727382506A86000217C63 /* OXFLexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFLexicalEntry.swift; sourceTree = "<group>"; };
 		1097273D2506AF1800217C63 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
 		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
-		1097274B2507CFDA00217C63 /* Dropdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dropdown.swift; sourceTree = "<group>"; };
-		1097274D2507D3CB00217C63 /* DropdownItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownItem.swift; sourceTree = "<group>"; };
-		10B5E1C22565F5AD00081ED8 /* PersonalDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionary.swift; sourceTree = "<group>"; };
-		10B5E1C825660DD300081ED8 /* AddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryView.swift; sourceTree = "<group>"; };
+		10B5E1C825660DD300081ED8 /* DictionaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryButton.swift; sourceTree = "<group>"; };
 		10B87B35254E47AB009143EE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
 		10E19DB8250816C80061CF6B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,15 +182,6 @@
 			path = "Urban API";
 			sourceTree = "<group>";
 		};
-		104D5CB225088B8600E5F9D8 /* DropdownView */ = {
-			isa = PBXGroup;
-			children = (
-				1097274B2507CFDA00217C63 /* Dropdown.swift */,
-				1097274D2507D3CB00217C63 /* DropdownItem.swift */,
-			);
-			path = DropdownView;
-			sourceTree = "<group>";
-		};
 		104E386225506A1D00ECCBD5 /* SimpleDictionaryTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +190,17 @@
 				104E386D25506A4800ECCBD5 /* APIServiceTests.swift */,
 			);
 			path = SimpleDictionaryTests;
+			sourceTree = "<group>";
+		};
+		105136A92567F717009B824A /* Manual Word */ = {
+			isa = PBXGroup;
+			children = (
+				1051369325673452009B824A /* ManualWordCreationView.swift */,
+				105136AA2567F73B009B824A /* ManualWordCreationDomain.swift */,
+				105136B02568033B009B824A /* EditableDefinitionCellView.swift */,
+				105136B4256803E4009B824A /* EditableDefinitionCellDomain.swift */,
+			);
+			path = "Manual Word";
 			sourceTree = "<group>";
 		};
 		10668B97256070D300119BDA /* UserDefaults */ = {
@@ -279,7 +289,8 @@
 		1097272425067D6F00217C63 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				10668BA02560752700119BDA /* DataProvider.swift */,
+				10668BA02560752700119BDA /* WODDataProvider.swift */,
+				105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */,
 				1066FDAB255E1BC7008211A3 /* CoreData */,
 				1097272B2506A12100217C63 /* Models */,
 				1097272A2506A10E00217C63 /* Networking */,
@@ -301,6 +312,7 @@
 		1097272B2506A12100217C63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				105136CA2568466F009B824A /* PartOfSpeech.swift */,
 				1066FD9C255E13B6008211A3 /* Standard APIs */,
 				1024141C2550632C00D8D2A8 /* Urban API */,
 				1024141B2550631E00D8D2A8 /* Wordnik API */,
@@ -369,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				109727132506790100217C63 /* ContentView.swift */,
+				105136D825688B69009B824A /* AppDomain.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -376,11 +389,9 @@
 		1097274A2507CFC100217C63 /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
-				104D5CB225088B8600E5F9D8 /* DropdownView */,
 				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
 				1024296E25461968005EA1C3 /* SearchField.swift */,
-				10B5E1C825660DD300081ED8 /* AddButton.swift */,
-				1051369D256754C9009B824A /* SaveButton.swift */,
+				10B5E1C825660DD300081ED8 /* DictionaryButton.swift */,
 			);
 			path = "Reusable Components";
 			sourceTree = "<group>";
@@ -388,8 +399,9 @@
 		10B5E1C12565F59300081ED8 /* Personal Dictionary */ = {
 			isa = PBXGroup;
 			children = (
-				10B5E1C22565F5AD00081ED8 /* PersonalDictionary.swift */,
-				1051369325673452009B824A /* ManualWordAddingView.swift */,
+				10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */,
+				105136BC25683686009B824A /* PersonalDictionaryDomain.swift */,
+				105136A92567F717009B824A /* Manual Word */,
 			);
 			path = "Personal Dictionary";
 			sourceTree = "<group>";
@@ -548,13 +560,16 @@
 			files = (
 				10E19DB9250816C80061CF6B /* String.swift in Sources */,
 				10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */,
+				105136AB2567F73B009B824A /* ManualWordCreationDomain.swift in Sources */,
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
 				104D5CB62508938C00E5F9D8 /* Color.swift in Sources */,
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
-				1097274E2507D3CB00217C63 /* DropdownItem.swift in Sources */,
+				105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */,
 				109727282506880B00217C63 /* APIProvider.swift in Sources */,
+				105136B12568033B009B824A /* EditableDefinitionCellView.swift in Sources */,
 				1097272625067DAC00217C63 /* APIService.swift in Sources */,
 				103398A42522942500A71355 /* Collection.swift in Sources */,
+				105136D925688B69009B824A /* AppDomain.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
 				10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */,
@@ -567,7 +582,7 @@
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
 				10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */,
-				10B5E1C32565F5AD00081ED8 /* PersonalDictionary.swift in Sources */,
+				10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
 				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
@@ -577,20 +592,21 @@
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
+				105136CB2568466F009B824A /* PartOfSpeech.swift in Sources */,
 				1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */,
-				1097274C2507CFDA00217C63 /* Dropdown.swift in Sources */,
-				1051369425673452009B824A /* ManualWordAddingView.swift in Sources */,
-				1051369E256754C9009B824A /* SaveButton.swift in Sources */,
+				1051369425673452009B824A /* ManualWordCreationView.swift in Sources */,
+				105136BD25683686009B824A /* PersonalDictionaryDomain.swift in Sources */,
 				104E387E2550AC9700ECCBD5 /* Date.swift in Sources */,
 				10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */,
-				10668BA12560752700119BDA /* DataProvider.swift in Sources */,
+				10668BA12560752700119BDA /* WODDataProvider.swift in Sources */,
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
 				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
-				10B5E1C925660DD300081ED8 /* AddButton.swift in Sources */,
+				10B5E1C925660DD300081ED8 /* DictionaryButton.swift in Sources */,
 				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,
 				10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */,
+				105136C525683760009B824A /* PersonalDictionaryDataProvider.swift in Sources */,
 				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
