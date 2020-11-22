@@ -71,8 +71,8 @@ final class CoreDataService {
     ) -> Effect<[Word], Error> {
         wrapInEffectAndContext { context in
             Result<[Word], Error> {
-                let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) = %@",
-                                            wordType == .casual ? "YES" : "NO")
+                let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == %@",
+                                            NSNumber(value:wordType == .casual ? true : false))
                 
                 let sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: true)]
                 let words = try self.context.fetchEntities(ofType: Word.self,

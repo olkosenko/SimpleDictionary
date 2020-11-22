@@ -13,12 +13,15 @@ import CoreData
 class PersonalDictionaryDataProvider {
     private let coreDataService: CoreDataService
 
-    var wordsPublisher: Effect<[Word], Error> {
+    private lazy var coreDataPublisher: CoreDataPublisher<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) = %@", "NO")
-        fetchRequest.sortDescriptors = []
-        
+        fetchRequest.predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == NO")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: false)]
         return CoreDataPublisher(context: coreDataService.context, fetchRequest: fetchRequest)
+    }()
+    
+    var wordsPublisher: Effect<[Word], Error> {
+        coreDataPublisher
             .publisher
             .eraseToEffect()
     }
@@ -31,19 +34,12 @@ class PersonalDictionaryDataProvider {
         return coreDataService.fetchWords(ofType: .casual)
     }
     
-    func saveWord(_ word: ManualWordCreationState) -> Effect<Word, Error> {
-        var definitions = [PartOfSpeech : [String]]()
-        word.definitions.forEach { definition in
-            guard definition.title.isNotEmpty else { return }
-            
-            if definitions[definition.partOfSpeech] != nil {
-                definitions[definition.partOfSpeech]!.append(definition.title)
-            } else {
-                definitions[definition.partOfSpeech] = [definition.title]
-            }
-        }
-        
-        return coreDataService.addWord(ofType: .casual, title: word.title, date: Date(), definitions: definitions)
+    func saveWord(title: String, definitions: [PartOfSpeech : [String]]) -> Effect<Word, Error> {
+        return coreDataService.addWord(ofType: .casual, title: title, date: Date(), definitions: definitions)
+    }
+    
+    func deleteWords(_ words: [Word]) {
+        coreDataService.deleteWords(words)
     }
 }
 

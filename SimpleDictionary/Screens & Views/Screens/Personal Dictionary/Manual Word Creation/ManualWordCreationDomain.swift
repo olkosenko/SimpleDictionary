@@ -81,16 +81,30 @@ let manualWordAddingReducer = Reducer<
             
         case .saveData:
             if state.title.isNotEmpty {
-                return environment.dataProvider.saveWord(state)
+                
+                var definitions = [PartOfSpeech : [String]]()
+                state.definitions.forEach { definition in
+                    guard definition.title.isNotEmpty else { return }
+                    
+                    if definitions[definition.partOfSpeech] != nil {
+                        definitions[definition.partOfSpeech]!.append(definition.title)
+                    } else {
+                        definitions[definition.partOfSpeech] = [definition.title]
+                    }
+                }
+                
+                return environment.dataProvider.saveWord(title: state.title, definitions: definitions)
                     .receive(on: environment.mainQueue)
                     .catchToEffect()
                     .map(ManualWordCreationAction.saveDataResponse)
+                
             } else {
                 state.alert = .init(
                     title: "Alert",
                     message: "We cannot save your word cause title is empty",
                     dismissButton: .cancel())
                 return .none
+                
             }
             
         case .saveDataResponse(.success(let word)):

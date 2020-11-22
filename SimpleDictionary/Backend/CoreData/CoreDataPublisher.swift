@@ -20,19 +20,19 @@ class CoreDataPublisher<Entity: NSManagedObject>: NSObject, NSFetchedResultsCont
                                              sectionNameKeyPath: nil,
                                              cacheName: nil)
         frc.delegate = self
-        
         return frc
     }()
     
     init(context: NSManagedObjectContext, fetchRequest: NSFetchRequest<Entity>) {
         self.context = context
         self.fetchRequest = fetchRequest
+        
         super.init()
-
+        
         initialFetch()
     }
-    
-    private func initialFetch() {
+
+    func initialFetch() {
         do {
             try frc.performFetch()
             let result = frc.fetchedObjects ?? []
@@ -41,10 +41,6 @@ class CoreDataPublisher<Entity: NSManagedObject>: NSObject, NSFetchedResultsCont
         catch {
             publisher.send(completion: .failure(error))
         }
-    }
-    
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        print("Hello")
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

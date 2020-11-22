@@ -23,7 +23,7 @@ enum PersonalDictionaryAction {
     case onWordsFetched(Result<[Word], Error>)
     
     case setSheet(Bool)
-    case removeWord(IndexSet)   
+    case deleteWord(IndexSet)
 }
 
 struct PersonalDictionaryEnvironment {
@@ -76,8 +76,9 @@ let personalDictionaryReducer = Reducer<
             state.isSheetPresented = false
             return .none
             
-        case .removeWord(let indexSet):
-            state.words.remove(atOffsets: indexSet)
+        case .deleteWord(let indexSet):
+            let wordsToDelete = indexSet.map { state.words[$0] }
+            environment.personalDictionaryDataProvider.deleteWords(wordsToDelete)
             return .none
             
         }
