@@ -8,15 +8,27 @@
 import Foundation
 import Combine
 import ComposableArchitecture
+import CoreData
 
 class PersonalDictionaryDataProvider {
-    
-    private let apiService: APIService
     private let coreDataService: CoreDataService
+
+    var wordsPublisher: Effect<[Word], Error> {
+        let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) = %@", "NO")
+        fetchRequest.sortDescriptors = []
+        
+        return CoreDataPublisher(context: coreDataService.context, fetchRequest: fetchRequest)
+            .publisher
+            .eraseToEffect()
+    }
     
-    init(apiService: APIService, coreDataService: CoreDataService) {
-        self.apiService = apiService
+    init(coreDataService: CoreDataService) {
         self.coreDataService = coreDataService
+    }
+    
+    func fetchWords() -> Effect<[Word], Error> {
+        return coreDataService.fetchWords(ofType: .casual)
     }
     
     func saveWord(_ word: ManualWordCreationState) -> Effect<Word, Error> {
@@ -32,10 +44,6 @@ class PersonalDictionaryDataProvider {
         }
         
         return coreDataService.addWord(ofType: .casual, title: word.title, date: Date(), definitions: definitions)
-    }
-    
-    func fetchWords() -> Effect<[Word], Error> {
-        return coreDataService.fetchWords(ofType: .casual)
     }
 }
 

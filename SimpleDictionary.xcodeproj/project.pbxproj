@@ -31,6 +31,9 @@
 		105136C525683760009B824A /* PersonalDictionaryDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */; };
 		105136CB2568466F009B824A /* PartOfSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136CA2568466F009B824A /* PartOfSpeech.swift */; };
 		105136D925688B69009B824A /* AppDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136D825688B69009B824A /* AppDomain.swift */; };
+		105136DE256995A2009B824A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 105136DD256995A2009B824A /* Colors.xcassets */; };
+		105136E42569985C009B824A /* AppDependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136E32569985C009B824A /* AppDependencyManager.swift */; };
+		105136ED2569BB18009B824A /* CoreDataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136EC2569BB18009B824A /* CoreDataPublisher.swift */; };
 		10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContext.swift */; };
 		10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B76255F7DC600119BDA /* CoreDataService.swift */; };
 		10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8225606EC200119BDA /* Word+CoreDataClass.swift */; };
@@ -102,6 +105,9 @@
 		105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryDataProvider.swift; sourceTree = "<group>"; };
 		105136CA2568466F009B824A /* PartOfSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartOfSpeech.swift; sourceTree = "<group>"; };
 		105136D825688B69009B824A /* AppDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDomain.swift; sourceTree = "<group>"; };
+		105136DD256995A2009B824A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		105136E32569985C009B824A /* AppDependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyManager.swift; sourceTree = "<group>"; };
+		105136EC2569BB18009B824A /* CoreDataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublisher.swift; sourceTree = "<group>"; };
 		10668B6E255F34F300119BDA /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
 		10668B76255F7DC600119BDA /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		10668B8225606EC200119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -192,7 +198,7 @@
 			path = SimpleDictionaryTests;
 			sourceTree = "<group>";
 		};
-		105136A92567F717009B824A /* Manual Word */ = {
+		105136A92567F717009B824A /* Manual Word Creation */ = {
 			isa = PBXGroup;
 			children = (
 				1051369325673452009B824A /* ManualWordCreationView.swift */,
@@ -200,7 +206,26 @@
 				105136B02568033B009B824A /* EditableDefinitionCellView.swift */,
 				105136B4256803E4009B824A /* EditableDefinitionCellDomain.swift */,
 			);
-			path = "Manual Word";
+			path = "Manual Word Creation";
+			sourceTree = "<group>";
+		};
+		105136DC2569957D009B824A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				109727152506790400217C63 /* Assets.xcassets */,
+				105136DD256995A2009B824A /* Colors.xcassets */,
+				104D5CB52508938C00E5F9D8 /* Color.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		105136E925699AAC009B824A /* Data Providers */ = {
+			isa = PBXGroup;
+			children = (
+				105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */,
+				10668BA02560752700119BDA /* WODDataProvider.swift */,
+			);
+			path = "Data Providers";
 			sourceTree = "<group>";
 		};
 		10668B97256070D300119BDA /* UserDefaults */ = {
@@ -227,6 +252,7 @@
 			children = (
 				1066FDB2255E1D37008211A3 /* CoreDataStore.swift */,
 				10668B76255F7DC600119BDA /* CoreDataService.swift */,
+				105136EC2569BB18009B824A /* CoreDataPublisher.swift */,
 				1066FDAC255E1CF2008211A3 /* Models */,
 			);
 			path = CoreData;
@@ -271,7 +297,7 @@
 				1097274A2507CFC100217C63 /* Reusable Components */,
 				1097273F2506DF7500217C63 /* Screens & Views */,
 				10E19DB7250816AE0061CF6B /* Extensions */,
-				109727152506790400217C63 /* Assets.xcassets */,
+				105136DC2569957D009B824A /* Resources */,
 				1097271A2506790400217C63 /* Info.plist */,
 				109727172506790400217C63 /* Preview Content */,
 			);
@@ -289,8 +315,7 @@
 		1097272425067D6F00217C63 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				10668BA02560752700119BDA /* WODDataProvider.swift */,
-				105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */,
+				105136E925699AAC009B824A /* Data Providers */,
 				1066FDAB255E1BC7008211A3 /* CoreData */,
 				1097272B2506A12100217C63 /* Models */,
 				1097272A2506A10E00217C63 /* Networking */,
@@ -373,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				109727112506790100217C63 /* SimpleDictionaryApp.swift */,
+				105136E32569985C009B824A /* AppDependencyManager.swift */,
 			);
 			path = "App Lifecycle";
 			sourceTree = "<group>";
@@ -401,7 +427,7 @@
 			children = (
 				10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */,
 				105136BC25683686009B824A /* PersonalDictionaryDomain.swift */,
-				105136A92567F717009B824A /* Manual Word */,
+				105136A92567F717009B824A /* Manual Word Creation */,
 			);
 			path = "Personal Dictionary";
 			sourceTree = "<group>";
@@ -419,7 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				103398A32522942500A71355 /* Collection.swift */,
-				104D5CB52508938C00E5F9D8 /* Color.swift */,
 				104E387D2550AC9700ECCBD5 /* Date.swift */,
 				10668B6E255F34F300119BDA /* ManagedObjectContext.swift */,
 				10E19DB8250816C80061CF6B /* String.swift */,
@@ -533,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				105136DE256995A2009B824A /* Colors.xcassets in Resources */,
 				109727192506790400217C63 /* Preview Assets.xcassets in Resources */,
 				109727162506790400217C63 /* Assets.xcassets in Resources */,
 			);
@@ -587,6 +613,7 @@
 				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
 				10241417254F935200D8D2A8 /* Endpoint.swift in Sources */,
+				105136E42569985C009B824A /* AppDependencyManager.swift in Sources */,
 				1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */,
 				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
@@ -608,6 +635,7 @@
 				10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */,
 				105136C525683760009B824A /* PersonalDictionaryDataProvider.swift in Sources */,
 				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
+				105136ED2569BB18009B824A /* CoreDataPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

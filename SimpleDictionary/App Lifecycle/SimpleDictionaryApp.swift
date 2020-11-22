@@ -6,35 +6,29 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct SimpleDictionaryApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var a
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
         WindowGroup {
             ContentView(
-                store: .init(
+                store: Store(
                     initialState: AppState(),
                     reducer: appReducer,
-                    environment: AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                                                wodDataProdiver: WODDataProvider(apiService: a.apiService,
-                                                                                 coreDataService: a.coreDataService),
-                                                personalDictionaryDataProvider: PersonalDictionaryDataProvider(apiService: a.apiService,
-                                                                                                               coreDataService: a.coreDataService)))
-            )
+                    environment: AppEnvironment(
+                        mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+                        wodDataProdiver: appDelegate.dependencyManager.wodDataProvider,
+                        personalDictionaryDataProvider: appDelegate.dependencyManager.personalDictionaryDataProvider)))
         }
     }
 }
 
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    let coreDataService: CoreDataService = {
-        let coreDataStore = CoreDataStore()
-        return CoreDataService(context: coreDataStore.mainContext)
-    }()
-    let apiService = APIService()
+    let dependencyManager = AppDependencyManager()
     
     func application(
         _ application: UIApplication,

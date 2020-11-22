@@ -19,6 +19,7 @@ enum PersonalDictionaryAction {
     case wordCreation(ManualWordCreationAction)
     
     case onAppear
+    case onDisappear
     case onWordsFetched(Result<[Word], Error>)
     
     case setSheet(Bool)
@@ -41,16 +42,23 @@ let personalDictionaryReducer = Reducer<
         ),
     Reducer { state, action, environment in
         
+        struct WordFetchId: Hashable {}
+        
         switch action {
         
         case .wordCreation:
             return .none
             
         case .onAppear:
-            return environment.personalDictionaryDataProvider.fetchWords()
+            return environment.personalDictionaryDataProvider.wordsPublisher
+                .subscribe(on: DispatchQueue.global())
                 .receive(on: environment.mainQueue)
                 .catchToEffect()
                 .map(PersonalDictionaryAction.onWordsFetched)
+                .cancellable(id: WordFetchId())
+            
+        case .onDisappear:
+            return .cancel(id: WordFetchId())
             
         case .onWordsFetched(.success(let words)):
             state.words = words
@@ -75,4 +83,3 @@ let personalDictionaryReducer = Reducer<
         }
     }
 )
-.debug()

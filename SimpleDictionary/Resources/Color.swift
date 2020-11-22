@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    
-    static var darkBlue: Color {
-        Color(.systemBlue)
+    static var appBackground: Color {
+        Color("app-background", bundle: Bundle.main)
     }
 }

@@ -14,6 +14,7 @@ struct ContentView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             TabView {
+                
                 DictionaryView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
@@ -40,11 +41,10 @@ struct ContentView: View {
             }
         }
     }
-    
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(store: DebugStore.store)
+    }
+}

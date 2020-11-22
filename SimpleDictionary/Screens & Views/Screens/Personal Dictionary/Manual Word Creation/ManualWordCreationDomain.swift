@@ -20,7 +20,9 @@ struct ManualWordCreationState: Equatable {
     var alert: AlertState<ManualWordCreationAction>?
     
     static func == (lhs: ManualWordCreationState, rhs: ManualWordCreationState) -> Bool {
-        lhs.title == rhs.title && lhs.definitions == rhs.definitions && lhs.isSheetPresented == rhs.isSheetPresented
+        lhs.title == rhs.title &&
+            lhs.definitions == rhs.definitions &&
+            lhs.isSheetPresented == rhs.isSheetPresented
     }
 }
 
@@ -91,7 +93,7 @@ let manualWordAddingReducer = Reducer<
                 return .none
             }
             
-        case .saveDataResponse(.success):
+        case .saveDataResponse(.success(let word)):
             state.isSheetPresented = false
             return .none
             
@@ -113,5 +115,4 @@ let manualWordAddingReducer = Reducer<
         }
     }
 )
-.debug()
 

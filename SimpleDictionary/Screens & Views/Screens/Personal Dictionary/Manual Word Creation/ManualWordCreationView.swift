@@ -30,7 +30,7 @@ struct ManualWordCreationView: View {
                     ZStack {
                         form(viewStore)
                         saveButton(in: proxy.size, viewStore)
-                            .ignoresSafeArea(.keyboard, edges: .bottom)
+                            .edgesIgnoringSafeArea(.bottom)
                             .alert(
                               store.scope(state: { $0.alert }),
                               dismiss: .alertDismissed
@@ -79,7 +79,7 @@ struct ManualWordCreationView: View {
             Button(action: { viewStore.send(.addDefinitionButtonTapped) }) {
                 Image(systemName: "plus")
                     .foregroundColor(.blue)
-                    .font(Font.headline.weight(.medium))
+                    .font(Font.title3.weight(.medium))
             }
             .buttonStyle(PlainButtonStyle())
             .disabled(viewStore.isAddButtonDisabled)

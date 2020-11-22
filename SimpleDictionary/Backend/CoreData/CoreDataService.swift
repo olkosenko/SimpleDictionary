@@ -17,7 +17,7 @@ final class CoreDataService {
         case wod
     }
     
-    private let context: NSManagedObjectContext
+    let context: NSManagedObjectContext
     
     init(context: NSManagedObjectContext) {
         self.context = context

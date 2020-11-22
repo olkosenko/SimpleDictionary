@@ -20,12 +20,6 @@ struct AppEnvironment {
     var mainQueue: AnySchedulerOf<DispatchQueue>
     var wodDataProdiver: WODDataProvider
     var personalDictionaryDataProvider: PersonalDictionaryDataProvider
-    
-//    static let live = Self(
-//        mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-//        wodDataProdiver: ,
-//        personalDictionaryDataProvider: <#T##PersonalDictionaryDataProvider#>
-//    )
 }
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
@@ -36,3 +30,18 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
             environment: { .init(mainQueue: $0.mainQueue,
                                  personalDictionaryDataProvider: $0.personalDictionaryDataProvider) })
 )
+
+#if DEBUG
+extension AppEnvironment {
+    static let debug: AppEnvironment = {
+        let dependencyManager = AppDependencyManager()
+        return AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
+                              wodDataProdiver: dependencyManager.wodDataProvider,
+                              personalDictionaryDataProvider: dependencyManager.personalDictionaryDataProvider)
+    }()
+}
+
+enum DebugStore {
+    static let store = Store(initialState: AppState(), reducer: appReducer, environment: AppEnvironment.debug)
+}
+#endif
