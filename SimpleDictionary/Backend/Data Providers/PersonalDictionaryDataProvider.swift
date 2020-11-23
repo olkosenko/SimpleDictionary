@@ -41,5 +41,9 @@ class PersonalDictionaryDataProvider {
     func deleteWords(_ words: [Word]) {
         coreDataService.deleteWords(words)
     }
+    
+    func saveChanges() {
+        coreDataService.context.saveIfNeeded()
+    }
 }
 

@@ -41,8 +41,19 @@ struct PersonalDictionaryView: View {
     private func form(_ viewStore: ViewStoreType) -> some View {
         Form {
             ForEach(viewStore.words, id: \.self) { word in
-                NavigationLink(destination: Text("\(word.title!)")) {
+                
+                NavigationLink(
+                    destination: IfLetStore(store.scope(state: { $0.selectionState },
+                                           action: PersonalDictionaryAction.wordDetails),
+                                          then: WordDetailsView.init,
+                                          else: Text("Hello")),
+                    tag: word,
+                    selection: viewStore.binding(
+                        get: { $0.selectionWord },
+                        send: PersonalDictionaryAction.setNavigation)) {
+                    
                     Text(word.title!)
+                    
                 }
                 .buttonStyle(PlainButtonStyle())
             }

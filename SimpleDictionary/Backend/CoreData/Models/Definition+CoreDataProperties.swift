@@ -15,15 +15,27 @@ extension Definition {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Definition> {
         return NSFetchRequest<Definition>(entityName: "Definition")
     }
-
+    
+    var normalizedPartOfSpeech: PartOfSpeech { partOfSpeech == nil ? .noun : PartOfSpeech(rawValue: partOfSpeech!) ?? .noun}
+    var normalizedTitle: String { title ?? "" }
+    var normalizedId: UUID { id ?? UUID() }
+    
     @NSManaged public var title: String?
     @NSManaged public var id: UUID?
     @NSManaged public var partOfSpeech: String?
     @NSManaged public var word: Word?
-
-    var partOfSpeechNormalized: PartOfSpeech? { partOfSpeech == nil ? nil : PartOfSpeech(rawValue: partOfSpeech!) }
 }
 
-extension Definition : Identifiable {
-
+extension Definition {
+    static let mockDefinitions: Set<Definition> = {
+        let definition1 = Definition()
+        let definition2 = Definition()
+        let definition3 = Definition()
+        
+        definition1.title = "Some text"
+        definition2.title = "Some more text"
+        definition3.title = "And finally something else"
+        
+        return Set([definition1, definition2, definition3])
+    }()
 }

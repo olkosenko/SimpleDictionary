@@ -16,8 +16,12 @@ extension Word {
         return NSFetchRequest<Word>(entityName: "Word")
     }
 
-    var unwrappedDate: Date {
-        date ?? Date()
+    var normalizedId: UUID { id ?? UUID() }
+    var normalizedDate: Date { date ?? Date() }
+    var normalizedTitle: String { title ?? "" }
+    var normalizedDefinitions: Set<Definition> {
+        guard let def = definitions, let set = def as? Set<Definition> else { return .init() }
+        return set
     }
     
     @NSManaged public var date: Date?
@@ -45,4 +49,13 @@ extension Word {
     @objc(removeDefinitions:)
     @NSManaged public func removeFromDefinitions(_ values: NSSet)
 
+}
+
+extension Word {
+    static let wordMock: Word = {
+        let word = Word()
+        word.title = "Milk"
+        Definition.mockDefinitions.forEach { word.addToDefinitions($0) }
+        return word
+    }()
 }

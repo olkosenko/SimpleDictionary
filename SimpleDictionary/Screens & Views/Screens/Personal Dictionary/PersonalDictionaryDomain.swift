@@ -11,18 +11,24 @@ import Combine
 
 struct PersonalDictionaryState: Equatable {
     var wordCreation =  ManualWordCreationState()
+    var selectionWord: Word?
+    var selectionState: WordDetailsState?
+    
     var words = [Word]()
     var isSheetPresented = false
 }
 
 enum PersonalDictionaryAction {
     case wordCreation(ManualWordCreationAction)
+    case wordDetails(WordDetailsAction)
     
     case onAppear
     case onDisappear
     case onWordsFetched(Result<[Word], Error>)
     
     case setSheet(Bool)
+    case setNavigation(selection: Word?)
+    
     case deleteWord(IndexSet)
 }
 
@@ -35,11 +41,18 @@ let personalDictionaryReducer = Reducer<
     PersonalDictionaryState, PersonalDictionaryAction, PersonalDictionaryEnvironment
 >.combine(
     manualWordAddingReducer
-        .pullback(
-            state: \.wordCreation,
-            action: /PersonalDictionaryAction.wordCreation,
-            environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
-        ),
+    .pullback(
+        state: \.wordCreation,
+        action: /PersonalDictionaryAction.wordCreation,
+        environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
+    ),
+    wordDetailsReducer
+    .optional()
+    .pullback(
+        state: \.selectionState,
+        action: /PersonalDictionaryAction.wordDetails,
+        environment: { _ in WordDetailsEnvironment(uuid: UUID.init) }
+    ),
     Reducer { state, action, environment in
         
         struct WordFetchId: Hashable {}
@@ -47,6 +60,9 @@ let personalDictionaryReducer = Reducer<
         switch action {
         
         case .wordCreation:
+            return .none
+            
+        case .wordDetails:
             return .none
             
         case .onAppear:
@@ -81,6 +97,24 @@ let personalDictionaryReducer = Reducer<
             environment.personalDictionaryDataProvider.deleteWords(wordsToDelete)
             return .none
             
+        case .setNavigation(selection: .some(let word)):
+            state.selectionWord = word
+            
+            let definitions = word.normalizedDefinitions.map { EditableDefinition(id: $0.normalizedId,
+                                                                                  title: $0.normalizedTitle,
+                                                                                  partOfSpeech: $0.normalizedPartOfSpeech)}
+            
+            state.selectionState = WordDetailsState(word: word.normalizedTitle,
+                                                    definitions: IdentifiedArrayOf(definitions))
+            return .none
+            
+        case .setNavigation(selection: .none):
+            
+            state.selectionWord = nil
+            state.selectionState = nil
+            return .none
+            
         }
+        
     }
 )
