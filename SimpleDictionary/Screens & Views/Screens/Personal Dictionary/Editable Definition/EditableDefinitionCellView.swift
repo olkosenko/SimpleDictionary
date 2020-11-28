@@ -14,10 +14,20 @@ struct EditableDefinitionCellView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             HStack {
-                TextArea("Enter your definition",
-                         text: viewStore.binding(get: { $0.title },
-                                                 send: EditableDefinitionAction.textFieldChanged)
+                TextArea("Enter your definition", text:
+                            viewStore.binding(get: { $0.title },
+                                              send: EditableDefinitionAction.textFieldChanged)
                 )
+                
+                Spacer()
+                
+                Text(viewStore.partOfSpeech.rawValue)
+                    .contextMenu {
+                        ForEach(PartOfSpeech.allCases) { partOfSpeech in
+                            Button(partOfSpeech.rawValue) { viewStore.send(.pickerValueChanged(partOfSpeech)) }
+                        }
+                    }
+                    .foregroundColor(.blue)
             }
         }
     }
@@ -35,6 +45,7 @@ fileprivate struct TextArea: View {
     
     var body: some View {
         TextEditor(text: $text)
+            .allowsTightening(true)
             .background(
                 HStack(alignment: .center) {
                     text.isBlank ? Text(placeholder) : Text("")

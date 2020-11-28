@@ -6,10 +6,21 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
-struct AppUserDefaults {
-    @UserDefault("count_WODs", defaultValue: 7)
-    static var countWODs: Int
+extension UserDefaults {
     
+    @objc var isDictionaryDateShown: Bool {
+        get {
+            return bool(forKey: "isDictionaryDateShown")
+        }
+        set {
+            set(newValue, forKey: "isDictionaryDateShown")
+        }
+    }
     
+    static func effectFor<Value>(_ keyPath: KeyPath<UserDefaults, Value>) -> Effect<Value, Never> {
+        UserDefaults.standard.publisher(for: keyPath).eraseToEffect()
+    }
 }
+

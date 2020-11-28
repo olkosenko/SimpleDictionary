@@ -29,12 +29,16 @@ class PersonalDictionaryDataProvider {
     init(coreDataService: CoreDataService) {
         self.coreDataService = coreDataService
     }
-    
+
     func fetchWords() -> Effect<[Word], Error> {
         return coreDataService.fetchWords(ofType: .casual)
     }
     
-    func saveWord(title: String, definitions: [PartOfSpeech : [String]]) -> Effect<Word, Error> {
+    func insertWord(title: String, definitions: [PartOfSpeech : [String]]) -> Effect<Word, Error> {
+        return coreDataService.addWord(ofType: .casual, title: title, date: Date(), definitions: definitions)
+    }
+    
+    func insertWord(title: String, definitions: [Definition]) -> Effect<Word, Error> {
         return coreDataService.addWord(ofType: .casual, title: title, date: Date(), definitions: definitions)
     }
     
@@ -42,8 +46,57 @@ class PersonalDictionaryDataProvider {
         coreDataService.deleteWords(words)
     }
     
-    func saveChanges() {
-        coreDataService.context.saveIfNeeded()
+    func deleteDefinitions(_ definitions: [Definition]) {
+        coreDataService.context.writeAsync { context in
+            definitions.forEach { definition in
+                context.delete(definition)
+            }
+        }
+    }
+    
+    func handleWordStateChanges(for word: Word, editableDefinitions: [EditableDefinition]) {
+            coreDataService.context.writeAsync { context in
+                
+                /// Remove
+                word.normalizedDefinitions.forEach { definition in
+                    if editableDefinitions.first(where: { $0.id == definition.id }) == nil {
+                        context.delete(definition)
+                    }
+                }
+                
+                /// Insert & Update
+                editableDefinitions.forEach { definition in
+                    if let foundDefinition = word.normalizedDefinitions.first(where: { $0.id == definition.id }) {
+                        if definition.title.isEmpty {
+                            self.deleteDefinitions([foundDefinition])
+                        } else {
+                            foundDefinition.title = definition.title
+                            foundDefinition.normalizedPartOfSpeech = definition.partOfSpeech
+                        }
+                    } else if definition.title.isNotEmpty {
+                        let newDefinition = self.insertNewDefinition()
+                        newDefinition.id = definition.id
+                        newDefinition.title = definition.title
+                        newDefinition.normalizedPartOfSpeech = definition.partOfSpeech
+                        word.addToDefinitions(newDefinition)
+                    }
+                }
+            }
+    }
+    
+    func insertNewDefinition() -> Definition {
+        let newDefinition = Definition(context: coreDataService.context)
+        newDefinition.title = ""
+        newDefinition.normalizedPartOfSpeech = .noun
+        return newDefinition
+    }
+    
+    func saveChanges() -> Effect<Bool, Never> {
+        Future { [weak self] promise in
+            let result = self?.coreDataService.context.saveIfNeeded()
+            promise(.success(result ?? false))
+        }
+        .eraseToEffect()
     }
 }
 

@@ -47,6 +47,8 @@
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
 		1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */; };
 		1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDB2255E1D37008211A3 /* CoreDataStore.swift */; };
+		107FAF7E25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */; };
+		107FAF8425731001004EEDE8 /* PersonalDictionarySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */; };
 		1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */; };
 		109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727112506790100217C63 /* SimpleDictionaryApp.swift */; };
 		109727142506790100217C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727132506790100217C63 /* ContentView.swift */; };
@@ -123,6 +125,8 @@
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
 		1066FDAE255E1D0E008211A3 /* DictionaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryModel.xcdatamodel; sourceTree = "<group>"; };
 		1066FDB2255E1D37008211A3 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionarySettingsDomain.swift; sourceTree = "<group>"; };
+		107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionarySettingsView.swift; sourceTree = "<group>"; };
 		1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultEntryView.swift; sourceTree = "<group>"; };
 		1097270E2506790100217C63 /* SimpleDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109727112506790100217C63 /* SimpleDictionaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryApp.swift; sourceTree = "<group>"; };
@@ -270,6 +274,24 @@
 				1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		107FAF742572A02F004EEDE8 /* Editable Definition */ = {
+			isa = PBXGroup;
+			children = (
+				105136B02568033B009B824A /* EditableDefinitionCellView.swift */,
+				105136B4256803E4009B824A /* EditableDefinitionCellDomain.swift */,
+			);
+			path = "Editable Definition";
+			sourceTree = "<group>";
+		};
+		107FAF7C25730E6D004EEDE8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */,
+				107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		109727052506790100217C63 = {
@@ -438,8 +460,8 @@
 			children = (
 				10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */,
 				105136BC25683686009B824A /* PersonalDictionaryDomain.swift */,
-				105136B02568033B009B824A /* EditableDefinitionCellView.swift */,
-				105136B4256803E4009B824A /* EditableDefinitionCellDomain.swift */,
+				107FAF7C25730E6D004EEDE8 /* Settings */,
+				107FAF742572A02F004EEDE8 /* Editable Definition */,
 				10979015256B2C6B008AEEB8 /* Word Details */,
 				105136A92567F717009B824A /* Manual Word Creation */,
 			);
@@ -619,6 +641,7 @@
 				1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */,
 				1024296F25461968005EA1C3 /* SearchField.swift in Sources */,
 				1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */,
+				107FAF8425731001004EEDE8 /* PersonalDictionarySettingsView.swift in Sources */,
 				10668B8825606EC200119BDA /* Definition+CoreDataClass.swift in Sources */,
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
@@ -626,6 +649,7 @@
 				10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */,
 				10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
+				107FAF7E25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift in Sources */,
 				104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
 				10241417254F935200D8D2A8 /* Endpoint.swift in Sources */,

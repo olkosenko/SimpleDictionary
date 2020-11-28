@@ -16,7 +16,14 @@ extension Definition {
         return NSFetchRequest<Definition>(entityName: "Definition")
     }
     
-    var normalizedPartOfSpeech: PartOfSpeech { partOfSpeech == nil ? .noun : PartOfSpeech(rawValue: partOfSpeech!) ?? .noun}
+    var normalizedPartOfSpeech: PartOfSpeech {
+        get {
+            partOfSpeech == nil ? .noun : PartOfSpeech(rawValue: partOfSpeech!) ?? .noun
+        }
+        set {
+            partOfSpeech = newValue.rawValue
+        }
+    }
     var normalizedTitle: String { title ?? "" }
     var normalizedId: UUID { id ?? UUID() }
     

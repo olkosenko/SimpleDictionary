@@ -55,6 +55,29 @@ final class CoreDataService {
         
     }
     
+    @discardableResult
+    func addWord(
+        ofType wordType: WordType = .casual,
+        title: String,
+        phoneticSpelling: String? = nil,
+        date: Date = Date(),
+        soundURL: URL? = nil,
+        definitions: [Definition]
+    ) -> Effect<Word, Error> {
+        
+        wrapInEffectAndContext { context in
+            let newWord = Word(context: context)
+            newWord.id = UUID()
+            newWord.title = title
+            newWord.phoneticSpelling = phoneticSpelling
+            newWord.date = date
+            newWord.isWOD = wordType == .wod ? true : false
+            newWord.addToDefinitions(NSSet(array: definitions))
+            return .success(newWord)
+        }
+        
+    }
+    
     func deleteWords(
         _ words: [Word]
     ) {

@@ -10,8 +10,16 @@ import ComposableArchitecture
 
 struct EditableDefinition: Equatable, Identifiable {
     let id: UUID
-    var title = ""
-    var partOfSpeech: PartOfSpeech = .noun
+    var title: String
+    var partOfSpeech: PartOfSpeech
+    
+    init(id: UUID, title: String = "", partOfSpeech: PartOfSpeech = .noun) {
+        self.id = id
+        self.title = title
+        self.partOfSpeech = partOfSpeech
+    }
+    
+    var isTitleEmpty: Bool { title.isEmpty }
 }
 
 enum EditableDefinitionAction: Equatable {
@@ -22,16 +30,16 @@ enum EditableDefinitionAction: Equatable {
 struct EditableDefinitionEnviroment {}
 
 let editableDefinitionReducer = Reducer<EditableDefinition, EditableDefinitionAction, EditableDefinitionEnviroment> {
-    definition, action, _ in
+    state, action, _ in
     
     switch action {
     
     case .textFieldChanged(let newTitle):
-        definition.title = newTitle
+        state.title = newTitle
         return .none
         
     case .pickerValueChanged(let newPartOfSpeech):
-        definition.partOfSpeech = newPartOfSpeech
+        state.partOfSpeech = newPartOfSpeech
         return.none
     }
 }

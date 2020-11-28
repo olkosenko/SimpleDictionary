@@ -14,6 +14,5 @@ class Definition: NSManagedObject {
     
     public override func awakeFromInsert() {
         super.awakeFromInsert()
-        id = UUID()
     }
 }

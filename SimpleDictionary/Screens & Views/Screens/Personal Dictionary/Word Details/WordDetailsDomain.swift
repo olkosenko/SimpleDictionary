@@ -10,11 +10,11 @@ import ComposableArchitecture
 
 
 struct WordDetailsState: Equatable {
-    var word: String
+    let title: String
     var definitions: IdentifiedArrayOf<EditableDefinition>
     
     var isAddButtonDisabled: Bool {
-        definitions.first?.title.isEmpty ?? false
+        definitions.first?.isTitleEmpty ?? false
     }
 }
 
@@ -26,6 +26,7 @@ enum WordDetailsAction {
 }
 
 struct WordDetailsEnvironment {
+    let dataProvider: PersonalDictionaryDataProvider
     let uuid: () -> UUID
 }
 
@@ -51,7 +52,7 @@ let wordDetailsReducer = Reducer<
             
         case .definition:
             return .none
-            
+                
         }
     }
 )

@@ -14,8 +14,13 @@ struct WordDetailsView: View {
     
     var body: some View {
         WithViewStore(store) { viewStore in
-            form(viewStore)
-            .navigationTitle(viewStore.word)
+            ZStack {
+                form(viewStore)
+                    .navigationTitle(viewStore.title)
+                if viewStore.definitions.isEmpty {
+                    emptyState(viewStore)
+                }
+            }
         }
     }
     
@@ -43,6 +48,18 @@ struct WordDetailsView: View {
             }
             .buttonStyle(PlainButtonStyle())
             .disabled(viewStore.isAddButtonDisabled)
+        }
+    }
+    
+    private func emptyState(_ viewStore: ViewStoreType) -> some View {
+        VStack(spacing: 8) {
+            Image(systemName: "text.badge.plus")
+                .font(.title)
+            Text("Your word does not have any definitions")
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+            Button("Add Definition") {viewStore.send(.addDefinitionButtonTapped) }
+                .foregroundColor(.blue)
         }
     }
 }

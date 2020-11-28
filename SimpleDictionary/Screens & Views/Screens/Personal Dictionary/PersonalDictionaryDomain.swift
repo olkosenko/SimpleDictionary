@@ -10,23 +10,30 @@ import ComposableArchitecture
 import Combine
 
 struct PersonalDictionaryState: Equatable {
-    var wordCreation =  ManualWordCreationState()
+    var wordCreation = ManualWordCreationState()
+    var isWordCreationSheetPresented = false
+    
     var selectionWord: Word?
     var selectionState: WordDetailsState?
     
+    var settings = PersonalDictionarySettingsState(showDate: false)
+    var isSettingsSheetPresented = false
+    var isDictionaryDateShown: Bool = false
+    
     var words = [Word]()
-    var isSheetPresented = false
 }
 
 enum PersonalDictionaryAction {
     case wordCreation(ManualWordCreationAction)
     case wordDetails(WordDetailsAction)
+    case settings(PersonalDictionarySettingsAction)
     
     case onAppear
     case onDisappear
     case onWordsFetched(Result<[Word], Error>)
     
-    case setSheet(Bool)
+    case setWordCreationSheet(Bool)
+    case setSettingsSheet(Bool)
     case setNavigation(selection: Word?)
     
     case deleteWord(IndexSet)
@@ -46,12 +53,19 @@ let personalDictionaryReducer = Reducer<
         action: /PersonalDictionaryAction.wordCreation,
         environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
     ),
+    personalDictionarySettingsReducer
+    .pullback(
+        state: \.settings,
+        action: /PersonalDictionaryAction.settings,
+        environment: { _ in .init()}
+    ),
+    
     wordDetailsReducer
     .optional()
     .pullback(
         state: \.selectionState,
         action: /PersonalDictionaryAction.wordDetails,
-        environment: { _ in WordDetailsEnvironment(uuid: UUID.init) }
+        environment: { WordDetailsEnvironment(dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
     ),
     Reducer { state, action, environment in
         
@@ -65,31 +79,44 @@ let personalDictionaryReducer = Reducer<
         case .wordDetails:
             return .none
             
+        case .settings(let settingsAction):
+            switch settingsAction {
+            case .toggleChange(isOn: let newValue):
+                state.isDictionaryDateShown = newValue
+            }
+            return .none
+            
         case .onAppear:
+            state.isDictionaryDateShown = UserDefaults.standard.isDictionaryDateShown
+            state.settings.showDate = state.isDictionaryDateShown
             return environment.personalDictionaryDataProvider.wordsPublisher
                 .subscribe(on: DispatchQueue.global())
                 .receive(on: environment.mainQueue)
                 .catchToEffect()
                 .map(PersonalDictionaryAction.onWordsFetched)
                 .cancellable(id: WordFetchId())
-            
+                
         case .onDisappear:
             return .cancel(id: WordFetchId())
             
         case .onWordsFetched(.success(let words)):
-            state.words = words
+            state.words = words.sorted(by: { $0.normalizedTitle < $1.normalizedTitle })
             return .none
             
         case .onWordsFetched(.failure):
             return .none
             
-        case .setSheet(true):
-            state.isSheetPresented = true
+        case .setWordCreationSheet(true):
+            state.isWordCreationSheetPresented = true
             state.wordCreation = ManualWordCreationState()
             return .none
             
-        case .setSheet(false):
-            state.isSheetPresented = false
+        case .setWordCreationSheet(false):
+            state.isWordCreationSheetPresented = false
+            return .none
+            
+        case .setSettingsSheet(let newValue):
+            state.isSettingsSheetPresented = newValue
             return .none
             
         case .deleteWord(let indexSet):
@@ -98,23 +125,36 @@ let personalDictionaryReducer = Reducer<
             return .none
             
         case .setNavigation(selection: .some(let word)):
+            let definitions = word.normalizedDefinitions.sorted { w1, w2 in
+                w1.normalizedTitle < w2.normalizedTitle
+            }
+            .map {
+                EditableDefinition(id: $0.normalizedId,
+                                   title: $0.normalizedTitle,
+                                   partOfSpeech: $0.normalizedPartOfSpeech) }
+            
             state.selectionWord = word
-            
-            let definitions = word.normalizedDefinitions.map { EditableDefinition(id: $0.normalizedId,
-                                                                                  title: $0.normalizedTitle,
-                                                                                  partOfSpeech: $0.normalizedPartOfSpeech)}
-            
-            state.selectionState = WordDetailsState(word: word.normalizedTitle,
+            state.selectionState = WordDetailsState(title: word.normalizedTitle,
                                                     definitions: IdentifiedArrayOf(definitions))
+            
             return .none
             
         case .setNavigation(selection: .none):
+            guard let word = state.selectionWord, let definitions = state.selectionState?.definitions else {
+                return .none
+            }
             
+            let editableDefinitions = Array(definitions)
             state.selectionWord = nil
             state.selectionState = nil
-            return .none
+            
+            return .fireAndForget {
+                environment.personalDictionaryDataProvider
+                    .handleWordStateChanges(for: word, editableDefinitions: editableDefinitions)
+            }
             
         }
         
     }
 )
+

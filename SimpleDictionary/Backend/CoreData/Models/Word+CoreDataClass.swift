@@ -13,6 +13,5 @@ import CoreData
 class Word: NSManagedObject {
     override public func awakeFromInsert() {
         super.awakeFromInsert()
-        id = UUID()
     }
 }

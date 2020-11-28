@@ -14,7 +14,7 @@ struct ManualWordCreationState: Equatable {
     var isSheetPresented = true
     var definitions = IdentifiedArrayOf<EditableDefinition>()
     var isAddButtonDisabled: Bool {
-        definitions.first?.title.isEmpty ?? false
+        definitions.first?.isTitleEmpty ?? false
     }
     
     var alert: AlertState<ManualWordCreationAction>?
@@ -61,18 +61,20 @@ let manualWordAddingReducer = Reducer<
         switch action {
         
         case .onAppear:
-            state.definitions.append(.init(id: environment.uuid(), title: "", partOfSpeech: .noun))
+            if state.definitions.isEmpty {
+                state.definitions.append(.init(id: environment.uuid(), title: "", partOfSpeech: .noun))
+            }
             return .none
         
         case .wordChanged(let newWord):
             state.title = newWord
             return .none
             
-        case .definition:
+        case let .definition(id, definitionAction):
             return .none
             
         case .addDefinitionButtonTapped:
-            state.definitions.insert(.init(id: environment.uuid()), at: 0)
+            state.definitions.insert(.init(id: environment.uuid(), title: "", partOfSpeech: .noun), at: 0)
             return .none
             
         case .removeDefinition(let indexSet):
@@ -82,18 +84,16 @@ let manualWordAddingReducer = Reducer<
         case .saveData:
             if state.title.isNotEmpty {
                 
-                var definitions = [PartOfSpeech : [String]]()
-                state.definitions.forEach { definition in
-                    guard definition.title.isNotEmpty else { return }
+                let definitions = state.definitions.compactMap { editableDefinition -> Definition? in
+                    guard editableDefinition.title.isNotEmpty else { return nil }
                     
-                    if definitions[definition.partOfSpeech] != nil {
-                        definitions[definition.partOfSpeech]!.append(definition.title)
-                    } else {
-                        definitions[definition.partOfSpeech] = [definition.title]
-                    }
+                    let defintion = environment.dataProvider.insertNewDefinition()
+                    defintion.title = editableDefinition.title
+                    defintion.normalizedPartOfSpeech = editableDefinition.partOfSpeech
+                    return defintion
                 }
                 
-                return environment.dataProvider.saveWord(title: state.title, definitions: definitions)
+                return environment.dataProvider.insertWord(title: state.title, definitions: definitions)
                     .receive(on: environment.mainQueue)
                     .catchToEffect()
                     .map(ManualWordCreationAction.saveDataResponse)

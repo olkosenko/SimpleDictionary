@@ -115,17 +115,3 @@ struct ManualWordCreationView: View {
     }
 }
 
-//struct ManualWordCreationViewView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ManualWordCreationView(
-//        store: Store(
-//            initialState: ManualWordCreationState(),
-//            reducer: manualWordAddingReducer,
-//            environment: ManualWordCreationEnvironment(
-//                mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-//                uuid: UUID.init,
-//                dataProvider: PersonalDictionaryDataProvider(apiService: APIService(),
-//                                                             coreDataService: CoreDataService())))
-//        )
-//    }
-//}
