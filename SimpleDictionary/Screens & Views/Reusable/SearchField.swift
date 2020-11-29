@@ -17,9 +17,9 @@ struct SearchField: View {
     var body: some View {
         HStack {
             searchBar
-            .padding(10)
-            .background(RoundedRectangle(cornerRadius: 5.0)
-                            .foregroundColor(Color.gray.opacity(0.2)))
+                .padding(10)
+                .background(RoundedRectangle(cornerRadius: 5.0)
+                                .foregroundColor(Color.gray.opacity(0.2)))
             if isEditing {
                 Button {
                     isEditing = false
@@ -56,11 +56,11 @@ struct SearchField: View {
     }
 }
 
-struct SearchView_Previews: PreviewProvider {
+struct SearchField_Previews: PreviewProvider {
     static var previews: some View {
         return SearchField(searchText: .constant(""),
-                          isEditing: .constant(false),
-                   placeholder: "Hello")
+                           isEditing: .constant(false),
+                           placeholder: "Hello")
             .padding()
     }
 }

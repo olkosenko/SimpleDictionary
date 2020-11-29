@@ -15,7 +15,7 @@ struct ContentView: View {
         WithViewStore(store) { viewStore in
             TabView {
                 
-                DictionaryView()
+                SearchView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                         Text("Search")

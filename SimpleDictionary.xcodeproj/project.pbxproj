@@ -49,6 +49,8 @@
 		107FAF8C25731D8D004EEDE8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */; };
 		107FAF902573216E004EEDE8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8F2573216E004EEDE8 /* ColorExtension.swift */; };
 		107FAF9C25732479004EEDE8 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF9B25732479004EEDE8 /* UserDefaultsExtension.swift */; };
+		107FAFA525733A2A004EEDE8 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAFA425733A2A004EEDE8 /* SearchView.swift */; };
+		107FAFBC25734352004EEDE8 /* CardDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAFBB25734352004EEDE8 /* CardDomain.swift */; };
 		1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */; };
 		109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727112506790100217C63 /* SimpleDictionaryApp.swift */; };
 		109727142506790100217C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727132506790100217C63 /* ContentView.swift */; };
@@ -65,7 +67,6 @@
 		109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727362506A7E800217C63 /* OXFHeadwordEntry.swift */; };
 		109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* OXFLexicalEntry.swift */; };
 		1097273E2506AF1800217C63 /* DictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097273D2506AF1800217C63 /* DictionaryViewModel.swift */; };
-		109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727442506E01800217C63 /* DictionaryEntryView.swift */; };
 		10979017256B2C93008AEEB8 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10979016256B2C93008AEEB8 /* WordDetailsView.swift */; };
 		1097901D256B2E4A008AEEB8 /* WordDetailsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097901C256B2E4A008AEEB8 /* WordDetailsDomain.swift */; };
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
@@ -127,6 +128,8 @@
 		107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		107FAF8F2573216E004EEDE8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		107FAF9B25732479004EEDE8 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		107FAFA425733A2A004EEDE8 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		107FAFBB25734352004EEDE8 /* CardDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDomain.swift; sourceTree = "<group>"; };
 		1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultEntryView.swift; sourceTree = "<group>"; };
 		1097270E2506790100217C63 /* SimpleDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109727112506790100217C63 /* SimpleDictionaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryApp.swift; sourceTree = "<group>"; };
@@ -145,7 +148,6 @@
 		109727362506A7E800217C63 /* OXFHeadwordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFHeadwordEntry.swift; sourceTree = "<group>"; };
 		109727382506A86000217C63 /* OXFLexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFLexicalEntry.swift; sourceTree = "<group>"; };
 		1097273D2506AF1800217C63 /* DictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewModel.swift; sourceTree = "<group>"; };
-		109727442506E01800217C63 /* DictionaryEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEntryView.swift; sourceTree = "<group>"; };
 		10979016256B2C93008AEEB8 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 		1097901C256B2E4A008AEEB8 /* WordDetailsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsDomain.swift; sourceTree = "<group>"; };
 		10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryView.swift; sourceTree = "<group>"; };
@@ -293,6 +295,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		107FAFBA2573432F004EEDE8 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
+				107FAFBB25734352004EEDE8 /* CardDomain.swift */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
 		109727052506790100217C63 = {
 			isa = PBXGroup;
 			children = (
@@ -314,13 +325,12 @@
 		109727102506790100217C63 /* SimpleDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				107FAFA125732507004EEDE8 /* Settings */,
 				109727462506E0BE00217C63 /* App Lifecycle */,
 				1097272425067D6F00217C63 /* Backend */,
-				1097274A2507CFC100217C63 /* Reusable Components */,
 				1097273F2506DF7500217C63 /* Screens & Views */,
 				10E19DB7250816AE0061CF6B /* Extensions */,
 				105136DC2569957D009B824A /* Resources */,
+				107FAFA125732507004EEDE8 /* Settings */,
 				109727172506790400217C63 /* Preview Content */,
 			);
 			path = SimpleDictionary;
@@ -370,8 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				109727472506E0E200217C63 /* Main */,
-				109727432506DFDA00217C63 /* Views */,
 				109727412506DFC300217C63 /* Screens */,
+				1097274A2507CFC100217C63 /* Reusable */,
 			);
 			path = "Screens & Views";
 			sourceTree = "<group>";
@@ -379,9 +389,11 @@
 		109727402506DF9E00217C63 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				107FAFA425733A2A004EEDE8 /* SearchView.swift */,
+				1066FD97255E1317008211A3 /* SearchDomain.swift */,
+				10B87B34254E478F009143EE /* Search Results */,
 				1097273D2506AF1800217C63 /* DictionaryViewModel.swift */,
 				10972720250679CD00217C63 /* DictionaryView.swift */,
-				1066FD97255E1317008211A3 /* SearchDomain.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -390,7 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				10B5E1C12565F59300081ED8 /* Personal Dictionary */,
-				10B87B34254E478F009143EE /* Search Results */,
 				109727422506DFCE00217C63 /* Game */,
 				109727402506DF9E00217C63 /* Search */,
 			);
@@ -403,16 +414,6 @@
 				1097272225067A9C00217C63 /* HistoryView.swift */,
 			);
 			path = Game;
-			sourceTree = "<group>";
-		};
-		109727432506DFDA00217C63 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				109727442506E01800217C63 /* DictionaryEntryView.swift */,
-				104E38852551CE1B00ECCBD5 /* ProgressView.swift */,
-				104E388F2553280000ECCBD5 /* CirclesView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		109727462506E0BE00217C63 /* App Lifecycle */ = {
@@ -433,15 +434,17 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		1097274A2507CFC100217C63 /* Reusable Components */ = {
+		1097274A2507CFC100217C63 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
-				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
+				107FAFBA2573432F004EEDE8 /* Card */,
+				104E388F2553280000ECCBD5 /* CirclesView.swift */,
+				104E38852551CE1B00ECCBD5 /* ProgressView.swift */,
 				1024296E25461968005EA1C3 /* SearchField.swift */,
 				10B5E1C825660DD300081ED8 /* DictionaryButton.swift */,
 				107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */,
 			);
-			path = "Reusable Components";
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		10979015256B2C6B008AEEB8 /* Word Details */ = {
@@ -621,6 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */,
+				107FAFA525733A2A004EEDE8 /* SearchView.swift in Sources */,
 				10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */,
 				107FAF9C25732479004EEDE8 /* UserDefaultsExtension.swift in Sources */,
 				105136AB2567F73B009B824A /* ManualWordCreationDomain.swift in Sources */,
@@ -628,6 +632,7 @@
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */,
 				109727282506880B00217C63 /* APIProvider.swift in Sources */,
+				107FAFBC25734352004EEDE8 /* CardDomain.swift in Sources */,
 				105136B12568033B009B824A /* EditableDefinitionCellView.swift in Sources */,
 				1097272625067DAC00217C63 /* APIService.swift in Sources */,
 				103398A42522942500A71355 /* CollectionExtension.swift in Sources */,
@@ -635,7 +640,6 @@
 				10979017256B2C93008AEEB8 /* WordDetailsView.swift in Sources */,
 				105136D925688B69009B824A /* AppDomain.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
-				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
 				10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */,
 				10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */,
 				1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */,
@@ -853,7 +857,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SimpleDictionary/SimpleDictionary.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimpleDictionary/Settings/SimpleDictionary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleDictionary/Preview Content\"";
 				DEVELOPMENT_TEAM = Q37SD6L72Z;
@@ -877,7 +881,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SimpleDictionary/SimpleDictionary.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimpleDictionary/Settings/SimpleDictionary.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleDictionary/Preview Content\"";
 				DEVELOPMENT_TEAM = Q37SD6L72Z;
