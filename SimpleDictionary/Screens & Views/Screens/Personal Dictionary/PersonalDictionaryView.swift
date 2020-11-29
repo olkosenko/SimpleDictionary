@@ -22,11 +22,23 @@ struct PersonalDictionaryView: View {
             WithViewStore(store) { viewStore in
                 GeometryReader { proxy in
                     
-                    ZStack {
-                        form(viewStore)
-                        addWordButton(in: proxy.size, viewStore)
-                        if viewStore.words.isEmpty {
-                            emptyState
+                    if viewStore.isActivityIndicatorVisible {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                Spacer()
+                                ActivityIndicator()
+                                Spacer()
+                            }
+                            Spacer()
+                        }
+                    } else {
+                        ZStack {
+                            form(viewStore)
+                            addWordButton(in: proxy.size, viewStore)
+                            if viewStore.words.isEmpty {
+                                emptyState
+                            }
                         }
                     }
                     
@@ -36,6 +48,8 @@ struct PersonalDictionaryView: View {
                 .navigationBarItems(trailing: settingsButton(viewStore))
             }
             .navigationTitle("Dictionary")
+            .background(Color.appBackground)
+            .edgesIgnoringSafeArea(.top) /// Makes background color affect status bar
         }
     }
     
@@ -119,18 +133,5 @@ struct PersonalDictionaryView: View {
         let heightOffset = size.height / 2 - Const.buttonSize / 2 - bottomPadding
         
         return CGSize(width: 0, height: heightOffset)
-    }
-}
-
-struct PersonalDictionaryView_Previews: PreviewProvider {
-    static var previews: some View {
-        PersonalDictionaryView(store:
-            Store(initialState: PersonalDictionaryState(),
-                  reducer: personalDictionaryReducer,
-                  environment: PersonalDictionaryEnvironment(
-                    mainQueue: AppEnvironment.debug.mainQueue,
-                    personalDictionaryDataProvider:
-                        AppEnvironment.debug.personalDictionaryDataProvider))
-            )
     }
 }

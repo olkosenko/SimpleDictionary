@@ -21,6 +21,7 @@ struct PersonalDictionaryState: Equatable {
     var isDictionaryDateShown: Bool = false
     
     var words = [Word]()
+    var isActivityIndicatorVisible = true
 }
 
 enum PersonalDictionaryAction {
@@ -91,6 +92,7 @@ let personalDictionaryReducer = Reducer<
             state.settings.showDate = state.isDictionaryDateShown
             return environment.personalDictionaryDataProvider.wordsPublisher
                 .subscribe(on: DispatchQueue.global())
+                .delay(for: .seconds(0.3), scheduler: environment.mainQueue)
                 .receive(on: environment.mainQueue)
                 .catchToEffect()
                 .map(PersonalDictionaryAction.onWordsFetched)
@@ -101,6 +103,7 @@ let personalDictionaryReducer = Reducer<
             
         case .onWordsFetched(.success(let words)):
             state.words = words.sorted(by: { $0.normalizedTitle < $1.normalizedTitle })
+            state.isActivityIndicatorVisible = false
             return .none
             
         case .onWordsFetched(.failure):
@@ -157,4 +160,3 @@ let personalDictionaryReducer = Reducer<
         
     }
 )
-

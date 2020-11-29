@@ -20,7 +20,7 @@ struct SimpleDictionaryApp: App {
                     reducer: appReducer,
                     environment: AppEnvironment(
                         mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                        wodDataProdiver: appDelegate.dependencyManager.wodDataProvider,
+                        wodDataProvider: appDelegate.dependencyManager.wodDataProvider,
                         personalDictionaryDataProvider: appDelegate.dependencyManager.personalDictionaryDataProvider)))
         }
     }
@@ -35,10 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         
+        configureUserDefaults()
+        configureAppearance()
+        
+        return true
+    }
+    
+    private func configureUserDefaults() {
         UserDefaults.standard.register(defaults: [
             "isDictionaryDateShown": false
         ])
-        
-        return true
+    }
+    
+    private func configureAppearance() {
+        UINavigationBar.appearance().backgroundColor = UIColor(Color.appBackground)
     }
 }

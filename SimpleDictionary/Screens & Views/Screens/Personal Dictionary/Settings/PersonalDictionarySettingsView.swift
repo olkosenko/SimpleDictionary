@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct PersonalDictionarySettingsView: View {
     let store: Store<PersonalDictionarySettingsState, PersonalDictionarySettingsAction>
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -25,6 +26,8 @@ struct PersonalDictionarySettingsView: View {
                         }
                     }
                 }
+                .navigationBarItems(trailing: Button("Done",
+                                                     action: { presentationMode.wrappedValue.dismiss() }))
                 .navigationBarTitle("Settings",
                                     displayMode: .inline)
             }

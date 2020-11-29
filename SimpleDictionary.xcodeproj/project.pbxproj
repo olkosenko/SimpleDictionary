@@ -10,16 +10,15 @@
 		10241417254F935200D8D2A8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10241416254F935200D8D2A8 /* Endpoint.swift */; };
 		1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024141D255063E500D8D2A8 /* UrbanEntry.swift */; };
 		1024296F25461968005EA1C3 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024296E25461968005EA1C3 /* SearchField.swift */; };
-		103398A42522942500A71355 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103398A32522942500A71355 /* Collection.swift */; };
+		103398A42522942500A71355 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103398A32522942500A71355 /* CollectionExtension.swift */; };
 		104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB325088C5C00E5F9D8 /* CardView.swift */; };
-		104D5CB62508938C00E5F9D8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104D5CB52508938C00E5F9D8 /* Color.swift */; };
 		104E386425506A1D00ECCBD5 /* SimpleDictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E386325506A1D00ECCBD5 /* SimpleDictionaryTests.swift */; };
 		104E386E25506A4800ECCBD5 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E386D25506A4800ECCBD5 /* APIServiceTests.swift */; };
 		104E387125508E2500ECCBD5 /* UrbanEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1024141D255063E500D8D2A8 /* UrbanEntry.swift */; };
 		104E387425508F1F00ECCBD5 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272525067DAC00217C63 /* APIService.swift */; };
 		104E387725508F3400ECCBD5 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727272506880B00217C63 /* APIProvider.swift */; };
 		104E387A25508F4400ECCBD5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10241416254F935200D8D2A8 /* Endpoint.swift */; };
-		104E387E2550AC9700ECCBD5 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E387D2550AC9700ECCBD5 /* Date.swift */; };
+		104E387E2550AC9700ECCBD5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E387D2550AC9700ECCBD5 /* DateExtension.swift */; };
 		104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38812550FC2700ECCBD5 /* WordnikWOD.swift */; };
 		104E38862551CE1B00ECCBD5 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E38852551CE1B00ECCBD5 /* ProgressView.swift */; };
 		104E38902553280000ECCBD5 /* CirclesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104E388F2553280000ECCBD5 /* CirclesView.swift */; };
@@ -34,14 +33,12 @@
 		105136DE256995A2009B824A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 105136DD256995A2009B824A /* Colors.xcassets */; };
 		105136E42569985C009B824A /* AppDependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136E32569985C009B824A /* AppDependencyManager.swift */; };
 		105136ED2569BB18009B824A /* CoreDataPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105136EC2569BB18009B824A /* CoreDataPublisher.swift */; };
-		10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContext.swift */; };
+		10668B6F255F34F300119BDA /* ManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B6E255F34F300119BDA /* ManagedObjectContextExtension.swift */; };
 		10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B76255F7DC600119BDA /* CoreDataService.swift */; };
 		10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8225606EC200119BDA /* Word+CoreDataClass.swift */; };
 		10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8325606EC200119BDA /* Word+CoreDataProperties.swift */; };
 		10668B8825606EC200119BDA /* Definition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8425606EC200119BDA /* Definition+CoreDataClass.swift */; };
 		10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */; };
-		10668B992560711E00119BDA /* AppUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B982560711E00119BDA /* AppUserDefaults.swift */; };
-		10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */; };
 		10668BA12560752700119BDA /* WODDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10668BA02560752700119BDA /* WODDataProvider.swift */; };
 		1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FD97255E1317008211A3 /* SearchDomain.swift */; };
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
@@ -49,6 +46,9 @@
 		1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDB2255E1D37008211A3 /* CoreDataStore.swift */; };
 		107FAF7E25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */; };
 		107FAF8425731001004EEDE8 /* PersonalDictionarySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */; };
+		107FAF8C25731D8D004EEDE8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */; };
+		107FAF902573216E004EEDE8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8F2573216E004EEDE8 /* ColorExtension.swift */; };
+		107FAF9C25732479004EEDE8 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF9B25732479004EEDE8 /* UserDefaultsExtension.swift */; };
 		1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */; };
 		109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727112506790100217C63 /* SimpleDictionaryApp.swift */; };
 		109727142506790100217C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727132506790100217C63 /* ContentView.swift */; };
@@ -72,7 +72,7 @@
 		10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */; };
 		10B5E1C925660DD300081ED8 /* DictionaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C825660DD300081ED8 /* DictionaryButton.swift */; };
 		10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B87B35254E47AB009143EE /* SearchResultsView.swift */; };
-		10E19DB9250816C80061CF6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* String.swift */; };
+		10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,14 +90,13 @@
 		10241416254F935200D8D2A8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		1024141D255063E500D8D2A8 /* UrbanEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanEntry.swift; sourceTree = "<group>"; };
 		1024296E25461968005EA1C3 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
-		103398A32522942500A71355 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		103398A32522942500A71355 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		104D5CB325088C5C00E5F9D8 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		104D5CB52508938C00E5F9D8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		104E386125506A1D00ECCBD5 /* SimpleDictionaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleDictionaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		104E386325506A1D00ECCBD5 /* SimpleDictionaryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryTests.swift; sourceTree = "<group>"; };
 		104E386525506A1D00ECCBD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		104E386D25506A4800ECCBD5 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
-		104E387D2550AC9700ECCBD5 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		104E387D2550AC9700ECCBD5 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		104E38812550FC2700ECCBD5 /* WordnikWOD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikWOD.swift; sourceTree = "<group>"; };
 		104E38852551CE1B00ECCBD5 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		104E388F2553280000ECCBD5 /* CirclesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirclesView.swift; sourceTree = "<group>"; };
@@ -112,14 +111,12 @@
 		105136DD256995A2009B824A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		105136E32569985C009B824A /* AppDependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencyManager.swift; sourceTree = "<group>"; };
 		105136EC2569BB18009B824A /* CoreDataPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPublisher.swift; sourceTree = "<group>"; };
-		10668B6E255F34F300119BDA /* ManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContext.swift; sourceTree = "<group>"; };
+		10668B6E255F34F300119BDA /* ManagedObjectContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectContextExtension.swift; sourceTree = "<group>"; };
 		10668B76255F7DC600119BDA /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		10668B8225606EC200119BDA /* Word+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataClass.swift"; sourceTree = "<group>"; };
 		10668B8325606EC200119BDA /* Word+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Word+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		10668B8425606EC200119BDA /* Definition+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataClass.swift"; sourceTree = "<group>"; };
 		10668B8525606EC200119BDA /* Definition+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Definition+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		10668B982560711E00119BDA /* AppUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUserDefaults.swift; sourceTree = "<group>"; };
-		10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPropertyWrapper.swift; sourceTree = "<group>"; };
 		10668BA02560752700119BDA /* WODDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WODDataProvider.swift; sourceTree = "<group>"; };
 		1066FD97255E1317008211A3 /* SearchDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDomain.swift; sourceTree = "<group>"; };
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
@@ -127,6 +124,9 @@
 		1066FDB2255E1D37008211A3 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionarySettingsDomain.swift; sourceTree = "<group>"; };
 		107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionarySettingsView.swift; sourceTree = "<group>"; };
+		107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		107FAF8F2573216E004EEDE8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		107FAF9B25732479004EEDE8 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultEntryView.swift; sourceTree = "<group>"; };
 		1097270E2506790100217C63 /* SimpleDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109727112506790100217C63 /* SimpleDictionaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDictionaryApp.swift; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryView.swift; sourceTree = "<group>"; };
 		10B5E1C825660DD300081ED8 /* DictionaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryButton.swift; sourceTree = "<group>"; };
 		10B87B35254E47AB009143EE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
-		10E19DB8250816C80061CF6B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		10E19DB8250816C80061CF6B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,7 +220,6 @@
 			children = (
 				109727152506790400217C63 /* Assets.xcassets */,
 				105136DD256995A2009B824A /* Colors.xcassets */,
-				104D5CB52508938C00E5F9D8 /* Color.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -232,15 +231,6 @@
 				10668BA02560752700119BDA /* WODDataProvider.swift */,
 			);
 			path = "Data Providers";
-			sourceTree = "<group>";
-		};
-		10668B97256070D300119BDA /* UserDefaults */ = {
-			isa = PBXGroup;
-			children = (
-				10668B982560711E00119BDA /* AppUserDefaults.swift */,
-				10668B9C2560712E00119BDA /* UserDefaultsPropertyWrapper.swift */,
-			);
-			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		1066FD9C255E13B6008211A3 /* Standard APIs */ = {
@@ -294,6 +284,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		107FAFA125732507004EEDE8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1097271A2506790400217C63 /* Info.plist */,
+				100BBE7A2513C225005D5B48 /* SimpleDictionary.entitlements */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		109727052506790100217C63 = {
 			isa = PBXGroup;
 			children = (
@@ -315,14 +314,13 @@
 		109727102506790100217C63 /* SimpleDictionary */ = {
 			isa = PBXGroup;
 			children = (
-				100BBE7A2513C225005D5B48 /* SimpleDictionary.entitlements */,
+				107FAFA125732507004EEDE8 /* Settings */,
 				109727462506E0BE00217C63 /* App Lifecycle */,
 				1097272425067D6F00217C63 /* Backend */,
 				1097274A2507CFC100217C63 /* Reusable Components */,
 				1097273F2506DF7500217C63 /* Screens & Views */,
 				10E19DB7250816AE0061CF6B /* Extensions */,
 				105136DC2569957D009B824A /* Resources */,
-				1097271A2506790400217C63 /* Info.plist */,
 				109727172506790400217C63 /* Preview Content */,
 			);
 			path = SimpleDictionary;
@@ -343,7 +341,6 @@
 				1066FDAB255E1BC7008211A3 /* CoreData */,
 				1097272B2506A12100217C63 /* Models */,
 				1097272A2506A10E00217C63 /* Networking */,
-				10668B97256070D300119BDA /* UserDefaults */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -394,18 +391,18 @@
 			children = (
 				10B5E1C12565F59300081ED8 /* Personal Dictionary */,
 				10B87B34254E478F009143EE /* Search Results */,
-				109727422506DFCE00217C63 /* History */,
+				109727422506DFCE00217C63 /* Game */,
 				109727402506DF9E00217C63 /* Search */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		109727422506DFCE00217C63 /* History */ = {
+		109727422506DFCE00217C63 /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				1097272225067A9C00217C63 /* HistoryView.swift */,
 			);
-			path = History;
+			path = Game;
 			sourceTree = "<group>";
 		};
 		109727432506DFDA00217C63 /* Views */ = {
@@ -442,6 +439,7 @@
 				104D5CB325088C5C00E5F9D8 /* CardView.swift */,
 				1024296E25461968005EA1C3 /* SearchField.swift */,
 				10B5E1C825660DD300081ED8 /* DictionaryButton.swift */,
+				107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */,
 			);
 			path = "Reusable Components";
 			sourceTree = "<group>";
@@ -480,10 +478,12 @@
 		10E19DB7250816AE0061CF6B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				103398A32522942500A71355 /* Collection.swift */,
-				104E387D2550AC9700ECCBD5 /* Date.swift */,
-				10668B6E255F34F300119BDA /* ManagedObjectContext.swift */,
-				10E19DB8250816C80061CF6B /* String.swift */,
+				103398A32522942500A71355 /* CollectionExtension.swift */,
+				107FAF8F2573216E004EEDE8 /* ColorExtension.swift */,
+				104E387D2550AC9700ECCBD5 /* DateExtension.swift */,
+				10668B6E255F34F300119BDA /* ManagedObjectContextExtension.swift */,
+				10E19DB8250816C80061CF6B /* StringExtension.swift */,
+				107FAF9B25732479004EEDE8 /* UserDefaultsExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -620,23 +620,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10E19DB9250816C80061CF6B /* String.swift in Sources */,
+				10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */,
 				10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */,
+				107FAF9C25732479004EEDE8 /* UserDefaultsExtension.swift in Sources */,
 				105136AB2567F73B009B824A /* ManualWordCreationDomain.swift in Sources */,
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
-				104D5CB62508938C00E5F9D8 /* Color.swift in Sources */,
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */,
 				109727282506880B00217C63 /* APIProvider.swift in Sources */,
 				105136B12568033B009B824A /* EditableDefinitionCellView.swift in Sources */,
 				1097272625067DAC00217C63 /* APIService.swift in Sources */,
-				103398A42522942500A71355 /* Collection.swift in Sources */,
+				103398A42522942500A71355 /* CollectionExtension.swift in Sources */,
+				107FAF902573216E004EEDE8 /* ColorExtension.swift in Sources */,
 				10979017256B2C93008AEEB8 /* WordDetailsView.swift in Sources */,
 				105136D925688B69009B824A /* AppDomain.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109727452506E01800217C63 /* DictionaryEntryView.swift in Sources */,
 				10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */,
-				10668B992560711E00119BDA /* AppUserDefaults.swift in Sources */,
 				10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */,
 				1024141E255063E500D8D2A8 /* UrbanEntry.swift in Sources */,
 				1024296F25461968005EA1C3 /* SearchField.swift in Sources */,
@@ -646,7 +646,6 @@
 				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
 				1097901D256B2E4A008AEEB8 /* WordDetailsDomain.swift in Sources */,
-				10668B9D2560712E00119BDA /* UserDefaultsPropertyWrapper.swift in Sources */,
 				10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
 				107FAF7E25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift in Sources */,
@@ -660,10 +659,11 @@
 				10972721250679CD00217C63 /* DictionaryView.swift in Sources */,
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
 				105136CB2568466F009B824A /* PartOfSpeech.swift in Sources */,
+				107FAF8C25731D8D004EEDE8 /* ActivityIndicator.swift in Sources */,
 				1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */,
 				1051369425673452009B824A /* ManualWordCreationView.swift in Sources */,
 				105136BD25683686009B824A /* PersonalDictionaryDomain.swift in Sources */,
-				104E387E2550AC9700ECCBD5 /* Date.swift in Sources */,
+				104E387E2550AC9700ECCBD5 /* DateExtension.swift in Sources */,
 				10668B77255F7DC600119BDA /* CoreDataService.swift in Sources */,
 				10668BA12560752700119BDA /* WODDataProvider.swift in Sources */,
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
@@ -672,7 +672,7 @@
 				10B5E1C925660DD300081ED8 /* DictionaryButton.swift in Sources */,
 				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,
-				10668B6F255F34F300119BDA /* ManagedObjectContext.swift in Sources */,
+				10668B6F255F34F300119BDA /* ManagedObjectContextExtension.swift in Sources */,
 				105136C525683760009B824A /* PersonalDictionaryDataProvider.swift in Sources */,
 				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
 				105136ED2569BB18009B824A /* CoreDataPublisher.swift in Sources */,
@@ -858,7 +858,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleDictionary/Preview Content\"";
 				DEVELOPMENT_TEAM = Q37SD6L72Z;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SimpleDictionary/Info.plist;
+				INFOPLIST_FILE = SimpleDictionary/Settings/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -882,7 +882,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleDictionary/Preview Content\"";
 				DEVELOPMENT_TEAM = Q37SD6L72Z;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SimpleDictionary/Info.plist;
+				INFOPLIST_FILE = SimpleDictionary/Settings/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

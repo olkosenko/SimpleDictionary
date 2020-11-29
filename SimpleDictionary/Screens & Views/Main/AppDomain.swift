@@ -18,7 +18,7 @@ enum AppAction {
 
 struct AppEnvironment {
     var mainQueue: AnySchedulerOf<DispatchQueue>
-    var wodDataProdiver: WODDataProvider
+    var wodDataProvider: WODDataProvider
     var personalDictionaryDataProvider: PersonalDictionaryDataProvider
 }
 
@@ -36,7 +36,7 @@ extension AppEnvironment {
     static let debug: AppEnvironment = {
         let dependencyManager = AppDependencyManager()
         return AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                              wodDataProdiver: dependencyManager.wodDataProvider,
+                              wodDataProvider: dependencyManager.wodDataProvider,
                               personalDictionaryDataProvider: dependencyManager.personalDictionaryDataProvider)
     }()
 }

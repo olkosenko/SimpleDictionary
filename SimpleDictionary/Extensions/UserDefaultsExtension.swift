@@ -1,15 +1,14 @@
 //
-//  AppUserDefaults.swift
+//  UserDefaultsExtension.swift
 //  SimpleDictionary
 //
-//  Created by Oleg Kosenko on 2020-11-14.
+//  Created by Oleg Kosenko on 2020-11-28.
 //
 
 import Foundation
 import ComposableArchitecture
 
 extension UserDefaults {
-    
     @objc var isDictionaryDateShown: Bool {
         get {
             return bool(forKey: "isDictionaryDateShown")
@@ -23,4 +22,3 @@ extension UserDefaults {
         UserDefaults.standard.publisher(for: keyPath).eraseToEffect()
     }
 }
-
