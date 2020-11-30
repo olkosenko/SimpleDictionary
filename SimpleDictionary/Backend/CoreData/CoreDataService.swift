@@ -35,6 +35,7 @@ final class CoreDataService {
         
         wrapInEffectAndContext { context in
             let newWord = Word(context: context)
+            newWord.id = UUID()
             newWord.title = title
             newWord.phoneticSpelling = phoneticSpelling
             newWord.date = date
@@ -43,6 +44,7 @@ final class CoreDataService {
             definitions.forEach { partOfSpeech, defs in
                 defs.forEach { def in
                     let newDefinition = Definition(context: context)
+                    newDefinition.id = UUID()
                     newDefinition.title = def
                     newDefinition.partOfSpeech = partOfSpeech.rawValue
                     
@@ -71,7 +73,7 @@ final class CoreDataService {
             newWord.title = title
             newWord.phoneticSpelling = phoneticSpelling
             newWord.date = date
-            newWord.isWOD = wordType == .wod ? true : false
+            newWord.isWOD = NSNumber(value: wordType == .wod ? true : false)
             newWord.addToDefinitions(NSSet(array: definitions))
             return .success(newWord)
         }
@@ -92,12 +94,13 @@ final class CoreDataService {
         ofType wordType: WordType,
         limit: Int? = nil
     ) -> Effect<[Word], Error> {
-        wrapInEffectAndContext { context in
+        print(Thread.current)
+        return wrapInEffectAndContext { context in
             Result<[Word], Error> {
                 let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == %@",
-                                            NSNumber(value:wordType == .casual ? true : false))
+                                            NSNumber(value: wordType == .wod ? true : false))
+                let sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: false)]
                 
-                let sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: true)]
                 let words = try self.context.fetchEntities(ofType: Word.self,
                                                            with: predicate,
                                                            sortDescriptors: sortDescriptors,

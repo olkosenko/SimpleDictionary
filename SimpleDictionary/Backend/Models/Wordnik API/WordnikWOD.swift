@@ -9,6 +9,7 @@ import Foundation
 
 struct WordnikWOD: Decodable {
     let word: String?
+    let publishDate: String?
     let definitions: [Definitions]?
     
     struct Definitions: Decodable {

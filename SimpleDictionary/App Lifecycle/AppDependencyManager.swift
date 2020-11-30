@@ -12,14 +12,14 @@ class AppDependencyManager {
     let coreDataStore: CoreDataStore
     let apiService: APIService
     let coreDataService: CoreDataService
-    let wodDataProvider: WODDataProvider
+    let searchDataProvider: SearchDataProvider
     let personalDictionaryDataProvider: PersonalDictionaryDataProvider
     
     init() {
         coreDataStore = CoreDataStore()
         apiService = APIService()
         coreDataService = CoreDataService(context: coreDataStore.mainContext)
-        wodDataProvider = WODDataProvider(apiService: apiService, coreDataService: coreDataService)
+        searchDataProvider = SearchDataProvider(apiService: apiService, coreDataService: coreDataService)
         personalDictionaryDataProvider = PersonalDictionaryDataProvider(coreDataService: coreDataService)
     }
 }

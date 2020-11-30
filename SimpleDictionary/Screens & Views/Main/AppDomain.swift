@@ -9,20 +9,29 @@ import Foundation
 import ComposableArchitecture
 
 struct AppState: Equatable {
+    var search = SearchState()
     var personalDictionary = PersonalDictionaryState()
 }
 
 enum AppAction {
+    case search(SearchAction)
     case personalDictionary(PersonalDictionaryAction)
 }
 
 struct AppEnvironment {
     var mainQueue: AnySchedulerOf<DispatchQueue>
-    var wodDataProvider: WODDataProvider
+    var searchDataProvider: SearchDataProvider
     var personalDictionaryDataProvider: PersonalDictionaryDataProvider
 }
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
+    searchReducer
+        .pullback(
+            state: \.search,
+            action: /AppAction.search,
+            environment: { .init(mainQueue: $0.mainQueue,
+                                 searchDataProvider: $0.searchDataProvider) }),
+    
     personalDictionaryReducer
         .pullback(
             state: \.personalDictionary,
@@ -36,7 +45,7 @@ extension AppEnvironment {
     static let debug: AppEnvironment = {
         let dependencyManager = AppDependencyManager()
         return AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                              wodDataProvider: dependencyManager.wodDataProvider,
+                              searchDataProvider: dependencyManager.searchDataProvider,
                               personalDictionaryDataProvider: dependencyManager.personalDictionaryDataProvider)
     }()
 }

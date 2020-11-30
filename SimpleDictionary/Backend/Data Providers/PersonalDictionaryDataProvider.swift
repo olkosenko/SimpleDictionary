@@ -11,9 +11,10 @@ import ComposableArchitecture
 import CoreData
 
 class PersonalDictionaryDataProvider {
+    
     private let coreDataService: CoreDataService
 
-    private lazy var coreDataPublisher: CoreDataPublisher<Word> = {
+    private lazy var coreDataWordsPublisher: CoreDataPublisher<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == NO")
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: false)]
@@ -21,7 +22,7 @@ class PersonalDictionaryDataProvider {
     }()
     
     var wordsPublisher: Effect<[Word], Error> {
-        coreDataPublisher
+        coreDataWordsPublisher
             .publisher
             .eraseToEffect()
     }

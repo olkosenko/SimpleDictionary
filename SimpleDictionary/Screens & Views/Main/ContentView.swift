@@ -15,11 +15,16 @@ struct ContentView: View {
         WithViewStore(store) { viewStore in
             TabView {
                 
-                SearchView()
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Search")
-                    }
+                SearchView(
+                    store: store.scope(
+                        state: { $0.search },
+                        action: AppAction.search
+                    )
+                )
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
                 
                 HistoryView()
                     .tabItem {

@@ -8,15 +8,21 @@
 import Foundation
 
 extension Date {
+    var yearMonthDayLocal: String {
+        DateFormatter.yearMonthDayLocalDateFormatter.string(from: self)
+    }
     
-    static let yearMonthDayDateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter
-    }()
+    var yearMonthDayUTC0: String {
+        DateFormatter.yearMonthDayUTC0DateFormatter.string(from: self)
+    }
     
-    var yearMonthDay: String {
-        return Date.yearMonthDayDateFormatter.string(from: self)
+    var wod: String {
+        let components = Calendar.utcCalendar.dateComponents([.day, .month, .year], from: self)
+        if let day = components.day, let month = components.month, let year = components.year {
+            let formattedMonth = DateFormatter.yearMonthDayUTC0DateFormatter.monthSymbols[month-1].capitalizeFirst()
+            return "\(formattedMonth) \(day), \(year)"
+        }
+        return yearMonthDayLocal
     }
     
     func changed(with components: DateComponents) -> Date {

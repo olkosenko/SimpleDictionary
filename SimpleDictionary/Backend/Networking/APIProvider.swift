@@ -158,7 +158,7 @@ class APIWordnikProvider: APIProvider {
         
         switch endpoint {
         case .wod(date: let date):
-            queryItems.append(URLQueryItem(name: "date", value: date.yearMonthDay))
+            queryItems.append(URLQueryItem(name: "date", value: date.yearMonthDayLocal))
         case .randomWord:
             queryItems.append(URLQueryItem(name: "hasDictionaryDef", value: "true"))
         }

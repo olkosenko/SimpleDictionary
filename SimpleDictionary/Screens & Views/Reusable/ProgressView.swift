@@ -22,9 +22,11 @@ struct ProgressView: View {
             }
             Spacer()
         }
-        .background(Color.red.opacity(0.2))
-        .cornerRadius(20)
+        .background(RoundedRectangle(cornerRadius: 10)
+                        .shadow(color: .black, radius: 4, x: 1.0, y: 1.0)
+                        .foregroundColor(.progressViewBackground))
         .frame(height: 200)
+        .frame(maxWidth: 400)
     }
     
     func makeLabel(title: String, result: String, goal: String, metric: String, color: Color) -> some View {

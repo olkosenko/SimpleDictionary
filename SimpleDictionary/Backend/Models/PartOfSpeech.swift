@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PartOfSpeech: String, CaseIterable, Identifiable {
+enum PartOfSpeech: String, CaseIterable, Identifiable, Equatable {
     
     case noun
     case verb

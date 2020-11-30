@@ -17,16 +17,20 @@ struct SearchField: View {
     var body: some View {
         HStack {
             searchBar
-                .padding(10)
+                .padding()
                 .background(RoundedRectangle(cornerRadius: 5.0)
                                 .foregroundColor(Color.gray.opacity(0.2)))
             if isEditing {
                 Button {
                     isEditing = false
+                    UIApplication.shared.endEditing()
                 } label: {
                     Text("Cancel")
                 }
             }
+        }
+        .onTapGesture {
+            if !isEditing { isEditing = true }
         }
     }
     
@@ -37,12 +41,12 @@ struct SearchField: View {
                 if searchText.isEmpty {
                     Text(placeholder)
                         .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.1)))
+                        .zIndex(1)
                 }
                 TextField("", text: $searchText) { newValue in
                     isEditing = newValue
                 }
-                .multilineTextAlignment(.leading)
-                
+                .zIndex(2)
             }
             if !searchText.isEmpty {
                 Button {
@@ -64,3 +68,4 @@ struct SearchField_Previews: PreviewProvider {
             .padding()
     }
 }
+

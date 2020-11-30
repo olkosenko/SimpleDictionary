@@ -91,8 +91,8 @@ let personalDictionaryReducer = Reducer<
             state.isDictionaryDateShown = UserDefaults.standard.isDictionaryDateShown
             state.settings.showDate = state.isDictionaryDateShown
             return environment.personalDictionaryDataProvider.wordsPublisher
-                .subscribe(on: DispatchQueue.global())
                 .delay(for: .seconds(0.3), scheduler: environment.mainQueue)
+                .subscribe(on: DispatchQueue.global())
                 .receive(on: environment.mainQueue)
                 .catchToEffect()
                 .map(PersonalDictionaryAction.onWordsFetched)

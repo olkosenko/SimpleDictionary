@@ -20,7 +20,7 @@ struct SimpleDictionaryApp: App {
                     reducer: appReducer,
                     environment: AppEnvironment(
                         mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
-                        wodDataProvider: appDelegate.dependencyManager.wodDataProvider,
+                        searchDataProvider: appDelegate.dependencyManager.searchDataProvider,
                         personalDictionaryDataProvider: appDelegate.dependencyManager.personalDictionaryDataProvider)))
         }
     }

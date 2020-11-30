@@ -50,8 +50,8 @@ struct DictionaryView: View {
     var card: some View {
         NavigationLink(destination: SearchResultsView(word: "Test")) {
             if viewModel.wod != nil {
-                CardView(wod: viewModel.wod!)
-                    .padding([.leading, .trailing])
+//                CardView(wod: viewModel.wod!)
+//                    .padding([.leading, .trailing])
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -96,11 +96,5 @@ struct DictionaryView: View {
 struct DictionaryView_Previews: PreviewProvider {
     static var previews: some View {
         DictionaryView()
-    }
-}
-
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }

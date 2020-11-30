@@ -85,7 +85,7 @@ struct PersonalDictionaryView: View {
                     Text(word.normalizedTitle)
                     if viewStore.isDictionaryDateShown {
                         Spacer()
-                        Text(word.normalizedDate.yearMonthDay)
+                        Text(word.normalizedDate.yearMonthDayUTC0)
                             .foregroundColor(.gray)
                     }
                     
