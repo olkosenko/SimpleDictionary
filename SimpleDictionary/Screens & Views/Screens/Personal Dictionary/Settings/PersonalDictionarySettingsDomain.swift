@@ -23,9 +23,8 @@ let personalDictionarySettingsReducer = Reducer<
 > { state, action, environment in
     
     switch action {
-    case .toggleChange(isOn: let newValue):
-        state.showDate = newValue
-        UserDefaults.standard.isDictionaryDateShown = newValue
+    case .toggleChange(let isOn):
+        state.showDate = isOn
         return .none
     }
     

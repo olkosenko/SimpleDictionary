@@ -27,6 +27,15 @@ class PersonalDictionaryDataProvider {
             .eraseToEffect()
     }
     
+    var isDictionaryDateShown: Bool {
+        get {
+            UserDefaults.isDictionaryDateShown
+        }
+        set {
+            UserDefaults.isDictionaryDateShown = newValue
+        }
+    }
+    
     init(coreDataService: CoreDataService) {
         self.coreDataService = coreDataService
     }
@@ -87,6 +96,7 @@ class PersonalDictionaryDataProvider {
     
     func insertNewDefinition() -> Definition {
         let newDefinition = Definition(context: coreDataService.context)
+        newDefinition.id = UUID()
         newDefinition.title = ""
         newDefinition.normalizedPartOfSpeech = .noun
         return newDefinition

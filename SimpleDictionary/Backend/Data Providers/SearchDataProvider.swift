@@ -16,9 +16,60 @@ class SearchDataProvider {
     
     private let textChecker = UITextChecker()
     
+    var isSearchGoalActive: Bool {
+        get {
+            UserDefaults.isSearchGoalActive
+        }
+        set {
+            UserDefaults.isSearchGoalActive = newValue
+        }
+    }
+    
+    var isLearnGoalActive: Bool {
+        get {
+            UserDefaults.isLearnGoalActive
+        }
+        set {
+            UserDefaults.isLearnGoalActive = newValue
+        }
+    }
+    
+    var searchGoalCount: Int {
+        get {
+            UserDefaults.searchGoalCount
+        }
+        set {
+            UserDefaults.searchGoalCount = min(newValue, 30)
+        }
+    }
+    
+    var learnGoalCount: Int {
+        get {
+            UserDefaults.learnGoalCount
+        }
+        set {
+            UserDefaults.learnGoalCount = min(newValue, 30)
+        }
+    }
+    
     init(apiService: APIService, coreDataService: CoreDataService) {
         self.apiService = apiService
         self.coreDataService = coreDataService
+    }
+    
+    func fetchListOfRecentSearches() -> Effect<[String], Never> {
+        UserDefaults.recentSearches.publisher
+            .collect()
+            .eraseToEffect()
+    }
+    
+    func addToListOfRecentSearches(_ query: String) {
+        var recentSearches = UserDefaults.recentSearches
+        if recentSearches.count > 4 {
+            recentSearches.removeLast()
+        }
+        recentSearches.insert(query, at: 0)
+        UserDefaults.recentSearches = recentSearches
     }
     
     func fetchWordSuggestions(for query: String) -> Effect<[String], Never> {

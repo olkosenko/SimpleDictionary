@@ -17,39 +17,34 @@ struct SearchField: View {
     var body: some View {
         HStack {
             searchBar
-                .padding()
+                .padding(.horizontal, 10)
+                .padding(.vertical, 4)
                 .background(RoundedRectangle(cornerRadius: 5.0)
                                 .foregroundColor(Color.gray.opacity(0.2)))
             if isEditing {
-                Button {
-                    isEditing = false
-                    UIApplication.shared.endEditing()
-                } label: {
-                    Text("Cancel")
-                }
+                cancelButton
             }
-        }
-        .onTapGesture {
-            if !isEditing { isEditing = true }
         }
     }
     
     var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
+            
             ZStack(alignment: .leading) {
                 if searchText.isEmpty {
                     Text(placeholder)
-                        .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.1)))
-                        .zIndex(1)
                 }
                 TextField("", text: $searchText) { newValue in
                     isEditing = newValue
                 }
-                .zIndex(2)
+                .padding(.vertical, 8)
+                .disableAutocorrection(true)
             }
+            
             if !searchText.isEmpty {
                 Button {
+                    // TODO: - Replace with mutation in reducer
                     searchText = ""
                 } label: {
                     Image(systemName: "multiply.circle.fill")
@@ -58,13 +53,24 @@ struct SearchField: View {
             }
         }
     }
+    
+    var cancelButton: some View {
+        Button {
+            isEditing = false
+            // TODO: - Replace with mutation in reducer
+            searchText = ""
+            UIApplication.shared.endEditing()
+        } label: {
+            Text("Cancel")
+        }
+    }
 }
 
 struct SearchField_Previews: PreviewProvider {
     static var previews: some View {
-        return SearchField(searchText: .constant(""),
-                           isEditing: .constant(false),
-                           placeholder: "Hello")
+        SearchField(searchText: .constant(""),
+                    isEditing: .constant(false),
+                    placeholder: "Hello")
             .padding()
     }
 }

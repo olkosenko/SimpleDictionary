@@ -94,7 +94,6 @@ final class CoreDataService {
         ofType wordType: WordType,
         limit: Int? = nil
     ) -> Effect<[Word], Error> {
-        print(Thread.current)
         return wrapInEffectAndContext { context in
             Result<[Word], Error> {
                 let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == %@",

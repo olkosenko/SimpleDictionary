@@ -28,14 +28,32 @@ struct SearchView: View {
                         }
                     }
                 }
-                .onAppear { viewStore.send(.onAppear) }
+                .transition(AnyTransition.opacity)
+                .animation(.easeOut(duration: 0.3))
                 .navigationTitle("Search")
                 .navigationBarTitleDisplayMode(.inline)
+                .navigationBarItems(trailing: settingsButton(viewStore))
             }
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
     
-    func searchField(_ viewStore: ViewStoreType) -> some View {
+    private func settingsButton(_ viewStore: ViewStoreType) -> some View {
+        Button { viewStore.send(.setSettingsSheet(true))} label: {
+            Image(systemName: "gearshape.fill")
+                .foregroundColor(.blue)
+        }
+        .sheet(isPresented: viewStore.binding(get: { $0.isSettingsSheetPresented },
+                                              send: SearchAction.setSettingsSheet)) {
+
+            SearchSettingsView(
+                store: store.scope(state: { $0.settings },
+                                   action: SearchAction.settings))
+
+        }
+    }
+    
+    private func searchField(_ viewStore: ViewStoreType) -> some View {
         SearchField(
             searchText: viewStore.binding(
                 get: { $0.searchQuery },
@@ -48,33 +66,43 @@ struct SearchView: View {
             placeholder: "Enter your word")
     }
     
-    func idleState(_ viewStore: ViewStoreType) -> some View {
+    private func idleState(_ viewStore: ViewStoreType) -> some View {
         VStack(spacing: 0) {
             if viewStore.wordsOfTheDay.isNotEmpty {
                 carousel(viewStore)
-                    .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.5)))
                     .frame(height: 300)
                     .offset(y: -40)
             }
             
-            ProgressView()
-                .animation(.easeIn)
+            DashboardView(
+                store:
+                    store.scope(
+                        state: { $0.dashboard },
+                        action: SearchAction.dashboard
+                    )
+            )
+                .frame(height: 200)
+                .frame(maxWidth: 400)
                 .padding()
                 .offset(x: 0, y: viewStore.wordsOfTheDay.isNotEmpty ? -50 : 0)
         }
     }
     
-    func searchState(_ viewStore: ViewStoreType) -> some View {
+    private func searchState(_ viewStore: ViewStoreType) -> some View {
         Group {
             if viewStore.searchQuery.isEmpty {
-                list(with: viewStore.recentSearches, title: "Recent")
+                if viewStore.recentSearches.isNotEmpty {
+                    list(with: viewStore.recentSearches, title: "Recent")
+                } else {
+                    emptyRecentSearchesState
+                }
             } else {
                 list(with: viewStore.searchSuggestion, title: "Suggestions")
             }
         }
     }
     
-    func carousel(_ viewStore: ViewStoreType) -> some View {
+    private func carousel(_ viewStore: ViewStoreType) -> some View {
         TabView {
             ForEach(viewStore.wordsOfTheDay, id: \.self) { wod in
                 CardView(title: wod.title,
@@ -88,24 +116,57 @@ struct SearchView: View {
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
     
-    func list(with array: [String], title: String) -> some View {
+    private func list(with array: [String], title: String) -> some View {
         Group {
-            HStack {
-                Text(title)
-                    .font(.title3)
-                    .bold()
-                    .padding(.leading)
-                Spacer()
-            }
-            ForEach(array, id: \.self) { element in
-                VStack {
-                    Text(element)
+            listTitle(with: title)
+            
+            ForEach(array, id: \.self) { title in
+                VStack(spacing: 0) {
+                    NavigationLink(destination: SearchResultsView(word: title)) {
+                        listCell(with: title)
+                    }
+                    .padding(.bottom, 8)
+                    
                     Divider()
                 }
-                .padding()
-//                NavigationLink(element, destination: SearchResultsView(word: element))
-//                    .buttonStyle(PlainButtonStyle())
+                .padding(.horizontal)
+                .padding(.top)
+                
             }
+        }
+    }
+    
+    private func listTitle(with text: String) -> some View {
+        HStack {
+            Text(text)
+                .font(.title3)
+                .bold()
+                .padding(.leading)
+            Spacer()
+        }
+    }
+    
+    private func listCell(with title: String) -> some View {
+        HStack {
+            Text(title)
+            Spacer()
+            Image(systemName: "chevron.forward")
+                .font(Font.system(.footnote).bold())
+                .foregroundColor(Color.gray.opacity(0.5))
+        }
+    }
+    
+    private var emptyRecentSearchesState: some View {
+        VStack(spacing: 8) {
+            listTitle(with: "Recent")
+                .padding(.bottom)
+            
+            Image(systemName: "plus.magnifyingglass")
+                .font(.title)
+            
+            Text("Your recent queries will appear here")
+                .padding(.horizontal)
+                .multilineTextAlignment(.center)
         }
     }
     
@@ -122,21 +183,3 @@ struct SearchView_Previews: PreviewProvider {
         )
     }
 }
-
-
-
-
-//                        TabView {
-//                            ForEach(0..<2, id: \.self) { _ in
-//                                CardView(title: "Edge",
-//                                         partOfSpeech: "noun",
-//                                         definition: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.",
-//                                         date: Date().wod
-//                                )
-//                                .padding()
-//                            }
-//                        }
-//                        .frame(height: 300)
-//                        .offset(x: 0, y: -40)
-//                        .tabViewStyle(PageTabViewStyle())
-//                        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

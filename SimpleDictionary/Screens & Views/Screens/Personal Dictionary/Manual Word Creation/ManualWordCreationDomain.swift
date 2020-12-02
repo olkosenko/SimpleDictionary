@@ -87,10 +87,10 @@ let manualWordAddingReducer = Reducer<
                 let definitions = state.definitions.compactMap { editableDefinition -> Definition? in
                     guard editableDefinition.title.isNotEmpty else { return nil }
                     
-                    let defintion = environment.dataProvider.insertNewDefinition()
-                    defintion.title = editableDefinition.title
-                    defintion.normalizedPartOfSpeech = editableDefinition.partOfSpeech
-                    return defintion
+                    let definition = environment.dataProvider.insertNewDefinition()
+                    definition.title = editableDefinition.title
+                    definition.normalizedPartOfSpeech = editableDefinition.partOfSpeech
+                    return definition
                 }
                 
                 return environment.dataProvider.insertWord(title: state.title, definitions: definitions)

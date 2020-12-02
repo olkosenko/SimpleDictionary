@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchResultsView: View {
     @State var choice = 0
-    var settings = ["Oxford", "Merriem-Webster", "Urban"]
+    var settings = ["Oxford", "Merriam-Webster", "Urban"]
     var word: String
     
     var body: some View {
@@ -26,10 +26,11 @@ struct SearchResultsView: View {
                 SearchResultEntryView()
                 Spacer()
             }
+            .navigationTitle(word)
+            .navigationBarTitleDisplayMode(.large)
             .padding([.leading, .trailing])
+            .background(Color.appBackground)
         }
-        .navigationBarTitle(word)
-        .navigationBarBackButtonHidden(false)
     }
     
     var topBar: some View {

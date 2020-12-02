@@ -58,7 +58,7 @@ let personalDictionaryReducer = Reducer<
     .pullback(
         state: \.settings,
         action: /PersonalDictionaryAction.settings,
-        environment: { _ in .init()}
+        environment: { _ in .init() }
     ),
     
     wordDetailsReducer
@@ -84,11 +84,12 @@ let personalDictionaryReducer = Reducer<
             switch settingsAction {
             case .toggleChange(isOn: let newValue):
                 state.isDictionaryDateShown = newValue
+                environment.personalDictionaryDataProvider.isDictionaryDateShown = newValue
             }
             return .none
             
         case .onAppear:
-            state.isDictionaryDateShown = UserDefaults.standard.isDictionaryDateShown
+            state.isDictionaryDateShown = environment.personalDictionaryDataProvider.isDictionaryDateShown
             state.settings.showDate = state.isDictionaryDateShown
             return environment.personalDictionaryDataProvider.wordsPublisher
                 .delay(for: .seconds(0.3), scheduler: environment.mainQueue)
