@@ -48,6 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureAppearance() {
-        UINavigationBar.appearance().backgroundColor = UIColor(Color.appBackground)
+        // UINavigationBar.appearance().backgroundColor = UIColor(Color.appBackground)
     }
 }

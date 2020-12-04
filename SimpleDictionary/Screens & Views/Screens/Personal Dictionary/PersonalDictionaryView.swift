@@ -91,6 +91,7 @@ struct PersonalDictionaryView: View {
                     
                 }
                 .buttonStyle(PlainButtonStyle())
+                
             }
             .onDelete { viewStore.send(.deleteWord($0)) }
         }

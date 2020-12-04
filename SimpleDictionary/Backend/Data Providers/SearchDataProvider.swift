@@ -8,11 +8,15 @@
 import UIKit
 import Combine
 import ComposableArchitecture
+import AVFoundation
 
 class SearchDataProvider {
     
     private let apiService: APIService
     private let coreDataService: CoreDataService
+    
+    private var wordAudioPlayer: AVAudioPlayer?
+    private var soundsCache = [String : Data]()
     
     private let textChecker = UITextChecker()
     
@@ -73,7 +77,9 @@ class SearchDataProvider {
     }
     
     func fetchWordSuggestions(for query: String) -> Effect<[String], Never> {
-        [query].publisher
+        guard !query.isBlank else { return .init(value: []) }
+        
+        return [query].publisher
             .map { query in
                 let targetText = String(query.split(separator: " ").last!)
                 let range = NSRange(targetText.startIndex..<targetText.endIndex, in: targetText)
@@ -83,13 +89,19 @@ class SearchDataProvider {
                     let guesses = textChecker.guesses(forWordRange: range, in: targetText, language: "en")
                     result.append(contentsOf: guesses ?? [])
                 }
+                
+                let indexOfQuery = result.firstIndex { $0 == query }
+                if let index = indexOfQuery {
+                    result.remove(at: index)
+                }
                 result.insert(query, at: 0)
+                
                 return result
             }
             .eraseToEffect()
     }
     
-    func fetchWODs() -> Effect<[WordnikWODNormalized], Error> {
+    func fetchWODs() -> Effect<[WordnikWODNormalized], Never> {
         let requiredCount = 7
         var dateComponents = DateComponents()
         var requiredDates = [String : Date]()
@@ -97,12 +109,12 @@ class SearchDataProvider {
         for day in 0..<requiredCount {
             dateComponents.day = -day
             let date = Date().changed(with: dateComponents)
-            requiredDates[date.yearMonthDayLocal] = date /// yearMonthDay gives date in local timeZone
+            requiredDates[date.yearMonthDayLocal] = date /// yearMonthDay returns date in local timeZone
         }
 
         return coreDataService.fetchWords(ofType: .wod, limit: requiredCount)
             .replaceError(with: [])
-            .flatMap { dbWords -> AnyPublisher<[WordnikWODNormalized], Error> in
+            .flatMap { dbWords -> AnyPublisher<[WordnikWODNormalized], Never> in
                 var mutableDBWords = dbWords
                 
                 mutableDBWords.removeAll { word in
@@ -130,6 +142,11 @@ class SearchDataProvider {
                 
                 /// Merging them together into one array
                 return remotePublisher.merge(with: dbPublisher)
+                    /// Replace errors with nil value, so even when API does not return any requested words, we can show smth from DB
+                    .map { word -> WordnikWODNormalized? in word }
+                    .replaceError(with: nil)
+                    .compactMap { $0 }
+                    ///
                     .collect()
                     .eraseToAnyPublisher()
             }
@@ -141,5 +158,53 @@ class SearchDataProvider {
                                 title: word.title,
                                 date: word.date,
                                 definitions: [word.partOfSpeech : [word.definition]])
+    }
+    
+    func fetchDefaultAudio(for word: String) -> Effect<Bool, Never> {
+        let lowercasedWord = word.lowercased()
+        if let cachedData = soundsCache[lowercasedWord], let player = try? AVAudioPlayer(data: cachedData) {
+            wordAudioPlayer = player
+            return .init(value: true)
+        }
+        
+        return [lowercasedWord].publisher
+            .flatMap { word -> AnyPublisher<[WordnikAudio], APIError> in
+                self.apiService.GET(endpoint: .wordnik(.audio(word)))
+            }
+            .mapError { $0 as Error }
+            .compactMap { $0.last }
+            .compactMap { wordnikAudio -> URL? in
+                if let fileUrl = wordnikAudio.fileUrl, let url = URL(string: fileUrl) {
+                    return url
+                }
+                return nil
+            }
+            .flatMap { url -> AnyPublisher<(data: Data, response: URLResponse), Error> in
+                URLSession.shared.dataTaskPublisher(for: url)
+                    .mapError { $0 as Error }
+                    .eraseToAnyPublisher()
+            }
+            .tryMap { data, _ -> AVAudioPlayer in
+                let player = try AVAudioPlayer(data: data)
+                self.soundsCache[lowercasedWord] = data
+                return player
+            }
+            .map { player -> Bool in
+                self.wordAudioPlayer = player
+                self.wordAudioPlayer?.prepareToPlay()
+                return true
+            }
+            .replaceError(with: false)
+            .eraseToEffect()
+    }
+    
+    func playWordAudioIfAvailable() {
+        guard let player = wordAudioPlayer else { return }
+        player.play()
+    }
+    
+    func resetAudioPlayer() {
+        wordAudioPlayer?.stop()
+        wordAudioPlayer = nil
     }
 }

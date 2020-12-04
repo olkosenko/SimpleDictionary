@@ -93,12 +93,15 @@ enum UrbanEndpoint {
 
 enum WordnikEndpoint {
     case wod(date: Date)
+    case audio(String)
     case randomWord
     
     var path: String {
         switch self {
         case .wod:
             return "words.json/wordOfTheDay"
+        case .audio(let word):
+            return "word.json/\(word)/audio"
         case .randomWord:
             return "words.json/randomWord"
         

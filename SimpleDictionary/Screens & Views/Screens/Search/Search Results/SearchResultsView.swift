@@ -6,47 +6,69 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
+
 
 struct SearchResultsView: View {
-    @State var choice = 0
-    var settings = ["Oxford", "Merriam-Webster", "Urban"]
-    var word: String
+    typealias ViewStoreType = ViewStore<SearchResultsState, SearchResultsAction>
+    let store: Store<SearchResultsState, SearchResultsAction>
+    
+    let settings = ["Oxford", "Merriam-Webster", "Urban"]
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 16) {
-                topBar
-                Picker("Options", selection: $choice) {
-                    ForEach(0 ..< settings.count) { index in
-                        Text(self.settings[index])
-                            .tag(index)
-                    }
+        WithViewStore(store) { viewStore in
+            ScrollView(.vertical) {
+                VStack(spacing: 16) {
+                    topBar(viewStore)
+                    picker(viewStore)
+                    SearchResultEntryView()
+                    Spacer()
                 }
-                .pickerStyle(SegmentedPickerStyle())
-                SearchResultEntryView()
-                Spacer()
+                .navigationTitle(viewStore.word)
+                .navigationBarTitleDisplayMode(.large)
+                .padding(.horizontal)
             }
-            .navigationTitle(word)
-            .navigationBarTitleDisplayMode(.large)
-            .padding([.leading, .trailing])
-            .background(Color.appBackground)
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
     
-    var topBar: some View {
+    func topBar(_ viewStore: ViewStoreType) -> some View {
         HStack(spacing: 12) {
             Text("[tel-uh-fohn]")
-            Image(systemName: "speaker.wave.3.fill")
+            Button { viewStore.send(.playAudio) } label: {
+                Image(systemName: "speaker.wave.3.fill")
+            }
+            .opacity(viewStore.isAudioAvailable ? 1 : 0)
             Spacer()
         }
         .foregroundColor(.blue)
+    }
+    
+    func picker(_ viewStore: ViewStoreType) -> some View {
+        Picker("Select dictionary",
+               selection: viewStore.binding(get: { $0.currentTab },
+                                            send: SearchResultsAction.selectTab)
+        ) {
+            ForEach(viewStore.tabs) { tab in
+                Text(tab.id)
+                    .tag(tab)
+            }
+        }
+        .pickerStyle(SegmentedPickerStyle())
     }
 }
 
 struct SearchResults_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchResultsView(word: "Telephone")
+            SearchResultsView(
+                store: .init(
+                    initialState: .init(word: "Hello"),
+                    reducer: searchResultsReducer,
+                    environment: .init(mainQueue: AppEnvironment.debug.mainQueue,
+                                       dataProvider: AppEnvironment.debug.searchDataProvider)
+                )
+            )
         }
     }
 }

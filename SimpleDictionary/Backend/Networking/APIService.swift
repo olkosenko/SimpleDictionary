@@ -11,7 +11,7 @@ import Combine
 class APIService {
     
     private lazy var oxfordProvider = APIOxfordProvider()
-    private lazy var merriamWebsterProvider = APIMerriemWebsterProvider()
+    private lazy var merriamWebsterProvider = APIMerriamWebsterProvider()
     private lazy var urbanProvider = APIUrbanProvider()
     private lazy var wordnikProvider = APIWordnikProvider()
     

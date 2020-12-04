@@ -34,11 +34,11 @@ struct DashboardView: View {
                 
                 GeometryReader { proxy in
                     ZStack {
-                        CirclesView(progress: 23/30, thickness: 30, color: .green)
+                        CirclesView(progress: 23/30, thickness: 20, color: .green)
                             .frame(width: proxy.size.width, height: proxy.size.height)
                         
                         CirclesView(progress: 3/10, thickness: 20, color: .orange)
-                            .frame(width: abs(proxy.size.width-62), height: abs(proxy.size.height-62))
+                            .frame(width: abs(proxy.size.width-42), height: abs(proxy.size.height-42))
                     }
                 }
                 

@@ -79,6 +79,13 @@
 		10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */; };
 		10B5E1C925660DD300081ED8 /* DictionaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B5E1C825660DD300081ED8 /* DictionaryButton.swift */; };
 		10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10B87B35254E47AB009143EE /* SearchResultsView.swift */; };
+		10C18833257999A400FADA92 /* SearchResultsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18832257999A400FADA92 /* SearchResultsDomain.swift */; };
+		10C18839257999C800FADA92 /* UrbanEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18838257999C800FADA92 /* UrbanEntryView.swift */; };
+		10C1883F257999D300FADA92 /* UrbanEntryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1883E257999D300FADA92 /* UrbanEntryDomain.swift */; };
+		10C188432579B19A00FADA92 /* WordnikAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C188422579B19A00FADA92 /* WordnikAudio.swift */; };
+		10C18847257A91B000FADA92 /* DictionaryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18846257A91B000FADA92 /* DictionaryTab.swift */; };
+		10C1884F257ACE6700FADA92 /* OxfordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1884E257ACE6700FADA92 /* OxfordEntryView.swift */; };
+		10C18855257ACE7600FADA92 /* OxfordEntryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18854257ACE7600FADA92 /* OxfordEntryDomain.swift */; };
 		10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +172,13 @@
 		10B5E1C22565F5AD00081ED8 /* PersonalDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionaryView.swift; sourceTree = "<group>"; };
 		10B5E1C825660DD300081ED8 /* DictionaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryButton.swift; sourceTree = "<group>"; };
 		10B87B35254E47AB009143EE /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		10C18832257999A400FADA92 /* SearchResultsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsDomain.swift; sourceTree = "<group>"; };
+		10C18838257999C800FADA92 /* UrbanEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanEntryView.swift; sourceTree = "<group>"; };
+		10C1883E257999D300FADA92 /* UrbanEntryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanEntryDomain.swift; sourceTree = "<group>"; };
+		10C188422579B19A00FADA92 /* WordnikAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordnikAudio.swift; sourceTree = "<group>"; };
+		10C18846257A91B000FADA92 /* DictionaryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTab.swift; sourceTree = "<group>"; };
+		10C1884E257ACE6700FADA92 /* OxfordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxfordEntryView.swift; sourceTree = "<group>"; };
+		10C18854257ACE7600FADA92 /* OxfordEntryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxfordEntryDomain.swift; sourceTree = "<group>"; };
 		10E19DB8250816C80061CF6B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +213,7 @@
 			children = (
 				104E38812550FC2700ECCBD5 /* WordnikWOD.swift */,
 				1052F8A52573ECF4009D5331 /* WordnikWODNormalized.swift */,
+				10C188422579B19A00FADA92 /* WordnikAudio.swift */,
 			);
 			path = "Wordnik API";
 			sourceTree = "<group>";
@@ -505,9 +520,39 @@
 			isa = PBXGroup;
 			children = (
 				10B87B35254E47AB009143EE /* SearchResultsView.swift */,
+				10C18832257999A400FADA92 /* SearchResultsDomain.swift */,
 				1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */,
+				10C18846257A91B000FADA92 /* DictionaryTab.swift */,
+				10C188302579995500FADA92 /* MerriamWebster */,
+				10C1882F2579993C00FADA92 /* Oxford */,
+				10C188312579997500FADA92 /* Urban */,
 			);
 			path = "Search Results";
+			sourceTree = "<group>";
+		};
+		10C1882F2579993C00FADA92 /* Oxford */ = {
+			isa = PBXGroup;
+			children = (
+				10C1884E257ACE6700FADA92 /* OxfordEntryView.swift */,
+				10C18854257ACE7600FADA92 /* OxfordEntryDomain.swift */,
+			);
+			path = Oxford;
+			sourceTree = "<group>";
+		};
+		10C188302579995500FADA92 /* MerriamWebster */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MerriamWebster;
+			sourceTree = "<group>";
+		};
+		10C188312579997500FADA92 /* Urban */ = {
+			isa = PBXGroup;
+			children = (
+				10C18838257999C800FADA92 /* UrbanEntryView.swift */,
+				10C1883E257999D300FADA92 /* UrbanEntryDomain.swift */,
+			);
+			path = Urban;
 			sourceTree = "<group>";
 		};
 		10E19DB7250816AE0061CF6B /* Extensions */ = {
@@ -658,12 +703,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */,
+				10C18847257A91B000FADA92 /* DictionaryTab.swift in Sources */,
 				107FAFA525733A2A004EEDE8 /* SearchView.swift in Sources */,
 				10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */,
 				107FAF9C25732479004EEDE8 /* UserDefaults.swift in Sources */,
 				105136AB2567F73B009B824A /* ManualWordCreationDomain.swift in Sources */,
 				1052F8BE2574904A009D5331 /* CalendarExtension.swift in Sources */,
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
+				10C18855257ACE7600FADA92 /* OxfordEntryDomain.swift in Sources */,
 				109F8CBA2575BCE3006FC7B5 /* UserDefault.swift in Sources */,
 				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
 				105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */,
@@ -677,6 +724,7 @@
 				105136D925688B69009B824A /* AppDomain.swift in Sources */,
 				109727142506790100217C63 /* ContentView.swift in Sources */,
 				109F8CE52576BEFC006FC7B5 /* SearchSettingsView.swift in Sources */,
+				10C18833257999A400FADA92 /* SearchResultsDomain.swift in Sources */,
 				109F8CDF2576BEEF006FC7B5 /* SearchSettingsDomain.swift in Sources */,
 				10668B8925606EC200119BDA /* Definition+CoreDataProperties.swift in Sources */,
 				10668B8625606EC200119BDA /* Word+CoreDataClass.swift in Sources */,
@@ -699,7 +747,9 @@
 				1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */,
 				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
+				10C1883F257999D300FADA92 /* UrbanEntryDomain.swift in Sources */,
 				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
+				10C18839257999C800FADA92 /* UrbanEntryView.swift in Sources */,
 				105136CB2568466F009B824A /* PartOfSpeech.swift in Sources */,
 				1052F8C425758341009D5331 /* UIApplicationExtension.swift in Sources */,
 				107FAF8C25731D8D004EEDE8 /* ActivityIndicator.swift in Sources */,
@@ -713,6 +763,8 @@
 				104E38902553280000ECCBD5 /* CirclesView.swift in Sources */,
 				1084E424254F41EE00B0FD4C /* SearchResultEntryView.swift in Sources */,
 				109727122506790100217C63 /* SimpleDictionaryApp.swift in Sources */,
+				10C1884F257ACE6700FADA92 /* OxfordEntryView.swift in Sources */,
+				10C188432579B19A00FADA92 /* WordnikAudio.swift in Sources */,
 				10B5E1C925660DD300081ED8 /* DictionaryButton.swift in Sources */,
 				10B87B36254E47AB009143EE /* SearchResultsView.swift in Sources */,
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,

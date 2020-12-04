@@ -53,7 +53,7 @@ class APIOxfordProvider: APIProvider {
     }
 }
 
-class APIMerriemWebsterProvider: APIProvider {
+class APIMerriamWebsterProvider: APIProvider {
     let decoder = JSONDecoder()
     lazy var session = URLSession(configuration: makeSessionConfiguration())
     
@@ -155,12 +155,13 @@ class APIWordnikProvider: APIProvider {
         urlComponents.path = "/\(basePath)/\(endpoint.path)"
         
         var queryItems = [URLQueryItem]()
-        
         switch endpoint {
-        case .wod(date: let date):
-            queryItems.append(URLQueryItem(name: "date", value: date.yearMonthDayLocal))
+        case .wod(let date):
+            queryItems.append(.init(name: "date", value: date.yearMonthDayLocal))
         case .randomWord:
-            queryItems.append(URLQueryItem(name: "hasDictionaryDef", value: "true"))
+            queryItems.append(.init(name: "hasDictionaryDef", value: "true"))
+        case .audio(_):
+            queryItems.append(.init(name: "limit", value: "3"))
         }
         queryItems.append(URLQueryItem(name: "api_key", value: apiKey))
        

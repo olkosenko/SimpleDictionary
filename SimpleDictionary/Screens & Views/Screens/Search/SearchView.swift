@@ -92,12 +92,12 @@ struct SearchView: View {
         Group {
             if viewStore.searchQuery.isEmpty {
                 if viewStore.recentSearches.isNotEmpty {
-                    list(with: viewStore.recentSearches, title: "Recent")
+                    list(with: viewStore.recentSearches, title: "Recent", viewStore)
                 } else {
                     emptyRecentSearchesState
                 }
             } else {
-                list(with: viewStore.searchSuggestion, title: "Suggestions")
+                list(with: viewStore.searchSuggestion, title: "Suggestions", viewStore)
             }
         }
     }
@@ -116,13 +116,25 @@ struct SearchView: View {
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
     
-    private func list(with array: [String], title: String) -> some View {
+    private func list(with array: [String], title: String, _ viewStore: ViewStoreType) -> some View {
         Group {
             listTitle(with: title)
             
             ForEach(array, id: \.self) { title in
                 VStack(spacing: 0) {
-                    NavigationLink(destination: SearchResultsView(word: title)) {
+                    NavigationLink(
+                      destination: IfLetStore(
+                        self.store.scope(
+                            state: { $0.searchResults }, action: SearchAction.searchResults),
+                        then: SearchResultsView.init,
+                        else: ActivityIndicator()
+                      ),
+                      tag: title,
+                      selection: viewStore.binding(
+                        get: { $0.searchResultsTitle },
+                        send: SearchAction.setNavigation
+                      )
+                    ) {
                         listCell(with: title)
                     }
                     .padding(.bottom, 8)

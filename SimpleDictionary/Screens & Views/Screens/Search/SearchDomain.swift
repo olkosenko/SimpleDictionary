@@ -12,6 +12,9 @@ struct SearchState: Equatable {
     var settings = SearchSettingsState()
     var dashboard = DashboardState(metrics: [])
     
+    var searchResults: SearchResultsState?
+    var searchResultsTitle: String?
+    
     var searchQuery = ""
     var isSearchQueryEditing = false
     var searchSuggestion = [String]()
@@ -26,9 +29,10 @@ struct SearchState: Equatable {
 enum SearchAction {
     case settings(SearchSettingsAction)
     case dashboard(DashboardAction)
+    case searchResults(SearchResultsAction)
     
     case onAppear
-    case wodsReceived(Result<[WordnikWODNormalized], Error>)
+    case wodsReceived(Result<[WordnikWODNormalized], Never>)
     case recentSearchesReceived(Result<[String], Never>)
     
     case searchQueryChanged(String)
@@ -36,6 +40,7 @@ enum SearchAction {
     case searchSuggestionsReceived(Result<[String], Never>)
     
     case setSettingsSheet(Bool)
+    case setNavigation(String?)
 }
 
 struct SearchEnvironment {
@@ -56,14 +61,37 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
         action: /SearchAction.dashboard,
         environment: { _ in .init() }
     ),
+    searchResultsReducer
+    .optional()
+    .pullback(
+        state: \.searchResults,
+        action: /SearchAction.searchResults,
+        environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.searchDataProvider) }
+    ),
     Reducer { state, action, environment in
         
         switch action {
         
-        case .settings:
+        case .settings(let settingsAction):
+            
+            switch settingsAction {
+            
+            case .searchToggleChange(let isOn):
+                environment.searchDataProvider.isSearchGoalActive = isOn
+            case .learnToggleChange(let isOn):
+                environment.searchDataProvider.isLearnGoalActive = isOn
+            case .searchSliderChange(let newValue):
+                environment.searchDataProvider.searchGoalCount = Int(newValue)
+            case .learnSliderChange(let newValue):
+                environment.searchDataProvider.learnGoalCount = Int(newValue)
+            }
+            
             return .none
             
         case .dashboard:
+            return .none
+            
+        case .searchResults:
             return .none
             
         case .onAppear:
@@ -136,6 +164,20 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
             state.isSettingsSheetPresented = newValue
             return .none
             
+        case .setNavigation(.some(let word)):
+            state.searchResultsTitle = word
+            state.searchResults = SearchResultsState(word: word)
+            return .none
+            
+        case .setNavigation(.none):
+            environment.searchDataProvider.resetAudioPlayer()
+            
+            state.searchResultsTitle = nil
+            state.searchResults = nil
+            
+            return .none
+            
         }
     }
 )
+

@@ -8,6 +8,10 @@
 import Foundation
 
 extension String {
+    var isBlank: Bool {
+        allSatisfy { $0.isWhitespace }
+    }
+    
     func capitalizeFirst() -> String {
         self.prefix(1).capitalized + dropFirst()
     }

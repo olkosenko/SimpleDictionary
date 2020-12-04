@@ -56,7 +56,3 @@ fileprivate struct TextArea: View {
             )
     }
 }
-
-fileprivate extension String {
-    var isBlank: Bool { allSatisfy { $0.isWhitespace } }
-}

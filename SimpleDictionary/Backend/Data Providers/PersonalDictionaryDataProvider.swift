@@ -40,10 +40,6 @@ class PersonalDictionaryDataProvider {
         self.coreDataService = coreDataService
     }
 
-    func fetchWords() -> Effect<[Word], Error> {
-        return coreDataService.fetchWords(ofType: .casual)
-    }
-    
     func insertWord(title: String, definitions: [PartOfSpeech : [String]]) -> Effect<Word, Error> {
         return coreDataService.addWord(ofType: .casual, title: title, date: Date(), definitions: definitions)
     }
