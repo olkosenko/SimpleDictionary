@@ -1,5 +1,5 @@
 //
-//  DictionarySection.swift
+//  DictionaryTab.swift
 //  SimpleDictionary
 //
 //  Created by Oleg Kosenko on 2020-12-04.

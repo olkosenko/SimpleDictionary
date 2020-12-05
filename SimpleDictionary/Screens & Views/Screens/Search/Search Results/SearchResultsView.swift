@@ -21,7 +21,23 @@ struct SearchResultsView: View {
                 VStack(spacing: 16) {
                     topBar(viewStore)
                     picker(viewStore)
-                    SearchResultEntryView()
+                    
+                    if viewStore.state.currentTab == .urban {
+                        IfLetStore(store.scope(
+                                    state: { $0.urbanEntryState }, action: SearchResultsAction.urbanEntry),
+                                   then: { UrbanEntryView(store: $0) },
+                                   else: ActivityIndicator()
+                        )
+                    }
+                    
+                    if viewStore.state.currentTab == .merriamwebster {
+                        ActivityIndicator()
+                    }
+                    
+                    if viewStore.state.currentTab == .oxford {
+                        ActivityIndicator()
+                    }
+                    
                     Spacer()
                 }
                 .navigationTitle(viewStore.word)

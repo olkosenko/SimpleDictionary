@@ -12,6 +12,9 @@ import AVFoundation
 
 class SearchDataProvider {
     
+    
+    // MARK: - Private Properties
+    
     private let apiService: APIService
     private let coreDataService: CoreDataService
     
@@ -19,6 +22,9 @@ class SearchDataProvider {
     private var soundsCache = [String : Data]()
     
     private let textChecker = UITextChecker()
+    
+    
+    // MARK: - Settings
     
     var isSearchGoalActive: Bool {
         get {
@@ -61,6 +67,9 @@ class SearchDataProvider {
         self.coreDataService = coreDataService
     }
     
+    
+    // MARK: - Recent Searches
+    
     func fetchListOfRecentSearches() -> Effect<[String], Never> {
         UserDefaults.recentSearches.publisher
             .collect()
@@ -75,6 +84,9 @@ class SearchDataProvider {
         recentSearches.insert(query, at: 0)
         UserDefaults.recentSearches = recentSearches
     }
+    
+    
+    // MARK: - Word Suggestions
     
     func fetchWordSuggestions(for query: String) -> Effect<[String], Never> {
         guard !query.isBlank else { return .init(value: []) }
@@ -100,6 +112,9 @@ class SearchDataProvider {
             }
             .eraseToEffect()
     }
+    
+    
+    // MARK: - Word of the Day
     
     func fetchWODs() -> Effect<[WordnikWODNormalized], Never> {
         let requiredCount = 7
@@ -159,6 +174,24 @@ class SearchDataProvider {
                                 date: word.date,
                                 definitions: [word.partOfSpeech : [word.definition]])
     }
+    
+    
+    // MARK: - Search Results
+    
+    func fetchUrbanDictionary(for word: String) -> Effect<UrbanEntry, Never> {
+        [word.lowercased()].publisher
+            .flatMap { word -> AnyPublisher<UrbanEntry, APIError> in
+                self.apiService.GET(endpoint: .urban(.definitions(word: word)))
+            }
+            .mapError {
+                $0 as Error
+            }
+            .replaceError(with: UrbanEntry(list: []))
+            .eraseToEffect()
+    }
+    
+    
+    // MARK: - Audio
     
     func fetchDefaultAudio(for word: String) -> Effect<Bool, Never> {
         let lowercasedWord = word.lowercased()

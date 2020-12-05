@@ -16,7 +16,7 @@ extension Date {
         DateFormatter.yearMonthDayUTC0DateFormatter.string(from: self)
     }
     
-    var wod: String {
+    var monthDayYearLocal: String {
         let components = Calendar.utcCalendar.dateComponents([.day, .month, .year], from: self)
         if let day = components.day, let month = components.month, let year = components.year {
             let formattedMonth = DateFormatter.yearMonthDayUTC0DateFormatter.monthSymbols[month-1].capitalizeFirst()

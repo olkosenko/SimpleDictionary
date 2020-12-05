@@ -388,6 +388,7 @@
 		1097272B2506A12100217C63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				10C18846257A91B000FADA92 /* DictionaryTab.swift */,
 				105136CA2568466F009B824A /* PartOfSpeech.swift */,
 				1066FD9C255E13B6008211A3 /* Standard APIs */,
 				1024141C2550632C00D8D2A8 /* Urban API */,
@@ -522,7 +523,6 @@
 				10B87B35254E47AB009143EE /* SearchResultsView.swift */,
 				10C18832257999A400FADA92 /* SearchResultsDomain.swift */,
 				1084E423254F41EE00B0FD4C /* SearchResultEntryView.swift */,
-				10C18846257A91B000FADA92 /* DictionaryTab.swift */,
 				10C188302579995500FADA92 /* MerriamWebster */,
 				10C1882F2579993C00FADA92 /* Oxford */,
 				10C188312579997500FADA92 /* Urban */,

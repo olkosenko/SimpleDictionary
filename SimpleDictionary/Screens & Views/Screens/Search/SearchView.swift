@@ -63,7 +63,7 @@ struct SearchView: View {
                 get: { $0.isSearchQueryEditing },
                 send: SearchAction.searchQueryEditing),
 
-            placeholder: "Enter your word")
+            placeholder: "Enter your word, phrase")
     }
     
     private func idleState(_ viewStore: ViewStoreType) -> some View {
@@ -108,7 +108,7 @@ struct SearchView: View {
                 CardView(title: wod.title,
                          partOfSpeech: wod.partOfSpeech.rawValue,
                          definition: wod.definition,
-                         date: wod.date.wod)
+                         date: wod.date.monthDayYearLocal)
                     .padding(.horizontal)
             }
         }

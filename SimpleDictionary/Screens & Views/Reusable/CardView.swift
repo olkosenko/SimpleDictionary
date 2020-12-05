@@ -67,7 +67,7 @@ struct CardView_Previews: PreviewProvider {
         CardView(title: "Edge",
                  partOfSpeech: "noun",
                  definition: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur adipiscing elit. consectetur adipiscing elit. consectetur adipiscing elit.",
-                 date: Date().wod
+                 date: Date().monthDayYearLocal
         )
         .previewLayout(.fixed(width: 400, height: 500))
         .padding()

@@ -7,3 +7,25 @@
 
 import Foundation
 import ComposableArchitecture
+
+struct UrbanEntryState: Equatable {
+    let urbanEntry: UrbanEntry
+}
+
+enum UrbanEntryAction {
+    case onAppear
+}
+
+struct UrbanEntryEnvironment { }
+
+let urbanEntryReducer = Reducer<UrbanEntryState, UrbanEntryAction, UrbanEntryEnvironment> {
+    state, action, environment in
+    
+    switch action {
+    case .onAppear:
+        return .none
+    }
+    
+}
+
+
