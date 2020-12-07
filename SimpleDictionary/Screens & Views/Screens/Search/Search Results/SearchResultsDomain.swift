@@ -10,16 +10,19 @@ import ComposableArchitecture
 
 struct SearchResultsState: Equatable {
     let word: String
-    let tabs: [DictionaryTab] = [.urban, .merriamwebster, .oxford]
-    var currentTab = DictionaryTab.urban
+    
+    let tabs: [DictionaryTab] = [.oxford, .merriamwebster, .urban]
+    var currentTab = DictionaryTab.merriamwebster
     
     var urbanEntryState: UrbanEntryState?
+    var merriamWebsterEntryState: MerriamWebsterEntryState?
     
     var isAudioAvailable = false
 }
 
 enum SearchResultsAction {
     case urbanEntry(UrbanEntryAction)
+    case merriamWebster(MerriamWebsterEntryAction)
     
     case onAppear
     
@@ -27,6 +30,7 @@ enum SearchResultsAction {
     
     case fetchDataForCurrentTabIfNeeded
     case urbanResponseReceived(Result<UrbanEntry, Never>)
+    case merriamWebsterResponseReceived(Result<MerriamWebsterEntry, Never>)
     
     case playAudio
     case audioResponseReceived(Result<Bool, Never>)
@@ -45,12 +49,18 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
         action: /SearchResultsAction.urbanEntry,
         environment: { _ in .init() }
     ),
-    
+    merriamWebsterEntryReducer
+    .optional()
+    .pullback(
+        state: \.merriamWebsterEntryState,
+        action: /SearchResultsAction.merriamWebster,
+        environment: { _ in .init() }
+    ),
     Reducer { state, action, environment in
         
         switch action {
         
-        case .urbanEntry:
+        case .urbanEntry, .merriamWebster:
             return .none
         
         case .onAppear:
@@ -73,16 +83,30 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
                     .catchToEffect()
                     .map(SearchResultsAction.urbanResponseReceived)
                 
-            case .merriamwebster, .oxford:
+            case .merriamwebster:
+                guard state.merriamWebsterEntryState == nil else { return .none }
+                return environment.dataProvider.fetchMerriamWebsterDictionary(for: state.word)
+                    .receive(on: environment.mainQueue)
+                    .catchToEffect()
+                    .map(SearchResultsAction.merriamWebsterResponseReceived)
+                
+            case .oxford:
                 return .none
                 
             }
             
-        case .urbanResponseReceived(.success(var urbanEntry)):
+        case .urbanResponseReceived(.success(let urbanEntry)):
             state.urbanEntryState = .init(urbanEntry: urbanEntry)
             return .none
             
         case .urbanResponseReceived(.failure):
+            return .none
+            
+        case .merriamWebsterResponseReceived(.success(let merriamWebsterEntry)):
+            state.merriamWebsterEntryState = .init(def: [])
+            return .none
+            
+        case .merriamWebsterResponseReceived(.failure):
             return .none
             
         case .selectTab(let tab):

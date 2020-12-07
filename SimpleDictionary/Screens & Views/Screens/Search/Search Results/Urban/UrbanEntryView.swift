@@ -15,11 +15,14 @@ struct UrbanEntryView: View {
     var body: some View {
         WithViewStore(store) { viewStore in
             VStack {
-                ForEach(viewStore.state.urbanEntry.list, id: \.self) { definition in
-                    entry(with: definition)
-                        .padding()
-                    Divider()
-                        .padding(.horizontal)
+                if viewStore.urbanEntry.list.isNotEmpty {
+                    ForEach(viewStore.state.urbanEntry.list, id: \.self) { definition in
+                        entry(with: definition)
+                            .padding(.vertical)
+                        Divider()
+                    }
+                } else {
+                    emptyState
                 }
             }
         }
@@ -62,18 +65,21 @@ struct UrbanEntryView: View {
                 
                 Spacer(minLength: 0)
                 
-                Text(definition.writtenOn?.monthDayYearLocal ?? "Date undefined")
+                Text(definition.writtenOn?.monthDayYearLocal ?? "Date is undefined")
                     .bold()
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
             }
         }
     }
+    
+    var emptyState: some View {
+        VStack {
+            Spacer()
+            Text("We were not able to find definitions for this word")
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+            Spacer()
+        }
+    }
 }
-
-//
-//struct UrbanEntryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        UrbanEntryView()
-//    }
-//}

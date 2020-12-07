@@ -62,12 +62,7 @@
 		1097272325067A9C00217C63 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272225067A9C00217C63 /* HistoryView.swift */; };
 		1097272625067DAC00217C63 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272525067DAC00217C63 /* APIService.swift */; };
 		109727282506880B00217C63 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727272506880B00217C63 /* APIProvider.swift */; };
-		1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097272E2506A2CE00217C63 /* OXFEntry.swift */; };
-		109727312506A51B00217C63 /* OXFSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727302506A51B00217C63 /* OXFSense.swift */; };
-		109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727322506A62A00217C63 /* OXFExamplesList.swift */; };
 		109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727342506A7B000217C63 /* OXFRetrieveEntry.swift */; };
-		109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727362506A7E800217C63 /* OXFHeadwordEntry.swift */; };
-		109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109727382506A86000217C63 /* OXFLexicalEntry.swift */; };
 		10979017256B2C93008AEEB8 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10979016256B2C93008AEEB8 /* WordDetailsView.swift */; };
 		1097901D256B2E4A008AEEB8 /* WordDetailsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097901C256B2E4A008AEEB8 /* WordDetailsDomain.swift */; };
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
@@ -86,6 +81,9 @@
 		10C18847257A91B000FADA92 /* DictionaryTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18846257A91B000FADA92 /* DictionaryTab.swift */; };
 		10C1884F257ACE6700FADA92 /* OxfordEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1884E257ACE6700FADA92 /* OxfordEntryView.swift */; };
 		10C18855257ACE7600FADA92 /* OxfordEntryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18854257ACE7600FADA92 /* OxfordEntryDomain.swift */; };
+		10C18865257BE90E00FADA92 /* MerriamWebsterEntryDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18864257BE90E00FADA92 /* MerriamWebsterEntryDomain.swift */; };
+		10C18869257BE91B00FADA92 /* MerriamWebsterEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18868257BE91B00FADA92 /* MerriamWebsterEntryView.swift */; };
+		10C18871257C0D6900FADA92 /* MerriamWebsterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C18870257C0D6900FADA92 /* MerriamWebsterEntry.swift */; };
 		10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E19DB8250816C80061CF6B /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -156,12 +154,7 @@
 		1097272225067A9C00217C63 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		1097272525067DAC00217C63 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		109727272506880B00217C63 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
-		1097272E2506A2CE00217C63 /* OXFEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFEntry.swift; sourceTree = "<group>"; };
-		109727302506A51B00217C63 /* OXFSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFSense.swift; sourceTree = "<group>"; };
-		109727322506A62A00217C63 /* OXFExamplesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFExamplesList.swift; sourceTree = "<group>"; };
 		109727342506A7B000217C63 /* OXFRetrieveEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFRetrieveEntry.swift; sourceTree = "<group>"; };
-		109727362506A7E800217C63 /* OXFHeadwordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFHeadwordEntry.swift; sourceTree = "<group>"; };
-		109727382506A86000217C63 /* OXFLexicalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OXFLexicalEntry.swift; sourceTree = "<group>"; };
 		10979016256B2C93008AEEB8 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 		1097901C256B2E4A008AEEB8 /* WordDetailsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsDomain.swift; sourceTree = "<group>"; };
 		109F8CB92575BCE3006FC7B5 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -179,6 +172,9 @@
 		10C18846257A91B000FADA92 /* DictionaryTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryTab.swift; sourceTree = "<group>"; };
 		10C1884E257ACE6700FADA92 /* OxfordEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxfordEntryView.swift; sourceTree = "<group>"; };
 		10C18854257ACE7600FADA92 /* OxfordEntryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxfordEntryDomain.swift; sourceTree = "<group>"; };
+		10C18864257BE90E00FADA92 /* MerriamWebsterEntryDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerriamWebsterEntryDomain.swift; sourceTree = "<group>"; };
+		10C18868257BE91B00FADA92 /* MerriamWebsterEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerriamWebsterEntryView.swift; sourceTree = "<group>"; };
+		10C18870257C0D6900FADA92 /* MerriamWebsterEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerriamWebsterEntry.swift; sourceTree = "<group>"; };
 		10E19DB8250816C80061CF6B /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +200,7 @@
 		1024141A2550631200D8D2A8 /* MerriamWebster API */ = {
 			isa = PBXGroup;
 			children = (
+				10C18870257C0D6900FADA92 /* MerriamWebsterEntry.swift */,
 			);
 			path = "MerriamWebster API";
 			sourceTree = "<group>";
@@ -542,6 +539,8 @@
 		10C188302579995500FADA92 /* MerriamWebster */ = {
 			isa = PBXGroup;
 			children = (
+				10C18868257BE91B00FADA92 /* MerriamWebsterEntryView.swift */,
+				10C18864257BE90E00FADA92 /* MerriamWebsterEntryDomain.swift */,
 			);
 			path = MerriamWebster;
 			sourceTree = "<group>";
@@ -574,11 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				109727342506A7B000217C63 /* OXFRetrieveEntry.swift */,
-				109727362506A7E800217C63 /* OXFHeadwordEntry.swift */,
-				109727382506A86000217C63 /* OXFLexicalEntry.swift */,
-				1097272E2506A2CE00217C63 /* OXFEntry.swift */,
-				109727302506A51B00217C63 /* OXFSense.swift */,
-				109727322506A62A00217C63 /* OXFExamplesList.swift */,
 			);
 			path = "Oxford API";
 			sourceTree = "<group>";
@@ -712,12 +706,13 @@
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
 				10C18855257ACE7600FADA92 /* OxfordEntryDomain.swift in Sources */,
 				109F8CBA2575BCE3006FC7B5 /* UserDefault.swift in Sources */,
-				1097272F2506A2CE00217C63 /* OXFEntry.swift in Sources */,
+				10C18865257BE90E00FADA92 /* MerriamWebsterEntryDomain.swift in Sources */,
 				105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */,
 				109727282506880B00217C63 /* APIProvider.swift in Sources */,
 				105136B12568033B009B824A /* EditableDefinitionCellView.swift in Sources */,
 				1097272625067DAC00217C63 /* APIService.swift in Sources */,
 				103398A42522942500A71355 /* CollectionExtension.swift in Sources */,
+				10C18871257C0D6900FADA92 /* MerriamWebsterEntry.swift in Sources */,
 				109F8CC725768B54006FC7B5 /* ProgressCircle.swift in Sources */,
 				107FAF902573216E004EEDE8 /* ColorExtension.swift in Sources */,
 				10979017256B2C93008AEEB8 /* WordDetailsView.swift in Sources */,
@@ -734,21 +729,19 @@
 				107FAF8425731001004EEDE8 /* PersonalDictionarySettingsView.swift in Sources */,
 				10668B8825606EC200119BDA /* Definition+CoreDataClass.swift in Sources */,
 				1052F8A62573ECF4009D5331 /* WordnikWODNormalized.swift in Sources */,
-				109727312506A51B00217C63 /* OXFSense.swift in Sources */,
 				1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */,
 				1097901D256B2E4A008AEEB8 /* WordDetailsDomain.swift in Sources */,
 				10B5E1C32565F5AD00081ED8 /* PersonalDictionaryView.swift in Sources */,
 				109727352506A7B000217C63 /* OXFRetrieveEntry.swift in Sources */,
+				10C18869257BE91B00FADA92 /* MerriamWebsterEntryView.swift in Sources */,
 				107FAF7E25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift in Sources */,
 				104E38862551CE1B00ECCBD5 /* DashboardView.swift in Sources */,
 				1097272325067A9C00217C63 /* HistoryView.swift in Sources */,
 				10241417254F935200D8D2A8 /* Endpoint.swift in Sources */,
 				105136E42569985C009B824A /* AppDependencyManager.swift in Sources */,
 				1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */,
-				109727372506A7E800217C63 /* OXFHeadwordEntry.swift in Sources */,
 				104D5CB425088C5C00E5F9D8 /* CardView.swift in Sources */,
 				10C1883F257999D300FADA92 /* UrbanEntryDomain.swift in Sources */,
-				109727392506A86000217C63 /* OXFLexicalEntry.swift in Sources */,
 				10C18839257999C800FADA92 /* UrbanEntryView.swift in Sources */,
 				105136CB2568466F009B824A /* PartOfSpeech.swift in Sources */,
 				1052F8C425758341009D5331 /* UIApplicationExtension.swift in Sources */,
@@ -770,7 +763,6 @@
 				1066FD98255E1317008211A3 /* SearchDomain.swift in Sources */,
 				10668B6F255F34F300119BDA /* ManagedObjectContextExtension.swift in Sources */,
 				105136C525683760009B824A /* PersonalDictionaryDataProvider.swift in Sources */,
-				109727332506A62A00217C63 /* OXFExamplesList.swift in Sources */,
 				105136ED2569BB18009B824A /* CoreDataPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

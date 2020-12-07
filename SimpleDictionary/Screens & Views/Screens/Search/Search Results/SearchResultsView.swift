@@ -31,7 +31,11 @@ struct SearchResultsView: View {
                     }
                     
                     if viewStore.state.currentTab == .merriamwebster {
-                        ActivityIndicator()
+                        IfLetStore(store.scope(
+                                    state: { $0.merriamWebsterEntryState }, action: SearchResultsAction.merriamWebster),
+                                   then: { MerriamWebsterEntryView(store: $0) },
+                                   else: ActivityIndicator()
+                        )
                     }
                     
                     if viewStore.state.currentTab == .oxford {
@@ -56,6 +60,8 @@ struct SearchResultsView: View {
             }
             .opacity(viewStore.isAudioAvailable ? 1 : 0)
             Spacer()
+            Image(systemName: "bookmark")
+                .font(.title2)
         }
         .foregroundColor(.blue)
     }

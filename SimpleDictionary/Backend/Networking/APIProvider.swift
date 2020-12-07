@@ -57,12 +57,12 @@ class APIMerriamWebsterProvider: APIProvider {
     let decoder = JSONDecoder()
     lazy var session = URLSession(configuration: makeSessionConfiguration())
     
-    /// https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=befcdb81ac57168c93d30128fedb20b0
+    /// https://dictionaryapi.com/api/v3/references/thesaurus/json/test?key=15202ab4-4624-4b70-bdb7-69c497a28f1f
     private let scheme = "https"
     private let host = "dictionaryapi.com"
     private let basePath = "api/v3/references"
     private let format = "json"
-    private let apiKey = "befcdb81ac57168c93d30128fedb20b0"
+    private let apiKey = "15202ab4-4624-4b70-bdb7-69c497a28f1f"
     
     func requestForGET(with endpoint: MerriamWebsterEndpoint) -> URLRequest {
         var request = URLRequest(url: makeURL(from: endpoint))

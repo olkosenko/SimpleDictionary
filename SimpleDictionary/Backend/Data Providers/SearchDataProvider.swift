@@ -183,12 +183,24 @@ class SearchDataProvider {
             .flatMap { word -> AnyPublisher<UrbanEntry, APIError> in
                 self.apiService.GET(endpoint: .urban(.definitions(word: word)))
             }
-            .mapError {
-                $0 as Error
-            }
             .replaceError(with: UrbanEntry(list: []))
             .eraseToEffect()
     }
+    
+    func fetchMerriamWebsterDictionary(for word: String) -> Effect<MerriamWebsterEntry, Never> {
+        [word.lowercased()].publisher
+            .flatMap { word -> AnyPublisher<MerriamWebsterEntry, APIError> in
+                self.apiService.GET(endpoint: .merriamWebster(.definitions(word: word)))
+            }
+            .map { entry -> MerriamWebsterEntry? in
+                return entry
+            }
+            .replaceError(with: nil)
+            .compactMap { $0 }
+            .eraseToEffect()
+    }
+    
+    func fetchOxfordDictionary(for word: String) -> Effect<
     
     
     // MARK: - Audio
