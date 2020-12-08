@@ -200,7 +200,18 @@ class SearchDataProvider {
             .eraseToEffect()
     }
     
-    func fetchOxfordDictionary(for word: String) -> Effect<
+    func fetchOxfordDictionary(for word: String) -> Effect<StandardDictionaryEntry, Never> {
+        [word.lowercased()].publisher
+            .flatMap { word -> AnyPublisher<OxfordEntry, APIError> in
+                self.apiService.GET(endpoint: .oxford(.definitions(word: word)))
+            }
+            .map { entry -> StandardDictionaryEntry? in
+                StandardDictionaryEntry(oxfordEntry: entry)
+            }
+            .replaceError(with: nil)
+            .compactMap { $0 }
+            .eraseToEffect()
+    }
     
     
     // MARK: - Audio
@@ -224,6 +235,15 @@ class SearchDataProvider {
                 }
                 return nil
             }
+            .flatMap { url -> AnyPublisher<Bool, Error> in
+                self.fetchAudio(with: url, for: lowercasedWord)
+            }
+            .replaceError(with: false)
+            .eraseToEffect()
+    }
+    
+    func fetchAudio(with url: URL, for word: String) -> AnyPublisher<Bool, Error> {
+        [url].publisher
             .flatMap { url -> AnyPublisher<(data: Data, response: URLResponse), Error> in
                 URLSession.shared.dataTaskPublisher(for: url)
                     .mapError { $0 as Error }
@@ -231,7 +251,7 @@ class SearchDataProvider {
             }
             .tryMap { data, _ -> AVAudioPlayer in
                 let player = try AVAudioPlayer(data: data)
-                self.soundsCache[lowercasedWord] = data
+                self.soundsCache[word.lowercased()] = data
                 return player
             }
             .map { player -> Bool in
@@ -239,8 +259,7 @@ class SearchDataProvider {
                 self.wordAudioPlayer?.prepareToPlay()
                 return true
             }
-            .replaceError(with: false)
-            .eraseToEffect()
+            .eraseToAnyPublisher()
     }
     
     func playWordAudioIfAvailable() {

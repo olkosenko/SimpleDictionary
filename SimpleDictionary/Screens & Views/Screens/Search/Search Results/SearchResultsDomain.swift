@@ -12,10 +12,11 @@ struct SearchResultsState: Equatable {
     let word: String
     
     let tabs: [DictionaryTab] = [.oxford, .merriamwebster, .urban]
-    var currentTab = DictionaryTab.merriamwebster
+    var currentTab = DictionaryTab.oxford
     
     var urbanEntryState: UrbanEntryState?
     var merriamWebsterEntryState: MerriamWebsterEntryState?
+    var oxfordEntryState: OxfordEntryState?
     
     var isAudioAvailable = false
 }
@@ -23,6 +24,7 @@ struct SearchResultsState: Equatable {
 enum SearchResultsAction {
     case urbanEntry(UrbanEntryAction)
     case merriamWebster(MerriamWebsterEntryAction)
+    case oxfordEntryState(OxfordEntryAction)
     
     case onAppear
     
@@ -31,6 +33,7 @@ enum SearchResultsAction {
     case fetchDataForCurrentTabIfNeeded
     case urbanResponseReceived(Result<UrbanEntry, Never>)
     case merriamWebsterResponseReceived(Result<MerriamWebsterEntry, Never>)
+    case oxfordResponseReceived(Result<StandardDictionaryEntry, Never>)
     
     case playAudio
     case audioResponseReceived(Result<Bool, Never>)
@@ -56,11 +59,18 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
         action: /SearchResultsAction.merriamWebster,
         environment: { _ in .init() }
     ),
+    oxfordEntryReducer
+    .optional()
+    .pullback(
+        state: \.oxfordEntryState,
+        action: /SearchResultsAction.oxfordEntryState,
+        environment: { _ in .init() }
+    ),
     Reducer { state, action, environment in
         
         switch action {
         
-        case .urbanEntry, .merriamWebster:
+        case .urbanEntry, .merriamWebster, .oxfordEntryState:
             return .none
         
         case .onAppear:
@@ -91,7 +101,11 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
                     .map(SearchResultsAction.merriamWebsterResponseReceived)
                 
             case .oxford:
-                return .none
+                guard state.oxfordEntryState == nil else { return .none }
+                return environment.dataProvider.fetchOxfordDictionary(for: state.word)
+                    .receive(on: environment.mainQueue)
+                    .catchToEffect()
+                    .map(SearchResultsAction.oxfordResponseReceived)
                 
             }
             
@@ -107,6 +121,22 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
             return .none
             
         case .merriamWebsterResponseReceived(.failure):
+            return .none
+            
+        case .oxfordResponseReceived(.success(let entry)):
+            state.oxfordEntryState = .init(entry: entry)
+            
+            if let url = entry.soundURL {
+                return environment.dataProvider.fetchAudio(with: url, for: state.word)
+                    .receive(on: environment.mainQueue)
+                    .replaceError(with: false)
+                    .catchToEffect()
+                    .map(SearchResultsAction.audioResponseReceived)
+            }
+            
+            return .none
+            
+        case .oxfordResponseReceived(.failure):
             return .none
             
         case .selectTab(let tab):

@@ -1,5 +1,5 @@
 //
-//  RetrieveEntry.swift
+//  OxfordEntry.swift
 //  SimpleDictionary
 //
 //  Created by Oleg Kosenko on 2020-09-07.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OXFRetrieveEntry: Decodable {
+struct OxfordEntry: Decodable {
     /// A list of entries and all the data related to them.
     let results: [OXFHeadwordEntry]?
 }
@@ -42,10 +42,10 @@ struct OXFLexicalEntry: Decodable {
         
         if container.contains(.lexicalCategory) {
             let lexicalCategoryContainer = try container.nestedContainer(keyedBy: LexicalCategoryCodingKeys.self,
-                                                                forKey: .lexicalCategory)
+                                                                         forKey: .lexicalCategory)
             
             let lexicalCategoryText = try lexicalCategoryContainer.decode(String.self, forKey: .text)
-            lexicalCategory = PartOfSpeech(rawValue: lexicalCategoryText) ?? .noun
+            lexicalCategory = PartOfSpeech(rawValue: lexicalCategoryText.lowercased()) ?? .noun
         } else {
             lexicalCategory = .noun
         }
@@ -58,11 +58,13 @@ struct OXFEntry: Decodable {
     
     /// Complete list of senses.
     let senses: [OXFSense]?
+    
+    let pronunciations: [OXFPronunciation]?
 }
 
 struct OXFPronunciation: Decodable {
     let audioFile: URL?
-    let phoneticSpelling: String
+    let phoneticSpelling: String?
     
     enum CodingKeys: String, CodingKey {
         case audioFile
@@ -71,9 +73,18 @@ struct OXFPronunciation: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        phoneticSpelling = try container.decode(String.self, forKey: .phoneticSpelling)
-        let stringURL = try container.decode(String.self, forKey: .audioFile)
-        audioFile = URL(string: stringURL)
+        if container.contains(.phoneticSpelling) {
+            phoneticSpelling = try container.decode(String.self, forKey: .phoneticSpelling)
+        } else {
+            phoneticSpelling = nil
+        }
+        
+        if container.contains(.audioFile) {
+            let stringURL = try container.decode(String.self, forKey: .audioFile)
+            audioFile = URL(string: stringURL)
+        } else {
+            audioFile = nil
+        }
     }
 }
 
@@ -85,6 +96,5 @@ struct OXFSense: Decodable {
 }
 
 struct OXFContainerWithText: Decodable {
-    
     let text: String
 }

@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 
 struct OxfordEntryState: Equatable {
-    let def: [String]
+    let entry: StandardDictionaryEntry
 }
 
 enum OxfordEntryAction {

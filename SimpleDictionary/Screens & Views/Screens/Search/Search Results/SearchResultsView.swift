@@ -39,7 +39,11 @@ struct SearchResultsView: View {
                     }
                     
                     if viewStore.state.currentTab == .oxford {
-                        ActivityIndicator()
+                        IfLetStore(store.scope(
+                                    state: { $0.oxfordEntryState }, action: SearchResultsAction.oxfordEntryState),
+                                   then: { OxfordEntryView(store: $0) },
+                                   else: ActivityIndicator()
+                        )
                     }
                     
                     Spacer()

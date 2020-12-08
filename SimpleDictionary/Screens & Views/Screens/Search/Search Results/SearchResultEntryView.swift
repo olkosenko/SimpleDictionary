@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SearchResultEntryView: View {
+    let entry: StandardDictionaryEntry
+    
     var body: some View {
         ScrollView(.vertical) {
             VStack(spacing: 16) {
