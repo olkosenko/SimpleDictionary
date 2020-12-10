@@ -9,34 +9,37 @@ import Foundation
 import ComposableArchitecture
 
 struct DashboardState: Equatable {
-    static func == (lhs: DashboardState, rhs: DashboardState) -> Bool {
-        return true
+    var settings: SearchSettings = .defaultValue
+    
+    var searchProgress: Double {
+        return Double(settings.currentSearchCount) / Double(settings.searchGoalCount)
     }
     
-    var metrics: [Metrics]
-    
-    enum Metrics {
-        case search(MetricData)
-        case learn(MetricData)
-        
-        var name: String {
-            switch self {
-            case .learn:
-                return "Learn"
-            case .search:
-                return "Search"
-            }
-        }
-    }
-    
-    struct MetricData {
-        var isVisible: Bool
-        var currentValue: Int
-        var goalValue: Int
+    var learnProgress: Double {
+        return Double(settings.currentLearnCount) / Double(settings.learnGoalCount)
     }
 }
 
-enum DashboardAction {}
-struct DashboardEnvironment {}
+enum DashboardAction {
+    case onAppear
+    case onSettingsChanged(Result<SearchSettings, Never>)
+}
+struct DashboardEnvironment {
+    var userDefaultsDataProvider: UserDefaultsDataProvider
+}
 
-let dashboardReducer = Reducer<DashboardState, DashboardAction, DashboardEnvironment> { _, _, _ in .none }
+let dashboardReducer = Reducer<DashboardState, DashboardAction, DashboardEnvironment> {
+    state, action, environment in
+    
+    switch action {
+    case .onAppear:
+        return environment.userDefaultsDataProvider.searchSettingsPublisher
+            .catchToEffect()
+            .map(DashboardAction.onSettingsChanged)
+        
+    case .onSettingsChanged(.success(let newSettings)):
+        state.settings = newSettings
+        return .none
+        
+    }
+}

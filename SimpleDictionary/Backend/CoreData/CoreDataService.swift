@@ -39,7 +39,7 @@ final class CoreDataService {
             newWord.title = title
             newWord.phoneticSpelling = phoneticSpelling
             newWord.date = date
-            newWord.isWOD = wordType == .wod ? true : false
+            newWord.isWOD = NSNumber(value: wordType == .wod)
             
             definitions.forEach { partOfSpeech, defs in
                 defs.forEach { def in
@@ -73,7 +73,7 @@ final class CoreDataService {
             newWord.title = title
             newWord.phoneticSpelling = phoneticSpelling
             newWord.date = date
-            newWord.isWOD = NSNumber(value: wordType == .wod ? true : false)
+            newWord.isWOD = NSNumber(value: wordType == .wod)
             newWord.addToDefinitions(NSSet(array: definitions))
             return .success(newWord)
         }
@@ -96,8 +96,7 @@ final class CoreDataService {
     ) -> Effect<[Word], Error> {
         return wrapInEffectAndContext { context in
             Result<[Word], Error> {
-                let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == %@",
-                                            NSNumber(value: wordType == .wod ? true : false))
+                let predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == %@", NSNumber(value: wordType == .wod))
                 let sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: false)]
                 
                 let words = try self.context.fetchEntities(ofType: Word.self,

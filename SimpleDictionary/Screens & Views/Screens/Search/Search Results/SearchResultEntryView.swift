@@ -8,94 +8,134 @@
 import SwiftUI
 
 struct SearchResultEntryView: View {
-    let entry: StandardDictionaryEntry
+    let standardEntry: StandardDictionaryEntry
+    
+    private let columns: [GridItem] = [
+        .init(.flexible()),
+        .init(.flexible())
+    ]
     
     var body: some View {
         ScrollView(.vertical) {
             VStack(spacing: 16) {
 
-                definitions
-
-                Divider()
-
-                HStack(spacing: 120) {
-                    synant(word: "Synonyms")
-                    synant(word: "Antonyms")
+                ForEach(standardEntry.entries, id: \.self) { entry in
+                    VStack(spacing: 16) {
+                        
+                        HStack {
+                            Text(entry.partOfSpeech.rawValue.capitalized)
+                                .bold()
+                                .foregroundColor(.blue)
+                            Spacer()
+                        }
+                        
+                        definitions(with: entry.definitions)
+                        
+                        if entry.synonyms.isNotEmpty {
+                            synonyms(with: entry.synonyms)
+                        }
+                        
+                        if entry.examples.isNotEmpty {
+                            examples(with: entry.examples)
+                        }
+                        
+                        Divider()
+                            .padding(.top, 8)
+                    }
                 }
-
-                Divider()
-
-                examples
-
-                Divider()
-
-                etymology
+                
+                if standardEntry.etymologies.isNotEmpty {
+                    etymologies
+                }
             }
         }
     }
     
-    var definitions: some View {
+    private func definitions(with items: [String]) -> some View {
         VStack(spacing: 8) {
             
             HStack(alignment: .center) {
                 Text("Definitions")
                     .font(.headline)
-                Text("3")
-                    .font(.subheadline)
+                if items.count > 1 {
+                    Text("\(items.count)")
+                        .font(.subheadline)
+                }
                 Spacer()
             }
             
-            ForEach(1..<4) { index in
+            ForEach(Array(zip(items.indices, items)), id: \.0) { index, item in
                 HStack(spacing: 0) {
-                    Text("\(index)")
+                    let indexAdjusted = index + 1
+                    Text("\(indexAdjusted)")
                         .bold()
-                    Spacer(minLength: 10)
-                    Text("an apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device.")
+                        .padding(.trailing)
+                    Text(item)
+                    Spacer(minLength: 0)
                 }
             }
         }
     }
     
-    func synant(word: String) -> some View {
+    private func synonyms(with items: [String]) -> some View {
         VStack(alignment: .center, spacing: 8) {
             HStack(alignment: .center) {
-                Text(word)
+                Text("Synonyms")
                     .font(.headline)
-                Text("4")
-                    .font(.subheadline)
+                if items.count > 1 {
+                    Text("\(items.count)")
+                        .font(.subheadline)
+                }
+                Spacer()
             }
-            ForEach(0..<4) { _ in
-                Text("broadcast")
-                    .foregroundColor(.blue)
+            LazyVGrid(columns: columns, spacing: 12) {
+                ForEach(items, id: \.self) { item in
+                    Text(item)
+                        .foregroundColor(.blue)
+                        .lineLimit(1)
+                }
             }
         }
     }
     
-    var examples: some View {
+    private func examples(with items: [String]) -> some View {
         VStack(spacing: 8) {
             HStack(alignment: .center) {
                 Text("Examples")
                     .font(.headline)
-                Text("3")
-                    .font(.subheadline)
+                if items.count > 1 {
+                    Text("\(items.count)")
+                        .font(.subheadline)
+                }
                 Spacer()
             }
-            ForEach(0..<3) { _ in
+            ForEach(items, id: \.self) { item in
                 HStack(alignment: .center) {
-                    Text("\"An apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device.\"")
+                    Text("// \(item.capitalizeFirst())")
+                        .italic()
+                    Spacer(minLength: 0)
                 }
             }
         }
     }
     
-    var etymology: some View {
+    private var etymologies: some View {
         VStack(spacing: 8) {
             HStack(alignment: .center) {
-                Text("Etymology")
+                Text("Etymologies")
                     .font(.headline)
+                if standardEntry.etymologies.count > 1 {
+                    Text("\(standardEntry.etymologies.count)")
+                        .font(.subheadline)
+                }
                 Spacer()
             }
-            Text("An apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device.")
+            ForEach(standardEntry.etymologies, id: \.self) { etymology in
+                HStack {
+                    Text(etymology)
+                    Spacer(minLength: 0)
+                }
+            }
         }
     }
     
@@ -103,7 +143,9 @@ struct SearchResultEntryView: View {
 
 struct SearchResultEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultEntryView()
-            .padding()
+        SearchResultEntryView(
+            standardEntry: StandardDictionaryEntry.standardDictionaryTestEntry
+        )
+        .padding()
     }
 }

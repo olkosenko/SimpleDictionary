@@ -8,6 +8,7 @@
 import Foundation
 
 enum PartOfSpeech: String, CaseIterable, Identifiable, Equatable {
+    var id: String { self.rawValue }
     
     case noun
     case verb
@@ -17,6 +18,4 @@ enum PartOfSpeech: String, CaseIterable, Identifiable, Equatable {
     case preposition
     case conjunction
     case interjection
-    
-    var id: String { self.rawValue }
 }

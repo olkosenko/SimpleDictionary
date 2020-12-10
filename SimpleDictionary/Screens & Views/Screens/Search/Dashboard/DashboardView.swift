@@ -16,29 +16,44 @@ struct DashboardView: View {
             HStack {
                 
                 VStack(alignment: .leading, spacing: 12) {
-                    makeLabel(title: "Search",
-                              result: "23",
-                              goal: "30",
-                              metric: "word",
-                              color: .green)
+                    if viewStore.settings.isSearchGoalActive {
+                        makeLabel(title: "Search",
+                                  result: viewStore.settings.currentSearchCount,
+                                  goal: viewStore.settings.searchGoalCount,
+                                  metric: "word",
+                                  color: .green)
+                    }
                     
-                    makeLabel(title: "Learn",
-                              result: "3",
-                              goal: "10",
-                              metric: "word",
-                              color: Color.orange.opacity(0.8))
+                    if viewStore.settings.isLearnGoalActive {
+                        makeLabel(title: "Learn",
+                                  result: viewStore.settings.currentLearnCount,
+                                  goal: viewStore.settings.learnGoalCount,
+                                  metric: "word",
+                                  color: Color.orange.opacity(0.8))
+                    }
                 }
                 .padding(.leading)
                 
                 Spacer()
                 
                 GeometryReader { proxy in
-                    ZStack {
-                        CirclesView(progress: 23/30, thickness: 20, color: .green)
-                            .frame(width: proxy.size.width, height: proxy.size.height)
-                        
-                        CirclesView(progress: 3/10, thickness: 20, color: .orange)
-                            .frame(width: abs(proxy.size.width-42), height: abs(proxy.size.height-42))
+                    VStack {
+                        Spacer(minLength: 0)
+                        ZStack {
+                            if viewStore.settings.isSearchGoalActive {
+                                CirclesView(progress: viewStore.searchProgress, thickness: 20, color: .green)
+                                    .frame(width: proxy.size.width, height: proxy.size.height)
+                            }
+                            
+                            if viewStore.settings.isLearnGoalActive {
+                                CirclesView(progress: viewStore.learnProgress, thickness: 20, color: .orange)
+                                    .frame(
+                                        width: abs(viewStore.settings.isSearchGoalActive ? proxy.size.width-42 : proxy.size.width),
+                                        height: abs(viewStore.settings.isSearchGoalActive ? proxy.size.height-42 : proxy.size.height)
+                                    )
+                            }
+                        }
+                        Spacer(minLength: 0)
                     }
                 }
                 
@@ -47,10 +62,11 @@ struct DashboardView: View {
             .background(RoundedRectangle(cornerRadius: 10)
                             .shadow(color: .black, radius: 4, x: 1.0, y: 1.0)
                             .foregroundColor(.progressViewBackground))
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
     
-    func makeLabel(title: String, result: String, goal: String, metric: String, color: Color) -> some View {
+    func makeLabel(title: String, result: Int, goal: Int, metric: String, color: Color) -> some View {
         VStack(alignment: .leading) {
             Text(title)
                 .font(.system(.callout, design: .rounded))
@@ -60,5 +76,17 @@ struct DashboardView: View {
                 .bold()
                 .foregroundColor(color)
         }
+    }
+}
+
+struct DashboardView_Previews: PreviewProvider {
+    static var previews: some View {
+        DashboardView(store: Store(initialState: DashboardState(),
+                                   reducer: dashboardReducer,
+                                   environment: DashboardEnvironment(userDefaultsDataProvider: AppEnvironment.debug.userDefaultsDataProvider))
+        )
+        .frame(height: 200)
+        .frame(maxWidth: 400)
+        .padding()
     }
 }

@@ -18,7 +18,6 @@ final class CoreDataStore {
     private let persistentContainer: NSPersistentContainer
     
     init() {
-        /// Set up container
         persistentContainer = NSPersistentContainer(name: Const.containerName)
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {

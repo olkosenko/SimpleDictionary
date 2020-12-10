@@ -12,12 +12,22 @@ struct MerriamWebsterEntryView: View {
     let store: Store<MerriamWebsterEntryState, MerriamWebsterEntryAction>
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithViewStore(store) { viewStore in
+            if let entry = viewStore.shuffledEntry {
+                SearchResultEntryView(standardEntry: entry)
+            } else {
+                emptyState
+            }
+        }
+    }
+    
+    var emptyState: some View {
+        VStack {
+            Spacer()
+            Text("We were not able to find definitions for this word")
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+            Spacer()
+        }
     }
 }
-
-//struct MerriamWebsterEntryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MerriamWebsterEntryView()
-//    }
-//}

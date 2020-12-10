@@ -93,6 +93,7 @@ struct OXFSense: Decodable {
     let definitions: [String]?
     let examples: [OXFContainerWithText]?
     let synonyms: [OXFContainerWithText]?
+    let crossReferenceMarkers: [String]?
 }
 
 struct OXFContainerWithText: Decodable {

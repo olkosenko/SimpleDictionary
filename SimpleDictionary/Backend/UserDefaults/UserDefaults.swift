@@ -11,25 +11,16 @@ extension UserDefaults {
     
     // MARK: - Search
     
-    @UserDefault(key: "recentSearches", defaultValue: [])
+    @UserDefaultPublished("search_settings", defaultValue: SearchSettings.defaultValue)
+    static var searchSettings: SearchSettings
+    
+    @UserDefaultPublished("recent_searches", defaultValue: [])
     static var recentSearches: [String]
     
-    @UserDefault(key: "isSearchGoalActive", defaultValue: true)
-    static var isSearchGoalActive: Bool
     
-    @UserDefault(key: "isLearnGoalActive", defaultValue: true)
-    static var isLearnGoalActive: Bool
+    // MARK: - Dictionary
     
-    @UserDefault(key: "searchGoalCount", defaultValue: 30)
-    static var searchGoalCount: Int
-    
-    @UserDefault(key: "learnGoalCount", defaultValue: 10)
-    static var learnGoalCount: Int
-    
-    
-    // MARK: - Vocabulary
-    
-    @UserDefault(key: "isDictionaryDateShown", defaultValue: false)
-    static var isDictionaryDateShown: Bool
+    @UserDefaultPublished("dictionary_settings", defaultValue: PersonalDictionarySettings.defaultValue)
+    static var personalDictionarySettings: PersonalDictionarySettings
 
 }

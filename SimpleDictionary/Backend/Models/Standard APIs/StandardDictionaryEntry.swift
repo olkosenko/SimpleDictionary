@@ -13,17 +13,28 @@ struct StandardDictionaryEntry: Equatable {
     let entries: [Entry]
     let etymologies: [String]
     
-    struct Entry: Equatable {
+    static let standardDictionaryTestEntry = StandardDictionaryEntry(
+        entries: Array(repeating: Entry.testEntry, count: 3),
+        etymologies: Array(repeating: "An apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device.", count: 5)
+        )
+    
+    struct Entry: Equatable, Hashable {
         let definitions: [String]
         let synonyms: [String]
         let partOfSpeech: PartOfSpeech
         let examples: [String]
+        
+        static let testEntry = Entry(
+            definitions: Array(repeating: "An apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device.", count: 5),
+            synonyms: ["Good", "Bad", "Awesome", "Cool"],
+            partOfSpeech: .noun,
+            examples: Array(repeating: "An apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device.", count: 5))
     }
     
     init?(oxfordEntry: OxfordEntry) {
-        guard let results = oxfordEntry.results?.first,
-              let lexicalEntries = results.lexicalEntries
-        else { return nil }
+        guard let results = oxfordEntry.results else { return nil }
+        let lexicalEntries = results.compactMap { $0.lexicalEntries }.flatMap { $0 }
+        guard lexicalEntries.isNotEmpty else { return nil }
         
         var entries = [Entry]()
         var etymologies = [String]()
@@ -47,6 +58,10 @@ struct StandardDictionaryEntry: Equatable {
                     oxfSenses.forEach { oxfSense in
                         if let oxfDefs = oxfSense.definitions {
                             entryDefinitions.append(contentsOf: oxfDefs)
+                        }
+                        
+                        if let oxfMarkers = oxfSense.crossReferenceMarkers {
+                            entryDefinitions.append(contentsOf: oxfMarkers)
                         }
                         
                         if let oxfExmpls = oxfSense.examples {
@@ -76,6 +91,11 @@ struct StandardDictionaryEntry: Equatable {
                 
             }
             
+            entrySynonyms = Array(Set(entrySynonyms))
+            if entrySynonyms.count > 20 {
+                entrySynonyms = Array(entrySynonyms[0...19])
+            }
+            
             if entryDefinitions.isNotEmpty {
                 let entry = Entry(definitions: entryDefinitions,
                                   synonyms: entrySynonyms,
@@ -91,5 +111,12 @@ struct StandardDictionaryEntry: Equatable {
         self.etymologies = etymologies
         self.phoneticSpelling = phoneticSpelling
         self.soundURL = soundURL
+    }
+    
+    init(entries: [Entry], etymologies: [String]) {
+        self.entries = entries
+        self.etymologies = etymologies
+        self.phoneticSpelling = nil
+        self.soundURL = nil
     }
 }

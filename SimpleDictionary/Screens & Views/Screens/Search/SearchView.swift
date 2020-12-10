@@ -74,17 +74,19 @@ struct SearchView: View {
                     .offset(y: -40)
             }
             
-            DashboardView(
-                store:
-                    store.scope(
-                        state: { $0.dashboard },
-                        action: SearchAction.dashboard
-                    )
-            )
+            if viewStore.dashboard.settings.isLearnGoalActive || viewStore.dashboard.settings.isSearchGoalActive {
+                DashboardView(
+                    store:
+                        store.scope(
+                            state: { $0.dashboard },
+                            action: SearchAction.dashboard
+                        )
+                )
                 .frame(height: 200)
                 .frame(maxWidth: 400)
                 .padding()
                 .offset(x: 0, y: viewStore.wordsOfTheDay.isNotEmpty ? -50 : 0)
+            }
         }
     }
     
@@ -143,7 +145,6 @@ struct SearchView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top)
-                
             }
         }
     }
@@ -191,7 +192,8 @@ struct SearchView_Previews: PreviewProvider {
                           reducer: searchReducer,
                           environment: SearchEnvironment(
                             mainQueue: AppEnvironment.debug.mainQueue,
-                            searchDataProvider: AppEnvironment.debug.searchDataProvider))
+                            searchDataProvider: AppEnvironment.debug.searchDataProvider,
+                            userDefaultsDataProvider: AppEnvironment.debug.userDefaultsDataProvider))
         )
     }
 }

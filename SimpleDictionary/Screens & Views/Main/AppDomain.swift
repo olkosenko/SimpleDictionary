@@ -22,6 +22,7 @@ struct AppEnvironment {
     var mainQueue: AnySchedulerOf<DispatchQueue>
     var searchDataProvider: SearchDataProvider
     var personalDictionaryDataProvider: PersonalDictionaryDataProvider
+    var userDefaultsDataProvider: UserDefaultsDataProvider
 }
 
 let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
@@ -30,14 +31,18 @@ let appReducer = Reducer<AppState, AppAction, AppEnvironment>.combine(
             state: \.search,
             action: /AppAction.search,
             environment: { .init(mainQueue: $0.mainQueue,
-                                 searchDataProvider: $0.searchDataProvider) }),
+                                 searchDataProvider: $0.searchDataProvider,
+                                 userDefaultsDataProvider: $0.userDefaultsDataProvider) }
+        ),
     
     personalDictionaryReducer
         .pullback(
             state: \.personalDictionary,
             action: /AppAction.personalDictionary,
             environment: { .init(mainQueue: $0.mainQueue,
-                                 personalDictionaryDataProvider: $0.personalDictionaryDataProvider) })
+                                 personalDictionaryDataProvider: $0.personalDictionaryDataProvider,
+                                 userDefaultsDataProvider: $0.userDefaultsDataProvider) }
+        )
 )
 
 #if DEBUG
@@ -46,7 +51,8 @@ extension AppEnvironment {
         let dependencyManager = AppDependencyManager()
         return AppEnvironment(mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
                               searchDataProvider: dependencyManager.searchDataProvider,
-                              personalDictionaryDataProvider: dependencyManager.personalDictionaryDataProvider)
+                              personalDictionaryDataProvider: dependencyManager.personalDictionaryDataProvider,
+                              userDefaultsDataProvider: dependencyManager.userDefaultsDataProvider)
     }()
 }
 

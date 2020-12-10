@@ -53,21 +53,30 @@ struct SearchResultsView: View {
                 .padding(.horizontal)
             }
             .onAppear { viewStore.send(.onAppear) }
+            .transition(AnyTransition.opacity)
+            .animation(.easeOut(duration: 0.3))
         }
     }
     
     func topBar(_ viewStore: ViewStoreType) -> some View {
         HStack(spacing: 12) {
-            Text("[tel-uh-fohn]")
-            Button { viewStore.send(.playAudio) } label: {
-                Image(systemName: "speaker.wave.3.fill")
+            if let phoneticSpelling = viewStore.phoneticSpelling {
+                Text("[\(phoneticSpelling)]")
             }
-            .opacity(viewStore.isAudioAvailable ? 1 : 0)
+            
+            if viewStore.isAudioAvailable {
+                Button { viewStore.send(.playAudio) } label: {
+                    Image(systemName: "speaker.wave.3.fill")
+                }
+            }
+            
             Spacer()
+            
             Image(systemName: "bookmark")
                 .font(.title2)
         }
         .foregroundColor(.blue)
+        .padding(.top, 4)
     }
     
     func picker(_ viewStore: ViewStoreType) -> some View {

@@ -15,18 +15,17 @@ struct SearchSettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
-            WithViewStore(store) { viewStore in
+        WithViewStore(store) { viewStore in
+            NavigationView {
                 VStack {
                     Form {
                         dashboardSettings(viewStore)
                     }
                 }
-                .navigationBarItems(trailing: Button("Done",
-                                                     action: { presentationMode.wrappedValue.dismiss() }))
-                .navigationBarTitle("Settings",
-                                    displayMode: .inline)
+                .navigationBarItems(trailing: Button("Done", action: { presentationMode.wrappedValue.dismiss() }))
+                .navigationBarTitle("Settings", displayMode: .inline)
             }
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
     
@@ -34,43 +33,43 @@ struct SearchSettingsView: View {
         Section(header: Text("Dashboard")) {
             
             Toggle(
-                isOn: viewStore.binding(get: { $0.isSearchGoalActive },
+                isOn: viewStore.binding(get: { $0.settings.isSearchGoalActive },
                                         send: SearchSettingsAction.searchToggleChange)) {
                 Text("Search Goal")
                     .fontWeight(.regular)
             }
             HStack {
-                Text("Count: \(Int(viewStore.searchGoal))")
+                Text("Count: \(viewStore.settings.searchGoalCount)")
                     .font(Font.body.monospacedDigit())
                 Slider(
                     value: viewStore.binding(
-                        get: { $0.searchGoal },
+                        get: { Double($0.settings.searchGoalCount) },
                         send: SearchSettingsAction.searchSliderChange
                     ),
                     in: viewStore.sliderRange,
                     step: viewStore.sliderStep)
             }
-            .disabled(!viewStore.isSearchGoalActive)
+            .disabled(!viewStore.settings.isSearchGoalActive)
             
             Toggle(
-                isOn: viewStore.binding(get: { $0.isLearnGoalActive },
+                isOn: viewStore.binding(get: { $0.settings.isLearnGoalActive },
                                         send: SearchSettingsAction.learnToggleChange)) {
                 Text("Learn Goal")
                     .fontWeight(.regular)
             }
 
             HStack {
-                Text("Count: \(Int(viewStore.learnGoal))")
+                Text("Count: \(viewStore.settings.learnGoalCount)")
                     .font(Font.body.monospacedDigit())
                 Slider(
                     value: viewStore.binding(
-                        get: { $0.learnGoal },
+                        get: { Double($0.settings.learnGoalCount) },
                         send: SearchSettingsAction.learnSliderChange
                     ),
                     in: viewStore.sliderRange,
                     step: viewStore.sliderStep)
             }
-            .disabled(!viewStore.isLearnGoalActive)
+            .disabled(!viewStore.settings.isLearnGoalActive)
             
         }
     }

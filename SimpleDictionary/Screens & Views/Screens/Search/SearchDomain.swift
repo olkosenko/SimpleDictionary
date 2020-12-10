@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct SearchState: Equatable {
     var settings = SearchSettingsState()
-    var dashboard = DashboardState(metrics: [])
+    var dashboard = DashboardState()
     
     var searchResults: SearchResultsState?
     var searchResultsTitle: String?
@@ -33,7 +33,7 @@ enum SearchAction {
     
     case onAppear
     case wodsReceived(Result<[WordnikWODNormalized], Never>)
-    case recentSearchesReceived(Result<[String], Never>)
+    case onRecentSearchesChanged(Result<[String], Never>)
     
     case searchQueryChanged(String)
     case searchQueryEditing(Bool)
@@ -46,21 +46,10 @@ enum SearchAction {
 struct SearchEnvironment {
     var mainQueue: AnySchedulerOf<DispatchQueue>
     var searchDataProvider: SearchDataProvider
+    var userDefaultsDataProvider: UserDefaultsDataProvider
 }
 
 let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combine(
-    searchSettingsReducer
-    .pullback(
-        state: \.settings,
-        action: /SearchAction.settings,
-        environment: { _ in .init() }
-    ),
-    dashboardReducer
-    .pullback(
-        state: \.dashboard,
-        action: /SearchAction.dashboard,
-        environment: { _ in .init() }
-    ),
     searchResultsReducer
     .optional()
     .pullback(
@@ -68,40 +57,28 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
         action: /SearchAction.searchResults,
         environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.searchDataProvider) }
     ),
+    searchSettingsReducer
+    .pullback(
+        state: \.settings,
+        action: /SearchAction.settings,
+        environment: { .init(userDefaultsDataProvider: $0.userDefaultsDataProvider) }
+    ),
+    dashboardReducer
+    .pullback(
+        state: \.dashboard,
+        action: /SearchAction.dashboard,
+        environment: { .init(userDefaultsDataProvider: $0.userDefaultsDataProvider) }
+    ),
     Reducer { state, action, environment in
         
         switch action {
         
-        case .settings(let settingsAction):
-            
-            switch settingsAction {
-            
-            case .searchToggleChange(let isOn):
-                environment.searchDataProvider.isSearchGoalActive = isOn
-            case .learnToggleChange(let isOn):
-                environment.searchDataProvider.isLearnGoalActive = isOn
-            case .searchSliderChange(let newValue):
-                environment.searchDataProvider.searchGoalCount = Int(newValue)
-            case .learnSliderChange(let newValue):
-                environment.searchDataProvider.learnGoalCount = Int(newValue)
-            }
-            
-            return .none
-            
-        case .dashboard:
-            return .none
-            
-        case .searchResults:
+        case .settings, .dashboard, .searchResults:
             return .none
             
         case .onAppear:
             if state.isInitialOnAppear {
                 state.isInitialOnAppear = false
-                
-                state.settings.isSearchGoalActive = environment.searchDataProvider.isSearchGoalActive
-                state.settings.isLearnGoalActive = environment.searchDataProvider.isLearnGoalActive
-                state.settings.searchGoal = Double(environment.searchDataProvider.searchGoalCount)
-                state.settings.learnGoal = Double(environment.searchDataProvider.learnGoalCount)
                 
                 return .concatenate(
                     environment.searchDataProvider.fetchWODs()
@@ -110,10 +87,13 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
                         .catchToEffect()
                         .map(SearchAction.wodsReceived),
                     
-                    environment.searchDataProvider.fetchListOfRecentSearches()
-                        .receive(on: environment.mainQueue)
+                    environment.userDefaultsDataProvider.recentSearchesPublisher
                         .catchToEffect()
-                        .map(SearchAction.recentSearchesReceived)
+                        .map(SearchAction.onRecentSearchesChanged),
+                    
+                    environment.userDefaultsDataProvider.recentSearchesPublisher
+                        .catchToEffect()
+                        .map(SearchAction.searchSuggestionsReceived)
                 )
             }
             return .none
@@ -122,14 +102,8 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
             state.wordsOfTheDay = wods.sorted { $0.date > $1.date }
             return .none
             
-        case .wodsReceived(.failure):
-            return .none
-            
-        case .recentSearchesReceived(.success(let recentSearches)):
-            state.recentSearches = recentSearches
-            return .none
-            
-        case .recentSearchesReceived(.failure):
+        case .onRecentSearchesChanged(.success(let newRecentSearches)):
+            state.recentSearches = newRecentSearches
             return .none
             
         case .searchQueryChanged(let query):
@@ -153,9 +127,6 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
             state.searchSuggestion = suggestions
             return .none
             
-        case .searchSuggestionsReceived(.failure):
-            return .none
-            
         case .searchQueryEditing(let newValue):
             state.isSearchQueryEditing = newValue
             return .none
@@ -167,7 +138,15 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
         case .setNavigation(.some(let word)):
             state.searchResultsTitle = word
             state.searchResults = SearchResultsState(word: word)
-            return .none
+            return .concatenate(
+                .fireAndForget {
+                    environment.userDefaultsDataProvider.increaseCurrentSearchCount()
+                },
+                .fireAndForget {
+                    environment.userDefaultsDataProvider.addRecentSearch(word)
+                },
+                .init(value: .searchQueryChanged(word))
+            )
             
         case .setNavigation(.none):
             environment.searchDataProvider.resetAudioPlayer()

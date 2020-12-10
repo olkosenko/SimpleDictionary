@@ -27,15 +27,6 @@ class PersonalDictionaryDataProvider {
             .eraseToEffect()
     }
     
-    var isDictionaryDateShown: Bool {
-        get {
-            UserDefaults.isDictionaryDateShown
-        }
-        set {
-            UserDefaults.isDictionaryDateShown = newValue
-        }
-    }
-    
     init(coreDataService: CoreDataService) {
         self.coreDataService = coreDataService
     }

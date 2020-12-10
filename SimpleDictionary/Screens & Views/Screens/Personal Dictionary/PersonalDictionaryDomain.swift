@@ -16,9 +16,9 @@ struct PersonalDictionaryState: Equatable {
     var selectionWord: Word?
     var selectionState: WordDetailsState?
     
-    var settings = PersonalDictionarySettingsState(showDate: false)
+    var settings = PersonalDictionarySettingsState()
+    var searchSettings: PersonalDictionarySettings = .defaultValue
     var isSettingsSheetPresented = false
-    var isDictionaryDateShown: Bool = false
     
     var words = [Word]()
     var isActivityIndicatorVisible = true
@@ -32,6 +32,7 @@ enum PersonalDictionaryAction {
     case onAppear
     case onDisappear
     case onWordsFetched(Result<[Word], Error>)
+    case onSettingsChanged(Result<PersonalDictionarySettings, Never>)
     
     case setWordCreationSheet(Bool)
     case setSettingsSheet(Bool)
@@ -41,73 +42,65 @@ enum PersonalDictionaryAction {
 }
 
 struct PersonalDictionaryEnvironment {
-    let mainQueue: AnySchedulerOf<DispatchQueue>
-    let personalDictionaryDataProvider: PersonalDictionaryDataProvider
+    var mainQueue: AnySchedulerOf<DispatchQueue>
+    var personalDictionaryDataProvider: PersonalDictionaryDataProvider
+    var userDefaultsDataProvider: UserDefaultsDataProvider
 }
 
 let personalDictionaryReducer = Reducer<
     PersonalDictionaryState, PersonalDictionaryAction, PersonalDictionaryEnvironment
 >.combine(
     manualWordAddingReducer
-    .pullback(
-        state: \.wordCreation,
-        action: /PersonalDictionaryAction.wordCreation,
-        environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
-    ),
+        .pullback(
+            state: \.wordCreation,
+            action: /PersonalDictionaryAction.wordCreation,
+            environment: { .init(mainQueue: $0.mainQueue, dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
+        ),
     personalDictionarySettingsReducer
-    .pullback(
-        state: \.settings,
-        action: /PersonalDictionaryAction.settings,
-        environment: { _ in .init() }
-    ),
+        .pullback(
+            state: \.settings,
+            action: /PersonalDictionaryAction.settings,
+            environment: { .init(userDefaultsDataProvider: $0.userDefaultsDataProvider) }
+        ),
     
     wordDetailsReducer
-    .optional()
-    .pullback(
-        state: \.selectionState,
-        action: /PersonalDictionaryAction.wordDetails,
-        environment: { WordDetailsEnvironment(dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
-    ),
+        .optional()
+        .pullback(
+            state: \.selectionState,
+            action: /PersonalDictionaryAction.wordDetails,
+            environment: { WordDetailsEnvironment(dataProvider: $0.personalDictionaryDataProvider, uuid: UUID.init) }
+        ),
     Reducer { state, action, environment in
-        
-        struct WordFetchId: Hashable {}
         
         switch action {
         
-        case .wordCreation:
-            return .none
-            
-        case .wordDetails:
-            return .none
-            
-        case .settings(let settingsAction):
-            switch settingsAction {
-            case .toggleChange(isOn: let newValue):
-                state.isDictionaryDateShown = newValue
-                environment.personalDictionaryDataProvider.isDictionaryDateShown = newValue
-            }
+        case .wordCreation, .wordDetails, .settings:
             return .none
             
         case .onAppear:
-            state.isDictionaryDateShown = environment.personalDictionaryDataProvider.isDictionaryDateShown
-            state.settings.showDate = state.isDictionaryDateShown
-            return environment.personalDictionaryDataProvider.wordsPublisher
-                .delay(for: .seconds(0.3), scheduler: environment.mainQueue)
-                .subscribe(on: DispatchQueue.global())
-                .receive(on: environment.mainQueue)
-                .catchToEffect()
-                .map(PersonalDictionaryAction.onWordsFetched)
-                .cancellable(id: WordFetchId())
+            return .merge(
+                environment.personalDictionaryDataProvider.wordsPublisher
+                    .delay(for: .seconds(0.3), scheduler: environment.mainQueue)
+                    .subscribe(on: DispatchQueue.global())
+                    .receive(on: environment.mainQueue)
+                    .catchToEffect()
+                    .map(PersonalDictionaryAction.onWordsFetched),
                 
+                environment.userDefaultsDataProvider.dictionarySettingsPublisher
+                    .catchToEffect()
+                    .map(PersonalDictionaryAction.onSettingsChanged)
+            )
+            
         case .onDisappear:
-            return .cancel(id: WordFetchId())
+            return .none
             
         case .onWordsFetched(.success(let words)):
             state.words = words.sorted(by: { $0.normalizedTitle < $1.normalizedTitle })
             state.isActivityIndicatorVisible = false
             return .none
             
-        case .onWordsFetched(.failure):
+        case .onSettingsChanged(.success(let newSettings)):
+            state.searchSettings = newSettings
             return .none
             
         case .setWordCreationSheet(true):
@@ -157,6 +150,8 @@ let personalDictionaryReducer = Reducer<
                     .handleWordStateChanges(for: word, editableDefinitions: editableDefinitions)
             }
             
+        case .onWordsFetched(.failure):
+            return .none
         }
         
     }

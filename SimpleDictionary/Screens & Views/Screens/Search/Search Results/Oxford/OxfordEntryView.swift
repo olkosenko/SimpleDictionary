@@ -12,6 +12,22 @@ struct OxfordEntryView: View {
     let store: Store<OxfordEntryState, OxfordEntryAction>
     
     var body: some View {
-        Text("Hello, World!")
+        WithViewStore(store) { viewStore in
+            if let entry = viewStore.entry {
+                SearchResultEntryView(standardEntry: entry)
+            } else {
+                emptyState
+            }
+        }
+    }
+    
+    var emptyState: some View {
+        VStack {
+            Spacer()
+            Text("We were not able to find definitions for this word")
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+            Spacer()
+        }
     }
 }

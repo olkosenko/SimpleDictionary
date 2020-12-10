@@ -24,65 +24,11 @@ class SearchDataProvider {
     private let textChecker = UITextChecker()
     
     
-    // MARK: - Settings
-    
-    var isSearchGoalActive: Bool {
-        get {
-            UserDefaults.isSearchGoalActive
-        }
-        set {
-            UserDefaults.isSearchGoalActive = newValue
-        }
-    }
-    
-    var isLearnGoalActive: Bool {
-        get {
-            UserDefaults.isLearnGoalActive
-        }
-        set {
-            UserDefaults.isLearnGoalActive = newValue
-        }
-    }
-    
-    var searchGoalCount: Int {
-        get {
-            UserDefaults.searchGoalCount
-        }
-        set {
-            UserDefaults.searchGoalCount = min(newValue, 30)
-        }
-    }
-    
-    var learnGoalCount: Int {
-        get {
-            UserDefaults.learnGoalCount
-        }
-        set {
-            UserDefaults.learnGoalCount = min(newValue, 30)
-        }
-    }
+    // MARK: - Init
     
     init(apiService: APIService, coreDataService: CoreDataService) {
         self.apiService = apiService
         self.coreDataService = coreDataService
-    }
-    
-    
-    // MARK: - Recent Searches
-    
-    func fetchListOfRecentSearches() -> Effect<[String], Never> {
-        UserDefaults.recentSearches.publisher
-            .collect()
-            .eraseToEffect()
-    }
-    
-    func addToListOfRecentSearches(_ query: String) {
-        var recentSearches = UserDefaults.recentSearches
-        if recentSearches.count > 4 {
-            recentSearches.removeLast()
-        }
-        recentSearches.insert(query, at: 0)
-        UserDefaults.recentSearches = recentSearches
     }
     
     
@@ -200,7 +146,7 @@ class SearchDataProvider {
             .eraseToEffect()
     }
     
-    func fetchOxfordDictionary(for word: String) -> Effect<StandardDictionaryEntry, Never> {
+    func fetchOxfordDictionary(for word: String) -> Effect<StandardDictionaryEntry, Error> {
         [word.lowercased()].publisher
             .flatMap { word -> AnyPublisher<OxfordEntry, APIError> in
                 self.apiService.GET(endpoint: .oxford(.definitions(word: word)))
@@ -208,8 +154,8 @@ class SearchDataProvider {
             .map { entry -> StandardDictionaryEntry? in
                 StandardDictionaryEntry(oxfordEntry: entry)
             }
-            .replaceError(with: nil)
             .compactMap { $0 }
+            .mapError { $0 as Error}
             .eraseToEffect()
     }
     

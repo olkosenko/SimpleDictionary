@@ -18,8 +18,8 @@ struct PersonalDictionaryView: View {
     }
     
     var body: some View {
-        NavigationView {
-            WithViewStore(store) { viewStore in
+        WithViewStore(store) { viewStore in
+            NavigationView {
                 GeometryReader { proxy in
                     
                     if viewStore.isActivityIndicatorVisible {
@@ -46,8 +46,8 @@ struct PersonalDictionaryView: View {
                 .onAppear { viewStore.send(.onAppear) }
                 .onDisappear { viewStore.send(.onDisappear) }
                 .navigationBarItems(trailing: settingsButton(viewStore))
+                .navigationTitle("Dictionary")
             }
-            .navigationTitle("Dictionary")
             .background(Color.appBackground)
             .edgesIgnoringSafeArea(.top) /// Makes background color affect status bar
         }
@@ -83,15 +83,14 @@ struct PersonalDictionaryView: View {
                         send: PersonalDictionaryAction.setNavigation)) {
                     
                     Text(word.normalizedTitle)
-                    if viewStore.isDictionaryDateShown {
+                    if viewStore.searchSettings.isDictionaryDateShown {
                         Spacer()
-                        Text(word.normalizedDate.yearMonthDayUTC0)
+                        Text(word.normalizedDate.yearMonthDayLocal)
                             .foregroundColor(.gray)
                     }
-                    
                 }
                 .buttonStyle(PlainButtonStyle())
-                
+
             }
             .onDelete { viewStore.send(.deleteWord($0)) }
         }

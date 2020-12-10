@@ -13,12 +13,13 @@ struct PersonalDictionarySettingsView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
-            WithViewStore(store) { viewStore in
+        WithViewStore(store) { viewStore in
+            NavigationView {
+                
                 VStack {
                     Form {
                         Section {
-                            Toggle(isOn: viewStore.binding(get: { $0.showDate },
+                            Toggle(isOn: viewStore.binding(get: { $0.settings.isDictionaryDateShown },
                                                            send: PersonalDictionarySettingsAction.toggleChange)) {
                                 Text("Show date")
                                     .fontWeight(.regular)
@@ -26,11 +27,11 @@ struct PersonalDictionarySettingsView: View {
                         }
                     }
                 }
-                .navigationBarItems(trailing: Button("Done",
-                                                     action: { presentationMode.wrappedValue.dismiss() }))
-                .navigationBarTitle("Settings",
-                                    displayMode: .inline)
+                .navigationBarItems(trailing: Button("Done", action: { presentationMode.wrappedValue.dismiss() }))
+                .navigationBarTitle("Settings", displayMode: .inline)
             }
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
+    
 }

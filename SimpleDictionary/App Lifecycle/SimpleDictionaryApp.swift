@@ -21,7 +21,8 @@ struct SimpleDictionaryApp: App {
                     environment: AppEnvironment(
                         mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
                         searchDataProvider: appDelegate.dependencyManager.searchDataProvider,
-                        personalDictionaryDataProvider: appDelegate.dependencyManager.personalDictionaryDataProvider)))
+                        personalDictionaryDataProvider: appDelegate.dependencyManager.personalDictionaryDataProvider,
+                        userDefaultsDataProvider: appDelegate.dependencyManager.userDefaultsDataProvider)))
         }
     }
 }

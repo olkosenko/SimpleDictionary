@@ -48,6 +48,8 @@
 		1066FDA4255E144D008211A3 /* StandardDictionaryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */; };
 		1066FDAF255E1D0E008211A3 /* DictionaryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDAD255E1D0E008211A3 /* DictionaryModel.xcdatamodeld */; };
 		1066FDB3255E1D37008211A3 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1066FDB2255E1D37008211A3 /* CoreDataStore.swift */; };
+		106ABACD25814F530052A38C /* SettingsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106ABACC25814F530052A38C /* SettingsDataProvider.swift */; };
+		106ABAD1258150150052A38C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106ABAD0258150150052A38C /* Settings.swift */; };
 		107FAF7E25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */; };
 		107FAF8425731001004EEDE8 /* PersonalDictionarySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */; };
 		107FAF8C25731D8D004EEDE8 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */; };
@@ -66,7 +68,7 @@
 		10979017256B2C93008AEEB8 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10979016256B2C93008AEEB8 /* WordDetailsView.swift */; };
 		1097901D256B2E4A008AEEB8 /* WordDetailsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1097901C256B2E4A008AEEB8 /* WordDetailsDomain.swift */; };
 		109874C4252E6E2400980184 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 109874C3252E6E2400980184 /* ComposableArchitecture */; };
-		109F8CBA2575BCE3006FC7B5 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F8CB92575BCE3006FC7B5 /* UserDefault.swift */; };
+		109F8CBA2575BCE3006FC7B5 /* UserDefaultPublished.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F8CB92575BCE3006FC7B5 /* UserDefaultPublished.swift */; };
 		109F8CC725768B54006FC7B5 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F8CC625768B54006FC7B5 /* ProgressCircle.swift */; };
 		109F8CD42576A1E4006FC7B5 /* DashboardDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F8CD32576A1E4006FC7B5 /* DashboardDomain.swift */; };
 		109F8CDF2576BEEF006FC7B5 /* SearchSettingsDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109F8CDE2576BEEF006FC7B5 /* SearchSettingsDomain.swift */; };
@@ -138,6 +140,8 @@
 		1066FDA3255E144D008211A3 /* StandardDictionaryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardDictionaryEntry.swift; sourceTree = "<group>"; };
 		1066FDAE255E1D0E008211A3 /* DictionaryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DictionaryModel.xcdatamodel; sourceTree = "<group>"; };
 		1066FDB2255E1D37008211A3 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		106ABACC25814F530052A38C /* SettingsDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataProvider.swift; sourceTree = "<group>"; };
+		106ABAD0258150150052A38C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		107FAF7D25730EBA004EEDE8 /* PersonalDictionarySettingsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionarySettingsDomain.swift; sourceTree = "<group>"; };
 		107FAF8325731001004EEDE8 /* PersonalDictionarySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDictionarySettingsView.swift; sourceTree = "<group>"; };
 		107FAF8B25731D8D004EEDE8 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -157,7 +161,7 @@
 		109727342506A7B000217C63 /* OxfordEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxfordEntry.swift; sourceTree = "<group>"; };
 		10979016256B2C93008AEEB8 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 		1097901C256B2E4A008AEEB8 /* WordDetailsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsDomain.swift; sourceTree = "<group>"; };
-		109F8CB92575BCE3006FC7B5 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
+		109F8CB92575BCE3006FC7B5 /* UserDefaultPublished.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultPublished.swift; sourceTree = "<group>"; };
 		109F8CC625768B54006FC7B5 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		109F8CD32576A1E4006FC7B5 /* DashboardDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardDomain.swift; sourceTree = "<group>"; };
 		109F8CDE2576BEEF006FC7B5 /* SearchSettingsDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSettingsDomain.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 			children = (
 				10668BA02560752700119BDA /* SearchDataProvider.swift */,
 				105136C425683760009B824A /* PersonalDictionaryDataProvider.swift */,
+				106ABACC25814F530052A38C /* SettingsDataProvider.swift */,
 			);
 			path = "Data Providers";
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 		1097272B2506A12100217C63 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				106ABAD0258150150052A38C /* Settings.swift */,
 				10C18846257A91B000FADA92 /* DictionaryTab.swift */,
 				105136CA2568466F009B824A /* PartOfSpeech.swift */,
 				1066FD9C255E13B6008211A3 /* Standard APIs */,
@@ -476,7 +482,7 @@
 		109F8CB82575BCCB006FC7B5 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				109F8CB92575BCE3006FC7B5 /* UserDefault.swift */,
+				109F8CB92575BCE3006FC7B5 /* UserDefaultPublished.swift */,
 				107FAF9B25732479004EEDE8 /* UserDefaults.swift */,
 			);
 			path = UserDefaults;
@@ -697,15 +703,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				10E19DB9250816C80061CF6B /* StringExtension.swift in Sources */,
+				106ABACD25814F530052A38C /* SettingsDataProvider.swift in Sources */,
 				10C18847257A91B000FADA92 /* DictionaryTab.swift in Sources */,
 				107FAFA525733A2A004EEDE8 /* SearchView.swift in Sources */,
+				106ABAD1258150150052A38C /* Settings.swift in Sources */,
 				10668B8725606EC200119BDA /* Word+CoreDataProperties.swift in Sources */,
 				107FAF9C25732479004EEDE8 /* UserDefaults.swift in Sources */,
 				105136AB2567F73B009B824A /* ManualWordCreationDomain.swift in Sources */,
 				1052F8BE2574904A009D5331 /* CalendarExtension.swift in Sources */,
 				104E38822550FC2700ECCBD5 /* WordnikWOD.swift in Sources */,
 				10C18855257ACE7600FADA92 /* OxfordEntryDomain.swift in Sources */,
-				109F8CBA2575BCE3006FC7B5 /* UserDefault.swift in Sources */,
+				109F8CBA2575BCE3006FC7B5 /* UserDefaultPublished.swift in Sources */,
 				10C18865257BE90E00FADA92 /* MerriamWebsterEntryDomain.swift in Sources */,
 				105136B5256803E4009B824A /* EditableDefinitionCellDomain.swift in Sources */,
 				109727282506880B00217C63 /* APIProvider.swift in Sources */,
@@ -947,7 +955,7 @@
 				DEVELOPMENT_TEAM = Q37SD6L72Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SimpleDictionary/Settings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -971,7 +979,7 @@
 				DEVELOPMENT_TEAM = Q37SD6L72Z;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = SimpleDictionary/Settings/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

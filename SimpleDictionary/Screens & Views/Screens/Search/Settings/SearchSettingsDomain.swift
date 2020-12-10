@@ -9,17 +9,17 @@ import Foundation
 import ComposableArchitecture
 
 struct SearchSettingsState: Equatable {
-    var isSearchGoalActive: Bool = true
-    var isLearnGoalActive: Bool = true
-    
-    var searchGoal: Double = 30
-    var learnGoal: Double = 30
+    var settings = SearchSettings.defaultValue
     
     let sliderRange: ClosedRange<Double> = 5...30
     let sliderStep: Double = 5
 }
 
 enum SearchSettingsAction {
+    case onAppear
+    
+    case onSettingsChanged(Result<SearchSettings, Never>)
+    
     case searchToggleChange(isOn: Bool)
     case learnToggleChange(isOn: Bool)
     
@@ -27,29 +27,43 @@ enum SearchSettingsAction {
     case learnSliderChange(Double)
 }
 
-struct SearchSettingsEnvironment {}
+struct SearchSettingsEnvironment {
+    var userDefaultsDataProvider: UserDefaultsDataProvider
+}
 
 let searchSettingsReducer = Reducer<
     SearchSettingsState, SearchSettingsAction, SearchSettingsEnvironment
 > { state, action, environment in
     
     switch action {
-    case .searchToggleChange(let isOn):
-        state.isSearchGoalActive = isOn
+    case .onAppear:
+        return environment.userDefaultsDataProvider.searchSettingsPublisher
+            .catchToEffect()
+            .map(SearchSettingsAction.onSettingsChanged)
+            
+    case .onSettingsChanged(.success(let newSettings)):
+        state.settings = newSettings
         return .none
+    
+    case .searchToggleChange(let isOn):
+        return .fireAndForget {
+            environment.userDefaultsDataProvider.changeSearchSettings(\.isSearchGoalActive, newValue: isOn)
+        }
         
     case .learnToggleChange(let isOn):
-        state.isLearnGoalActive = isOn
-        return .none
+        return .fireAndForget {
+            environment.userDefaultsDataProvider.changeSearchSettings(\.isLearnGoalActive, newValue: isOn)
+        }
         
     case .searchSliderChange(let newValue):
-        state.searchGoal = newValue
-        return .none
+        return .fireAndForget {
+            environment.userDefaultsDataProvider.changeSearchSettings(\.searchGoalCount, newValue: Int(newValue))
+        }
         
     case .learnSliderChange(let newValue):
-        state.learnGoal = newValue
-        return .none
+        return .fireAndForget {
+            environment.userDefaultsDataProvider.changeSearchSettings(\.learnGoalCount, newValue: Int(newValue))
+        }
+        
     }
-    
 }
-.debug()

@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct SearchResultsState: Equatable {
     let word: String
+    var phoneticSpelling: String? = nil
     
     let tabs: [DictionaryTab] = [.oxford, .merriamwebster, .urban]
     var currentTab = DictionaryTab.oxford
@@ -32,8 +33,8 @@ enum SearchResultsAction {
     
     case fetchDataForCurrentTabIfNeeded
     case urbanResponseReceived(Result<UrbanEntry, Never>)
-    case merriamWebsterResponseReceived(Result<MerriamWebsterEntry, Never>)
-    case oxfordResponseReceived(Result<StandardDictionaryEntry, Never>)
+    case merriamWebsterResponseReceived(Result<StandardDictionaryEntry, Error>)
+    case oxfordResponseReceived(Result<StandardDictionaryEntry, Error>)
     
     case playAudio
     case audioResponseReceived(Result<Bool, Never>)
@@ -79,7 +80,7 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
                     .receive(on: environment.mainQueue)
                     .catchToEffect()
                     .map(SearchResultsAction.audioResponseReceived),
-                
+
                 .init(value: .fetchDataForCurrentTabIfNeeded)
             )
             
@@ -95,7 +96,7 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
                 
             case .merriamwebster:
                 guard state.merriamWebsterEntryState == nil else { return .none }
-                return environment.dataProvider.fetchMerriamWebsterDictionary(for: state.word)
+                return environment.dataProvider.fetchOxfordDictionary(for: state.word)
                     .receive(on: environment.mainQueue)
                     .catchToEffect()
                     .map(SearchResultsAction.merriamWebsterResponseReceived)
@@ -116,15 +117,33 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
         case .urbanResponseReceived(.failure):
             return .none
             
-        case .merriamWebsterResponseReceived(.success(let merriamWebsterEntry)):
-            state.merriamWebsterEntryState = .init(def: [])
+        case .merriamWebsterResponseReceived(.success(let entry)):
+            state.merriamWebsterEntryState = .init(entry: entry)
+            
+            if let phoneticSpelling = entry.phoneticSpelling {
+                state.phoneticSpelling = phoneticSpelling
+            }
+            
+            if let url = entry.soundURL {
+                return environment.dataProvider.fetchAudio(with: url, for: state.word)
+                    .receive(on: environment.mainQueue)
+                    .replaceError(with: false)
+                    .catchToEffect()
+                    .map(SearchResultsAction.audioResponseReceived)
+            }
+            
             return .none
             
         case .merriamWebsterResponseReceived(.failure):
+            state.merriamWebsterEntryState = .init(entry: nil)
             return .none
             
         case .oxfordResponseReceived(.success(let entry)):
             state.oxfordEntryState = .init(entry: entry)
+            
+            if let phoneticSpelling = entry.phoneticSpelling {
+                state.phoneticSpelling = phoneticSpelling
+            }
             
             if let url = entry.soundURL {
                 return environment.dataProvider.fetchAudio(with: url, for: state.word)
@@ -137,6 +156,7 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
             return .none
             
         case .oxfordResponseReceived(.failure):
+            state.oxfordEntryState = .init(entry: nil)
             return .none
             
         case .selectTab(let tab):

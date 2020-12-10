@@ -9,7 +9,15 @@ import Foundation
 import ComposableArchitecture
 
 struct MerriamWebsterEntryState: Equatable {
-    let def: [String]
+    let entry: StandardDictionaryEntry?
+    var shuffledEntry: StandardDictionaryEntry? {
+        if let entry = entry {
+            return StandardDictionaryEntry(entries: entry.entries.shuffled(), etymologies: entry.etymologies)
+        }
+        else {
+            return nil
+        }
+    }
 }
 
 enum MerriamWebsterEntryAction {
