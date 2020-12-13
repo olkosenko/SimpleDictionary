@@ -48,13 +48,13 @@ struct SearchResultsView: View {
                     
                     Spacer()
                 }
+                .transition(AnyTransition.opacity)
+                .animation(.easeOut(duration: 0.3))
                 .navigationTitle(viewStore.word)
                 .navigationBarTitleDisplayMode(.large)
                 .padding(.horizontal)
             }
             .onAppear { viewStore.send(.onAppear) }
-            .transition(AnyTransition.opacity)
-            .animation(.easeOut(duration: 0.3))
         }
     }
     
@@ -72,8 +72,15 @@ struct SearchResultsView: View {
             
             Spacer()
             
-            Image(systemName: "bookmark")
-                .font(.title2)
+            Button(action: { viewStore.send(.isSavedToggle) }) {
+                if viewStore.isSaved {
+                    Image(systemName: "bookmark.fill")
+                        .font(.title2)
+                } else {
+                    Image(systemName: "bookmark")
+                        .font(.title2)
+                }
+            }
         }
         .foregroundColor(.blue)
         .padding(.top, 4)

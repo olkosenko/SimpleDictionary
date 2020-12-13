@@ -17,7 +17,6 @@ class UserDefaultsDataProvider {
     
     var dictionarySettingsPublisher: Effect<PersonalDictionarySettings, Never> {
         UserDefaults.$personalDictionarySettings
-            .print()
             .eraseToEffect()
     }
     

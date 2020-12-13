@@ -20,6 +20,7 @@ struct SearchResultsState: Equatable {
     var oxfordEntryState: OxfordEntryState?
     
     var isAudioAvailable = false
+    var isSaved = false
 }
 
 enum SearchResultsAction {
@@ -37,6 +38,7 @@ enum SearchResultsAction {
     case oxfordResponseReceived(Result<StandardDictionaryEntry, Error>)
     
     case playAudio
+    case isSavedToggle
     case audioResponseReceived(Result<Bool, Never>)
 }
 
@@ -174,7 +176,10 @@ let searchResultsReducer = Reducer<SearchResultsState, SearchResultsAction, Sear
         case .audioResponseReceived(.failure):
             return .none
             
+        case .isSavedToggle:
+            state.isSaved.toggle()
+            return .none
+            
         }
     }
 )
-.debug()

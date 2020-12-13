@@ -26,11 +26,15 @@ struct ContentView: View {
                     Text("Search")
                 }
                 
-                HistoryView()
-                    .tabItem {
-                        Image(systemName: "gamecontroller.fill")
-                        Text("Learn")
-                    }
+                GameView(viewModel: GameViewModel())
+//                    store: store.scope(
+//                        state: { $0.game },
+//                        action: AppAction.game
+//                    )
+                .tabItem {
+                    Image(systemName: "gamecontroller.fill")
+                    Text("Learn")
+                }
                 
                 PersonalDictionaryView(
                     store: store.scope(

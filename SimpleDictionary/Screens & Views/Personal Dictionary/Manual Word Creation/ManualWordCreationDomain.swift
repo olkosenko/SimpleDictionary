@@ -82,7 +82,7 @@ let manualWordAddingReducer = Reducer<
             return .none
             
         case .saveData:
-            if state.title.isNotEmpty {
+            if !state.title.isBlank {
                 
                 let definitions = state.definitions.compactMap { editableDefinition -> Definition? in
                     guard editableDefinition.title.isNotEmpty else { return nil }
@@ -114,7 +114,7 @@ let manualWordAddingReducer = Reducer<
         case .saveDataResponse(.failure):
             state.alert = .init(
                 title: "Alert",
-                message: "Something bad happend and we were not able to save your word :(",
+                message: "Something bad happened and we were not able to save your word :(",
                 dismissButton: .cancel())
             return .none
             
