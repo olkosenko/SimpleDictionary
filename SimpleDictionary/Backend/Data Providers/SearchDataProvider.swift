@@ -73,16 +73,25 @@ class SearchDataProvider {
             requiredDates[date.yearMonthDayLocal] = date /// yearMonthDay returns date in local timeZone
         }
 
-        return coreDataService.fetchWords(ofType: .wod, limit: requiredCount)
+        return coreDataService.fetchWords(ofType: .wod)
             .replaceError(with: [])
             .flatMap { dbWords -> AnyPublisher<[WordnikWODNormalized], Never> in
                 var mutableDBWords = dbWords
                 
+                var wordsToRemove = [Word]()
                 mutableDBWords.removeAll { word in
-                    requiredDates.removeValue(forKey: word.normalizedDate.yearMonthDayUTC0) == nil ? true : false
+                    if requiredDates.removeValue(forKey: word.normalizedDate.yearMonthDayUTC0) == nil {
+                        wordsToRemove.append(word)
+                        return true
+                    } else {
+                        return false
+                    }
                 }
+
+                /// Delete old words
+                self.coreDataService.deleteWords(wordsToRemove)
                 
-                /// Requesting absent words from API, parsing them, saving to the DB.
+                /// Requesting absent words from API, parsing them, saving to the DB
                 let remotePublisher = requiredDates.publisher
                     .flatMap { _, date -> AnyPublisher<WordnikWOD, APIError> in
                         self.apiService.GET(endpoint: .wordnik(.wod(date: date)))

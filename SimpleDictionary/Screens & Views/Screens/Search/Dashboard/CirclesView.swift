@@ -17,7 +17,7 @@ struct CirclesView: View {
         ZStack {
             ProgressCircle(progress: 1, thickness: thickness)
                 .foregroundColor(color.opacity(0.3))
-            ProgressCircle(progress: progress, thickness: thickness)
+            ProgressCircle(progress: progress > 1 ? 1 : progress, thickness: thickness)
                 .foregroundColor(color)
         }
     }

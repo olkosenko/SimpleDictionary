@@ -12,3 +12,17 @@ extension RangeReplaceableCollection {
         !self.isEmpty
     }
 }
+
+extension MutableCollection {
+    
+    subscript(safe index: Index) -> Element? {
+        get {
+            return self.indices.contains(index) ? self[index] : nil
+        }
+        set {
+            guard let newValue = newValue, self.indices.contains(index) else { return }
+            self[index] = newValue
+        }
+    }
+    
+}

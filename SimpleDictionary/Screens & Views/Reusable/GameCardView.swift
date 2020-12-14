@@ -13,10 +13,10 @@ enum GameCardStatus {
     case gotIt
 }
 
-struct GameCardView<Content: View>: View {
+struct GameCardView<FrontContent: View, BackContent: View>: View {
     
-    private let frontContent: Content
-    private let backContent: Content
+    private let frontContent: FrontContent
+    private let backContent: BackContent
     private let status: GameCardStatus
     
     private var rotation: Double
@@ -26,8 +26,8 @@ struct GameCardView<Content: View>: View {
     
     init(isFaceUp: Bool,
          status: GameCardStatus,
-         @ViewBuilder frontContent: () -> Content,
-         @ViewBuilder backContent: () -> Content) {
+         @ViewBuilder frontContent: () -> FrontContent,
+         @ViewBuilder backContent: () -> BackContent) {
         self.rotation = isFaceUp ? 0 : 180
         self.status = status
         self.frontContent = frontContent()
