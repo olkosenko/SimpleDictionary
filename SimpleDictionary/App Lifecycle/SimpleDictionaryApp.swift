@@ -22,6 +22,7 @@ struct SimpleDictionaryApp: App {
                         mainQueue: DispatchQueue.main.eraseToAnyScheduler(),
                         searchDataProvider: appDelegate.dependencyManager.searchDataProvider,
                         personalDictionaryDataProvider: appDelegate.dependencyManager.personalDictionaryDataProvider,
+                        gameDataProvider: appDelegate.dependencyManager.gameDataProvider,
                         userDefaultsDataProvider: appDelegate.dependencyManager.userDefaultsDataProvider)))
         }
     }
@@ -37,18 +38,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         
         configureUserDefaults()
-        configureAppearance()
         
         return true
     }
     
     private func configureUserDefaults() {
-        UserDefaults.standard.register(defaults: [
-            "isDictionaryDateShown": false
-        ])
-    }
-    
-    private func configureAppearance() {
-        // UINavigationBar.appearance().backgroundColor = UIColor(Color.appBackground)
+        var searchSettings = UserDefaults.searchSettings
+        if Calendar.current.compare(searchSettings.dateActive, to: Date(), toGranularity: .day) != .orderedSame {
+            searchSettings.currentSearchCount = 0
+            searchSettings.currentLearnCount = 0
+            UserDefaults.searchSettings = searchSettings
+        }
     }
 }

@@ -18,7 +18,7 @@ struct WordDetailsState: Equatable {
     }
 }
 
-enum WordDetailsAction {
+enum WordDetailsAction: Equatable {
     case addDefinitionButtonTapped
     case removeDefinition(IndexSet)
     

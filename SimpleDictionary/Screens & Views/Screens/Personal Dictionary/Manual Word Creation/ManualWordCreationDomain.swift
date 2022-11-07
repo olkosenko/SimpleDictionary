@@ -26,7 +26,7 @@ struct ManualWordCreationState: Equatable {
     }
 }
 
-enum ManualWordCreationAction {
+enum ManualWordCreationAction: Equatable {
     case onAppear
     
     case wordChanged(String)
@@ -40,6 +40,10 @@ enum ManualWordCreationAction {
     
     case cancelButtonTapped
     case alertDismissed
+    
+    static func == (lhs: ManualWordCreationAction, rhs: ManualWordCreationAction) -> Bool {
+        return true
+    }
 }
 
 struct ManualWordCreationEnvironment {
@@ -129,4 +133,3 @@ let manualWordAddingReducer = Reducer<
         }
     }
 )
-

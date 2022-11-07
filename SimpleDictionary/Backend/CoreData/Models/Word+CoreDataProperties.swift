@@ -15,13 +15,16 @@ extension Word {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Word> {
         return NSFetchRequest<Word>(entityName: "Word")
     }
-
+    
     var normalizedId: UUID { id ?? UUID() }
     var normalizedDate: Date { date ?? Date() }
     var normalizedTitle: String { title ?? "" }
     var normalizedDefinitions: Set<Definition> {
         guard let def = definitions, let set = def as? Set<Definition> else { return .init() }
         return set
+    }
+    var isWODNormalized: Bool {
+        Bool(truncating: isWOD ?? false)
     }
     
     @NSManaged public var date: Date?
@@ -30,6 +33,7 @@ extension Word {
     @NSManaged public var phoneticSpelling: String?
     @NSManaged public var soundURL: URL?
     @NSManaged public var title: String?
+    @NSManaged public var isLearned: Bool
     @NSManaged public var definitions: NSSet?
 
 }

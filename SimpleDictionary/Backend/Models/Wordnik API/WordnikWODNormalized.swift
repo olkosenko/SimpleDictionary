@@ -19,13 +19,12 @@ struct WordnikWODNormalized: Equatable, Hashable {
               let date = DateFormatter.isoDateFormatter.date(from: stringDate),
               let definitions = wordnikWod.definitions,
               let firstDefinition = definitions.first,
-              let definition = firstDefinition.text,
-              let partOfSpeech = firstDefinition.partOfSpeech else {
+              let definition = firstDefinition.text else {
             return nil
         }
         self.title = title
         self.date = date
-        self.partOfSpeech = PartOfSpeech(rawValue: partOfSpeech) ?? .noun
+        self.partOfSpeech = PartOfSpeech(rawValue: firstDefinition.partOfSpeech ?? "") ?? .noun
         self.definition = definition
     }
     

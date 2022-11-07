@@ -51,6 +51,12 @@ class PersonalDictionaryDataProvider {
         }
     }
     
+    func toggleLearnStatus(for word: Word) {
+        coreDataService.context.writeAsync { context in
+            word.isLearned.toggle()
+        }
+    }
+    
     func handleWordStateChanges(for word: Word, editableDefinitions: [EditableDefinition]) {
             coreDataService.context.writeAsync { context in
                 

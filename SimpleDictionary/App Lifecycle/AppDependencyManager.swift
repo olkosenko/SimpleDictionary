@@ -14,6 +14,7 @@ class AppDependencyManager {
     let coreDataService: CoreDataService
     let searchDataProvider: SearchDataProvider
     let personalDictionaryDataProvider: PersonalDictionaryDataProvider
+    let gameDataProvider: GameDataProvider
     let userDefaultsDataProvider: UserDefaultsDataProvider
     
     init() {
@@ -22,6 +23,7 @@ class AppDependencyManager {
         coreDataService = CoreDataService(context: coreDataStore.mainContext)
         searchDataProvider = SearchDataProvider(apiService: apiService, coreDataService: coreDataService)
         personalDictionaryDataProvider = PersonalDictionaryDataProvider(coreDataService: coreDataService)
+        gameDataProvider = GameDataProvider(coreDataService: coreDataService)
         userDefaultsDataProvider = UserDefaultsDataProvider()
     }
 }

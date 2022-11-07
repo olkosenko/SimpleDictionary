@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct GameTabView: View {
-    @StateObject var viewModel: GameTabViewModel
+    typealias ViewStoreType = ViewStore<GameTabState, GameTabAction>
+    let store: Store<GameTabState, GameTabAction>
     
     private let titleGradient = LinearGradient(
         gradient: .init(colors: [.red, .blue]),
@@ -31,30 +33,34 @@ struct GameTabView: View {
     )
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 16) {
-                
-                topBar
-                
-                Divider()
-                
-                HStack {
-                    Spacer()
-                    GameRulesView()
-                    Spacer()
+        WithViewStore(store) { viewStore in
+            ScrollView(.vertical) {
+                VStack(spacing: 16) {
+                    
+                    topBar
+                    
+                    Divider()
+                    
+                    HStack {
+                        Spacer()
+                        GameRulesView()
+                        Spacer()
+                    }
+                    
+                    Divider()
+                    
+                    settingsForm(viewStore)
+                        .padding(.horizontal)
+                    
+                    playButton(viewStore)
+                        .padding(.bottom)
                 }
-                
-                Divider()
-                
-                settingsForm
-                    .padding(.horizontal)
-                
-                playButton
-                    .padding(.bottom)
             }
-        }
-        .fullScreenCover(item: $viewModel.gameProcessViewModel) {
-            GameView(viewModel: $0)
+            .fullScreenCover(item: viewStore.binding(get: { $0.gameProcessViewModel },
+                                                     send: GameTabAction.dismissCover)) {
+                GameView(viewModel: $0)
+            }
+            .onAppear { viewStore.send(.onAppear) }
         }
     }
     
@@ -70,7 +76,7 @@ struct GameTabView: View {
         }
     }
     
-    private var settingsForm: some View {
+    private func settingsForm(_ viewStore: ViewStoreType) -> some View {
         VStack(spacing: 8) {
             HStack {
                 Text("Settings")
@@ -81,23 +87,30 @@ struct GameTabView: View {
             }
             
             VStack(spacing: 0) {
-
-                Toggle("Include already learned", isOn: $viewModel.shouldIncludeLearned)
-                    .frame(height: 50)
                 
-                Divider()
-                    
-                Toggle("Shuffle words", isOn: $viewModel.shouldShuffle)
-                    .frame(height: 50)
-                
-                Divider()
-                
-                Toggle("Include Words of the Day", isOn: $viewModel.shouldIncludeWODs)
-                    .frame(height: 50)
+                Toggle(
+                    "Shuffle words",
+                    isOn: viewStore.binding(
+                        get: { $0.shouldShuffle },
+                        send: GameTabAction.onShuffleToggleChanged
+                    )
+                )
+                .frame(height: 50)
                 
                 Divider()
                 
-                numberOfWordsCell
+                Toggle(
+                    "Include Words of the Day",
+                    isOn: viewStore.binding(
+                        get: { $0.shouldIncludeWODs },
+                        send: GameTabAction.onIncludeWODsToggleChanged
+                    )
+                )
+                .frame(height: 50)
+                
+                Divider()
+                
+                numberOfWordsSlider(viewStore)
                     .frame(height: 50)
                 
             }
@@ -107,26 +120,35 @@ struct GameTabView: View {
         }
     }
     
-    private var numberOfWordsCell: some View {
+    private func numberOfWordsSlider(_ viewStore: ViewStoreType) -> some View {
         HStack(spacing: 4) {
             Text("Count:")
             
-            Text("\(viewModel.wordCountRounded)")
+            Text("\(viewStore.sliderValue)")
                 .font(.system(.body, design: .monospaced))
                 .padding(.trailing)
             
-            Slider(
-                value: $viewModel.wordCount,
-                in: 1...viewModel.maxValueSlider,
-                minimumValueLabel: Text("1"),
-                maximumValueLabel: Text("\(Int(viewModel.maxValueSlider))"),
-                label: { Text("Hello: \(viewModel.wordCount)") }
-            )
+            if viewStore.sliderMaxValue > 1 {
+                Slider(
+                    value: viewStore.binding(
+                        get: { Double($0.sliderValue) },
+                        send: GameTabAction.onSliderChanged
+                    ),
+                    in: 1...Double(viewStore.sliderMaxValue),
+                    minimumValueLabel: Text("1"),
+                    maximumValueLabel: Text("\(viewStore.sliderMaxValue)"),
+                    label: { EmptyView() }
+                )
+            } else {
+                Spacer()
+            }
         }
     }
     
-    private var playButton: some View {
-        Button(action: viewModel.generateGame) {
+    private func playButton(_ viewStore: ViewStoreType) -> some View {
+        Button {
+            viewStore.send(.onPlayButtonTapped)
+        } label: {
             RoundedRectangle(cornerRadius: 20)
                 .fill(buttonGradient)
                 .overlay(
@@ -141,14 +163,8 @@ struct GameTabView: View {
 
 }
 
-struct GameTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameTabView(viewModel: GameTabViewModel())
-    }
-}
-
-extension View {
-    public func gradientForeground(gradient: LinearGradient) -> some View {
+fileprivate extension View {
+    func gradientForeground(gradient: LinearGradient) -> some View {
         self.overlay(gradient)
             .mask(self)
     }

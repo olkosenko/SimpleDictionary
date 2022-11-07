@@ -8,16 +8,7 @@
 import SwiftUI
 
 struct GameModel {
-    var cards: [Card] = [
-        .init(id: .init(), frontText: "Hi Hi HiHi HiHiHiHiHi Hi", backText: "HiHi м м Hiмv Hi kf kjdfjn fjdg jdsfjk slnjfsdlj nfsdjaz njsfnj dfjzdsn jljr"),
-        .init(id: .init(), frontText: "Hello", backText: "Bye"),
-        .init(id: .init(), frontText: "Lol", backText: "Che"),
-        .init(id: .init(), frontText: "Kek", backText: "Burek"),
-        .init(id: .init(), frontText: "Hello", backText: "Bye"),
-        .init(id: .init(), frontText: "Lol", backText: "Che"),
-        .init(id: .init(), frontText: "Kek", backText: "Burek")
-    ]
-    
+    var cards: [Card]
     var cardSize: CGSize = .init(width: 300, height: 300)
     var cardsCenterLocation: CGPoint = .zero
     var leftLimit: CGFloat = -1000
@@ -35,7 +26,8 @@ struct GameModel {
         }
     }
     
-    init(cards: [Card] = []) {
+    init(cards: [Card]) {
+        self.cards = cards
         let resultsCard = Card(id: .init(), frontText: "", backText: "")
         self.cards.append(resultsCard)
     }

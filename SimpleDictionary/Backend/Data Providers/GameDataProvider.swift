@@ -5,8 +5,8 @@
 //  Created by Oleg Kosenko on 2020-12-14.
 //
 
-import Foundation
 import Combine
+import ComposableArchitecture
 import CoreData
 
 class GameDataProvider {
@@ -15,20 +15,21 @@ class GameDataProvider {
     
     private lazy var coreDataWordsPublisher: CoreDataPublisher<Word> = {
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "\(#keyPath(Word.isWOD)) == NO")
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Word.date, ascending: false)]
         return CoreDataPublisher(context: coreDataService.context, fetchRequest: fetchRequest)
     }()
     
-    var wordsPublisher: AnyPublisher<[Word], Error> {
+    var wordsPublisher: Effect<[Word], Never> {
         coreDataWordsPublisher
             .publisher
-            .eraseToAnyPublisher()
+            .map { words in
+                words.filter { !$0.normalizedDefinitions.isEmpty }
+            }
+            .replaceError(with: [])
+            .eraseToEffect()
     }
     
     init(coreDataService: CoreDataService) {
         self.coreDataService = coreDataService
     }
-    
-    
 }

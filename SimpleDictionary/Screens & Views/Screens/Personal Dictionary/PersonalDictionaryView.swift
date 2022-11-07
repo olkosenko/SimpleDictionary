@@ -70,7 +70,7 @@ struct PersonalDictionaryView: View {
     
     private func form(_ viewStore: ViewStoreType) -> some View {
         Form {
-            ForEach(viewStore.words, id: \.self) { word in
+            ForEach(viewStore.words, id: \.normalizedId) { word in
                 
                 NavigationLink(
                     destination: IfLetStore(store.scope(state: { $0.selectionState },
@@ -82,12 +82,24 @@ struct PersonalDictionaryView: View {
                         get: { $0.selectionWord },
                         send: PersonalDictionaryAction.setNavigation)) {
                     
+                    Button { viewStore.send(.toggleLearned(word)) } label: {
+                        if viewStore.wordsIsLearned[viewStore.words.firstIndex(of: word)!] {
+                            Image(systemName: "largecircle.fill.circle")
+                        } else {
+                            Image(systemName: "circle")
+                        }
+                    }
+                    .foregroundColor(.blue)
+                    .frame(width: 30, height: 30)
+                    
                     Text(word.normalizedTitle)
+                    
                     if viewStore.searchSettings.isDictionaryDateShown {
                         Spacer()
                         Text(word.normalizedDate.yearMonthDayLocal)
                             .foregroundColor(.gray)
                     }
+                    
                 }
                 .buttonStyle(PlainButtonStyle())
 

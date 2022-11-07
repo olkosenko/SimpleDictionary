@@ -9,6 +9,7 @@
     <entity name="Word" representedClassName="Word" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isLearned" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isWOD" attributeType="Boolean" usesScalarValueType="NO"/>
         <attribute name="phoneticSpelling" optional="YES" attributeType="String"/>
         <attribute name="soundURL" optional="YES" attributeType="URI"/>
@@ -17,6 +18,6 @@
     </entity>
     <elements>
         <element name="Definition" positionX="-54" positionY="18" width="128" height="89"/>
-        <element name="Word" positionX="-278.3352661132812" positionY="-68.81491088867188" width="128" height="134"/>
+        <element name="Word" positionX="-278.3352661132812" positionY="-68.81491088867188" width="128" height="149"/>
     </elements>
 </model>

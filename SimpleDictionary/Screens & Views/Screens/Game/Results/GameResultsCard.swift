@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GameResultsCard: View {
     
-    //let resetAction: () -> Void
     let dismissAction: () -> Void
     
     let learnedTitle: String?
@@ -75,16 +74,6 @@ struct GameResultsCard: View {
                     .overlay(Text("Got It").foregroundColor(.white))
             }
             .buttonStyle(PlainButtonStyle())
-//
-//            Spacer()
-//
-//            Button(action: resetAction) {
-//                RoundedRectangle(cornerRadius: 20)
-//                    .frame(width: 100, height: 40)
-//                    .foregroundColor(.blue)
-//                    .overlay(Text("Repeat").foregroundColor(.white))
-//            }
-//            .buttonStyle(PlainButtonStyle())
         }
     }
 }

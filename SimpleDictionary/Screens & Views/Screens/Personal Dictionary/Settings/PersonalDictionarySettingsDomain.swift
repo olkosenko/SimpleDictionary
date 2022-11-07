@@ -12,7 +12,7 @@ struct PersonalDictionarySettingsState: Equatable {
     var settings = PersonalDictionarySettings.defaultValue
 }
 
-enum PersonalDictionarySettingsAction {
+enum PersonalDictionarySettingsAction: Equatable {
     case onAppear
     case onSettingsChanged(Result<PersonalDictionarySettings, Never>)
     

@@ -1,5 +1,5 @@
 //
-//  SettingsDataProvider.swift
+//  UserDefaultsDataProvider.swift
 //  SimpleDictionary
 //
 //  Created by Oleg Kosenko on 2020-12-09.
@@ -39,9 +39,9 @@ class UserDefaultsDataProvider {
         UserDefaults.personalDictionarySettings = newSettings
     }
     
-    func increaseCurrentLearnCount() {
+    func increaseCurrentLearnCount(by amount: Int) {
         var newSettings = UserDefaults.searchSettings
-        newSettings.increaseCurrentLearnCount()
+        newSettings.increaseCurrentLearnCount(by: amount)
         UserDefaults.searchSettings = newSettings
     }
     
@@ -58,5 +58,6 @@ class UserDefaultsDataProvider {
         recentSearches.insert(newSearch, at: 0)
         UserDefaults.recentSearches = recentSearches
     }
+    
     
 }

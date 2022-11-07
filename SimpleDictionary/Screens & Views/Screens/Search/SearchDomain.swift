@@ -49,6 +49,8 @@ struct SearchEnvironment {
     var userDefaultsDataProvider: UserDefaultsDataProvider
 }
 
+struct SearchSuggestionsID: Hashable {}
+
 let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combine(
     searchResultsReducer
     .optional()
@@ -107,8 +109,6 @@ let searchReducer = Reducer<SearchState, SearchAction, SearchEnvironment>.combin
             return .none
             
         case .searchQueryChanged(let query):
-            struct SearchSuggestionsID: Hashable {}
-            
             state.searchQuery = query
             
             guard query.isNotEmpty else {

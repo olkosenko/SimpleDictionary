@@ -14,6 +14,8 @@ enum SettingsType {
 }
 
 struct SearchSettings: Equatable, Codable {
+    var dateActive: Date
+    
     var isSearchGoalActive: Bool
     var searchGoalCount: Int
     var currentSearchCount: Int
@@ -24,8 +26,10 @@ struct SearchSettings: Equatable, Codable {
     
     mutating func increaseCurrentSearchCount() { currentSearchCount += 1 }
     mutating func increaseCurrentLearnCount() { currentLearnCount += 1 }
+    mutating func increaseCurrentLearnCount(by amount: Int) { currentLearnCount += amount }
     
-    static let defaultValue = SearchSettings(isSearchGoalActive: true,
+    static let defaultValue = SearchSettings(dateActive: Date(),
+                                             isSearchGoalActive: true,
                                              searchGoalCount: 30,
                                              currentSearchCount: 0,
                                              isLearnGoalActive: true,

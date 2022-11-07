@@ -21,10 +21,15 @@ struct PersonalDictionaryState: Equatable {
     var isSettingsSheetPresented = false
     
     var words = [Word]()
+    var wordsIsLearned = [Bool]()
     var isActivityIndicatorVisible = true
 }
 
-enum PersonalDictionaryAction {
+enum PersonalDictionaryAction: Equatable {
+    static func == (lhs: PersonalDictionaryAction, rhs: PersonalDictionaryAction) -> Bool {
+        return true
+    }
+    
     case wordCreation(ManualWordCreationAction)
     case wordDetails(WordDetailsAction)
     case settings(PersonalDictionarySettingsAction)
@@ -39,6 +44,8 @@ enum PersonalDictionaryAction {
     case setNavigation(selection: Word?)
     
     case deleteWord(IndexSet)
+    
+    case toggleLearned(Word)
 }
 
 struct PersonalDictionaryEnvironment {
@@ -80,7 +87,6 @@ let personalDictionaryReducer = Reducer<
         case .onAppear:
             return .merge(
                 environment.personalDictionaryDataProvider.wordsPublisher
-                    .delay(for: .seconds(0.3), scheduler: environment.mainQueue)
                     .subscribe(on: DispatchQueue.global())
                     .receive(on: environment.mainQueue)
                     .catchToEffect()
@@ -96,6 +102,7 @@ let personalDictionaryReducer = Reducer<
             
         case .onWordsFetched(.success(let words)):
             state.words = words.sorted(by: { $0.normalizedTitle < $1.normalizedTitle })
+            state.wordsIsLearned = state.words.map { $0.isLearned }
             state.isActivityIndicatorVisible = false
             return .none
             
@@ -118,6 +125,7 @@ let personalDictionaryReducer = Reducer<
             
         case .deleteWord(let indexSet):
             let wordsToDelete = indexSet.map { state.words[$0] }
+            state.words.remove(atOffsets: indexSet)
             environment.personalDictionaryDataProvider.deleteWords(wordsToDelete)
             return .none
             
@@ -152,7 +160,18 @@ let personalDictionaryReducer = Reducer<
             
         case .onWordsFetched(.failure):
             return .none
+            
+        case .toggleLearned(let word):
+            let isLearned = !word.isLearned
+            environment.personalDictionaryDataProvider.toggleLearnStatus(for: word)
+            return .fireAndForget {
+                if isLearned {
+                    environment.userDefaultsDataProvider.increaseCurrentLearnCount(by: 1)
+                }
+            }
+            
         }
         
     }
 )
+.debug()

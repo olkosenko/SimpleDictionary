@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-class GameViewModel: ObservableObject, Identifiable {
+class GameViewModel: ObservableObject, Identifiable, Equatable {
+    
     let id = UUID()
     @Published private var game: GameModel
     @Published var isRulesSheetPresented = false
@@ -15,8 +16,8 @@ class GameViewModel: ObservableObject, Identifiable {
     let orientationChangesPublisher = NotificationCenter.default
         .publisher(for: UIDevice.orientationDidChangeNotification)
     
-    init() {
-        game = GameModel()
+    init(cards: [GameModel.Card]) {
+        self.game = GameModel(cards: cards)
     }
     
     var cards: [GameModel.Card] {
@@ -45,7 +46,7 @@ class GameViewModel: ObservableObject, Identifiable {
     
     var gameResultsPracticeTitle: String {
         if game.learnedCount > 0 {
-            return "Keep practicing to master the remaining \(game.repeatCount)"
+            return game.repeatCount > 0 ? "Keep practicing to master the remaining \(game.repeatCount)" : ""
         } else {
             return "Keep practicing to master \(game.repeatCount) \(game.repeatCount.sanitizedWord())"
         }
@@ -73,6 +74,10 @@ class GameViewModel: ObservableObject, Identifiable {
     
     func flipTopCard() {
         game.flipTopCard()
+    }
+    
+    static func == (lhs: GameViewModel, rhs: GameViewModel) -> Bool {
+        lhs.id == rhs.id
     }
 }
 

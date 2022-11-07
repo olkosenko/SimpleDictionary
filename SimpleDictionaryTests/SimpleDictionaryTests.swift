@@ -6,27 +6,164 @@
 //
 
 import XCTest
+import ComposableArchitecture
 
-class SimpleDictionaryTests: XCTestCase {
+@testable import SimpleDictionary
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class MuchosTests: XCTestCase {
+    let scheduler = DispatchQueue.testScheduler
+    let dependencies = AppDependencyManager()
+
+    func testDictionaryAddWordButtonPressed() {
+        let store = TestStore(
+            initialState: PersonalDictionaryState(),
+            reducer: personalDictionaryReducer,
+            environment: PersonalDictionaryEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                personalDictionaryDataProvider: dependencies.personalDictionaryDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.setWordCreationSheet(true)) {
+                $0.isWordCreationSheetPresented = true
+            }
+        )
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    
+    func testDictionarySettingsButtonPressed() {
+        let store = TestStore(
+            initialState: PersonalDictionaryState(),
+            reducer: personalDictionaryReducer,
+            environment: PersonalDictionaryEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                personalDictionaryDataProvider: dependencies.personalDictionaryDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.setSettingsSheet(true)) {
+                $0.isSettingsSheetPresented = true
+            }
+        )
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testDictionaryWordSelected() {
+        let word1 = Word(context: dependencies.coreDataStore.mainContext)
+        let word2 = Word(context: dependencies.coreDataStore.mainContext)
+        let word3 = Word(context: dependencies.coreDataStore.mainContext)
+        word1.title = "Test"
+        word2.title = "Wrong"
+        word3.title = "Wrong"
+        
+        let store = TestStore(
+            initialState: PersonalDictionaryState(words: [word1, word2, word3]),
+            reducer: personalDictionaryReducer,
+            environment: PersonalDictionaryEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                personalDictionaryDataProvider: dependencies.personalDictionaryDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.setNavigation(selection: word1)) {
+                $0.selectionState = .init(title: "Test", definitions: [])
+                $0.selectionWord = word1
+            }
+        )
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testDictionaryDeleteWord() {
+        let word1 = Word(context: dependencies.coreDataStore.mainContext)
+        let word2 = Word(context: dependencies.coreDataStore.mainContext)
+        let word3 = Word(context: dependencies.coreDataStore.mainContext)
+        
+        let store = TestStore(
+            initialState: PersonalDictionaryState(words: [word1, word2, word3]),
+            reducer: personalDictionaryReducer,
+            environment: PersonalDictionaryEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                personalDictionaryDataProvider: dependencies.personalDictionaryDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.deleteWord([1])) {
+                $0.words = [
+                    $0.words[0],
+                    $0.words[2]
+                ]
+            }
+        )
     }
+    
+    func testSearchQueryChanged() {
+        let store = TestStore(
+            initialState: SearchState(),
+            reducer: searchReducer,
+            environment: SearchEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                searchDataProvider: dependencies.searchDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.searchQueryChanged("Dictionary")) {
+                $0.searchQuery = "Dictionary"
+            },
+            .send(.searchQueryChanged("")) {
+                $0.searchQuery = ""
+            }
+        )
+    }
+    
+    func testSearchSuggestions() {
+        let store = TestStore(
+            initialState: SearchState(),
+            reducer: searchReducer,
+            environment: SearchEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                searchDataProvider: dependencies.searchDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.searchQueryChanged("Dictionary")) {
+                $0.searchQuery = "Dictionary"
+            },
+            .send(.searchQueryChanged("")) {
+                $0.searchQuery = ""
+            }
+        )
+    }
+    
+    func testWordSearch() {
+        let store = TestStore(
+            initialState: SearchState(),
+            reducer: searchReducer,
+            environment: SearchEnvironment(
+                mainQueue: scheduler.eraseToAnyScheduler(),
+                searchDataProvider: dependencies.searchDataProvider,
+                userDefaultsDataProvider: dependencies.userDefaultsDataProvider
+            )
+        )
+        
+        store.assert(
+            .send(.searchQueryChanged("Dictionary")) {
+                $0.searchQuery = "Dictionary"
+            },
+            .send(.searchQueryChanged("")) {
+                $0.searchQuery = ""
+            }
+        )
+    }
+    
 
 }

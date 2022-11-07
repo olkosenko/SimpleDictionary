@@ -22,12 +22,7 @@ class APIServiceTests: XCTestCase {
     }
 
     func test() throws {
-        UrbanEntry.fetch(word: "hell")
-            .receive(on: DispatchQueue.main)
-            .sink { entry in
-                print(entry)
-            }
-            .store(in: &cancellableStorage)
+
     }
 
     func testPerformanceExample() throws {

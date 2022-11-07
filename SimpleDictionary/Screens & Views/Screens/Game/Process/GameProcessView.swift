@@ -75,9 +75,13 @@ struct GameView: View {
         ForEach(viewModel.cards) { card in
             GameCardView(isFaceUp: card.isFaceUp, status: card.status) {
                 Text(card.frontText)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
                     .blur(radius: card.isBlurred ? 3.0 : 0)
             } backContent: {
                 Text(card.backText)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
                     .blur(radius: card.isBlurred ? 3.0 : 0)
             }
             .frame(
@@ -151,6 +155,6 @@ struct GameView: View {
 
 struct GameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameView(viewModel: GameViewModel())
+        GameView(viewModel: GameViewModel(cards: []))
     }
 }
